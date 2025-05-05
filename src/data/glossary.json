@@ -1,0 +1,142 @@
+[
+  {
+    "term": "Cloud Storage",
+    "en": "Cloud Storage",
+    "zh": "云存储",
+    "jp": "クラウドストレージ",
+    "desc": "用于存储对象数据的服务，支持全球可用性和版本控制。"
+  },
+  {
+    "term": "BigQuery",
+    "en": "BigQuery",
+    "zh": "大数据查询分析服务",
+    "jp": "ビッグクエリ",
+    "desc": "一种高性能的服务器无关数据仓库，用于实时分析大规模数据。"
+  },
+  {
+    "term": "Cloud Functions",
+    "en": "Cloud Functions",
+    "zh": "云函数",
+    "jp": "クラウドファンクション",
+    "desc": "事件驱动型函数即服务（FaaS）平台，支持自动扩缩。"
+  },
+  {
+    "term": "Cloud Run",
+    "en": "Cloud Run",
+    "zh": "无服务器容器运行平台",
+    "jp": "クラウドラン",
+    "desc": "托管容器执行服务，支持根据流量自动伸缩。"
+  },
+  {
+    "term": "Cloud SQL",
+    "en": "Cloud SQL",
+    "zh": "云关系数据库服务",
+    "jp": "クラウドSQL",
+    "desc": "托管型的 MySQL、PostgreSQL 和 SQL Server 实例服务。"
+  },
+  {
+    "term": "GKE",
+    "en": "Google Kubernetes Engine",
+    "zh": "Google 容器引擎",
+    "jp": "Google Kubernetes エンジン",
+    "desc": "用于部署和管理 Kubernetes 集群的托管服务平台。"
+  },
+  {
+    "term": "IAM",
+    "en": "Identity and Access Management",
+    "zh": "身份与访问管理",
+    "jp": "アイデンティティ・アクセス・マネジメント",
+    "desc": "用于管理资源权限和身份验证的系统。"
+  },
+  {
+    "term": "Pub/Sub",
+    "en": "Cloud Pub/Sub",
+    "zh": "发布-订阅消息系统",
+    "jp": "パブサブ",
+    "desc": "异步消息通信服务，支持松耦合系统之间通信。"
+  },
+  {
+    "term": "Artifact Registry",
+    "en": "Artifact Registry",
+    "zh": "制品注册库",
+    "jp": "アーティファクト・レジストリ",
+    "desc": "存储和管理构建工件（如容器镜像）的服务。"
+  },
+  {
+    "term": "Cloud Logging",
+    "en": "Cloud Logging",
+    "zh": "日志服务",
+    "jp": "クラウドロギング",
+    "desc": "用于收集、分析和存储日志数据的服务。"
+  },
+  {
+    "term": "Cloud Monitoring",
+    "en": "Cloud Monitoring",
+    "zh": "云监控",
+    "jp": "クラウドモニタリング",
+    "desc": "用于收集和可视化指标信息，支持自定义告警。"
+  },
+  {
+    "term": "Cloud Interconnect",
+    "en": "Cloud Interconnect",
+    "zh": "云互联",
+    "jp": "クラウドインターコネクト",
+    "desc": "提供本地数据中心与 Google 网络之间的专线连接服务。"
+  },
+  {
+    "term": "Cloud Armor",
+    "en": "Cloud Armor",
+    "zh": "云防护墙",
+    "jp": "クラウドアーマー",
+    "desc": "提供 DDoS 保护和基于规则的访问控制的服务。"
+  },
+  {
+    "term": "Cloud CDN",
+    "en": "Cloud CDN",
+    "zh": "内容分发网络",
+    "jp": "クラウドCDN",
+    "desc": "将内容缓存至全球边缘节点以降低延迟。"
+  },
+  {
+    "term": "Cloud Scheduler",
+    "en": "Cloud Scheduler",
+    "zh": "任务调度器",
+    "jp": "クラウドスケジューラー",
+    "desc": "托管版 cron 作业调度服务，可触发 HTTP、Pub/Sub、Cloud Functions 等。"
+  },
+  {
+    "term": "Cloud NAT",
+    "en": "Cloud NAT",
+    "zh": "网络地址转换服务",
+    "jp": "クラウドNAT",
+    "desc": "为没有外部 IP 的实例提供访问外网能力的服务。"
+  },
+  {
+    "term": "VPC",
+    "en": "Virtual Private Cloud",
+    "zh": "虚拟私有云",
+    "jp": "バーチャル・プライベート・クラウド",
+    "desc": "用户定义的逻辑网络隔离环境。"
+  },
+  {
+    "term": "Cloud DLP",
+    "en": "Cloud Data Loss Prevention",
+    "zh": "数据防泄漏服务",
+    "jp": "クラウドDLP",
+    "desc": "用于检测和屏蔽敏感信息（如PII）的数据安全工具。"
+  },
+  {
+    "term": "Cloud Build",
+    "en": "Cloud Build",
+    "zh": "持续集成构建服务",
+    "jp": "クラウドビルド",
+    "desc": "自动构建和部署容器、代码包等工件的服务。"
+  },
+  {
+    "term": "Cloud Deployment Manager",
+    "en": "Cloud Deployment Manager",
+    "zh": "部署管理器",
+    "jp": "クラウドデプロイメントマネージャー",
+    "desc": "基础设施即代码（IaC）工具，用于自动部署资源。"
+  }
+]
