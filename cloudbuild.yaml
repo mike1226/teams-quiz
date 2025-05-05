@@ -16,3 +16,5 @@ steps:
       - '--quiet'
 substitutions:
   SHORT_SHA: ${COMMIT_SHA:0:8}
+options:
+  logging: CLOUD_LOGGING_ONLY
