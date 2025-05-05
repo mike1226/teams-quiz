@@ -1,6 +1,5 @@
 options:
-  logging: GCS_ONLY
-  logBucket: $_LOG_BUCKET
+  logging: CLOUD_LOGGING_ONLY
 
 steps:
   - name: 'node:20'
