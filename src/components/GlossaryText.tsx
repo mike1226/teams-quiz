@@ -36,7 +36,8 @@ const GlossaryText: React.FC<Props> = ({ text }) => {
               const e = getEntry(seg.term!);
               return (
                 <div style={{ padding: '8px',
-                  backgroundColor: '#f9f9f9',
+                  backgroundColor: '#ccccff',
+                  borderColor: '#6666ff',
                   fontSize: '12px',
                   borderRadius: '6px',
                   lineHeight: 1.4 }}>
