@@ -10,3 +10,6 @@ handlers:
     upload: dist/.*
     secure: always
     redirect_http_response_code: 301
+    
+automatic_scaling:
+  max_instances: 5
