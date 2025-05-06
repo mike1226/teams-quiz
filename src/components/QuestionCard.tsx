@@ -102,7 +102,7 @@ const QuestionCard: React.FC<Props> = ({
       }}
     >
       <div>
-        <ReactMarkdown>{question.question}</ReactMarkdown>
+        <GlossaryText text={question.question}/>
       </div>
 
       <form>
@@ -110,10 +110,12 @@ const QuestionCard: React.FC<Props> = ({
           <label
             key={opt.id}
             style={{
-              display: "block",
+              display: "flex",
+              alignItems: "center",  
+              gap: "8px",
               margin: "8px 0",
               marginBottom: "12px",
-              padding: "10px",
+              padding: "5px",
               border: "1px solid #ccc",
               backgroundColor: submitted
                 ? getOptionStyle(opt.id).backgroundColor || "#f7f7f7"
@@ -131,6 +133,7 @@ const QuestionCard: React.FC<Props> = ({
               disabled={submitted}
               checked={selection.includes(opt.id)}
               onChange={() => toggleSelect(opt.id)}
+              style={{ marginTop: "4px" }}
             />{" "}
             <GlossaryText text={opt.text} />
           </label>
