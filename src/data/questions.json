@@ -1257,5 +1257,2923 @@
     ],
     "answer": ["D"],
     "explanation": "Google Cloud の Recommender API は、アイドル状態の仮想マシンを自動的に分析し、停止や削除の提案を行うことで、コスト最適化をサポートします。gcloud recommender コマンドを使えば、これらの推奨事項に基づいて即座に不要なリソースを特定できます。\n\n📚 参考: https://cloud.google.com/compute/docs/instances/viewing-and-applying-idle-vm-recommendations"
+  },
+  {
+    "id": "B1",
+    "question": "あなたの会社は、Linux RHEL 6.5+の仮想マシンをリフト＆シフト移行することを計画しています。仮想マシンは、オンプレミスのVMware環境で稼働しています。Googleが推奨する方法に従って、それらをCompute Engineに移行したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "現在のVMware環境で稼働している仮想マシンの評価を行う。\n移行プランを定義し、Migrate for Compute Engineの移行RunBookを準備し、移行を実行する"
+      },
+      {
+        "id": "B",
+        "text": "現在のVMware環境で稼働している仮想マシンの評価を行う。\n選択したすべての仮想マシンにサードパーティ製エージェントをインストールする。\nすべての仮想マシンをCompute Engineに移行する"
+      },
+      {
+        "id": "C",
+        "text": "現在のVMware環境で稼働している仮想マシンの評価を行う。\nすべてのディスクのイメージを作成するCompute Engine上のディスクをインポートする。\nブートディスクがインポートしたものである標準的な仮想マシンを作成する。"
+      },
+      {
+        "id": "D",
+        "text": "アプリケーションのリストとその依存関係に基づいて、移行計画を定義する。\nMigrate for Compute Engineを使用して、すべての仮想マシンを個別にCompute Engineに移行する"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Google の推奨する移行方法では、依存関係やグルーピングを考慮して RunBook を使った段階的なマイグレーションがベストプラクティスです。\n仮想マシンを個別に移行する方法は非推奨で、サービスの連携や可用性を損なう可能性があります。\n\n📚 参考: https://cloud.google.com/architecture/migrating-vms-migrate-for-compute-engine-getting-started"
+  },
+  {
+    "id": "B2",
+    "question": "Cloud Run for Anthosにデプロイされたアプリケーションを管理しているあなたは、アプリケーションの新バージョンをデプロイするための戦略を定義する必要があります。新しいコードを本番トラフィックのサブセットで評価し、ロールアウトを続行するかどうかを決定したいと思います。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "新しいリビジョンでCloud Runをデプロイする。リビジョン間のトラフィックパーセンテージを設定する。"
+      },
+      {
+        "id": "B",
+        "text": "新しいサービスを新しいバージョンでCloud Runにデプロイする。両方のサービスの前にCloud Load Balancingインスタンスを追加する。"
+      },
+      {
+        "id": "C",
+        "text": "Cloud RunのGoogle Cloud Consoleページで、開発ブランチにCloud Buildを使用して継続的なデプロイメントを設定する。Cloud Buildのトリガーの一部として、置換変数TRAFFIC_PERCENTAGEに、新バージョンに誘導したいトラフィックの割合を設定する。"
+      },
+      {
+        "id": "D",
+        "text": "Google Cloud Consoleで、Cloud Run上のアプリケーションの新バージョンを指す新しいサービスでTraffic Directorを設定する。トラフィックの小さな割合をアプリケーションの新バージョンに送るようにTraffic Directorを設定する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Cloud Runでは、複数のリビジョン間でトラフィックを段階的に移行することで、カナリアリリースのような戦略的なロールアウトが可能です。\nこの方法を使えば、問題があれば即座に以前のバージョンにロールバックできます。\n\n📚 参考: https://cloud.google.com/run/docs/rollouts-rollbacks-traffic-migration"
+  },
+  {
+    "id": "B3",
+    "question": "データベース管理チームから、Google Compute Engine上で稼働している新しいデータベースサーバーのパフォーマンスを向上させるためのサポートを依頼されました。データベースは、パフォーマンス統計をインポートして正規化するためのもので、Debian Linux上のMySQLで構築されています。n1-standard-8の仮想マシンには、80GBのSSD永続ディスクが搭載されています。\n\nこのシステムからより良いパフォーマンスを得るために、何を変更すべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "PostgreSQLが動作する仮想マシンを新規に作成する"
+      },
+      {
+        "id": "B",
+        "text": "データベースへの一括挿入を使用するようにすべてのバッチジョブを変更する"
+      },
+      {
+        "id": "C",
+        "text": "仮想マシンのメモリを64GBに増設する。"
+      },
+      {
+        "id": "D",
+        "text": "パフォーマンス・メトリクス・ウェアハウスをBigQueryに移行する"
+      },
+      {
+        "id": "E",
+        "text": "SSD永続ディスクのサイズを動的に500GBに変更する"
+      }
+    ],
+    "answer": ["E"],
+    "explanation": "Google Cloud の永続ディスクは、ディスク容量が大きいほどスループットと IOPS が向上します。\n特にリージョナル SSD PD の場合、1 GB 増加するごとに 30 IOPS の性能向上が得られます。\nそのため、既存の 80GB から 500GB に増やすことで、MySQL データベースのパフォーマンスが顕著に向上します。\n\n📚 参考: https://cloud.google.com/compute/docs/disks"
+  },
+  {
+    "id": "B4",
+    "question": "あなたのお客様は、企業のアプリケーションをGoogle Cloud Platformに移行しています。セキュリティチームは、組織内のすべてのプロジェクトを詳細に把握したいと考えています。あなたは、Google Cloud Resource Managerをプロビジョニングし、自分を組織の管理者として設定します。\n\nセキュリティチームにどのようなGoogle Cloud Identity and Access Management（Cloud IAM）ロールを与えるべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "組織Viewer、プロジェクトViewer"
+      },
+      {
+        "id": "B",
+        "text": "組織Viewer、プロジェクトOwner"
+      },
+      {
+        "id": "C",
+        "text": "プロジェクトOwner、ネットワークAdministrator"
+      },
+      {
+        "id": "D",
+        "text": "組織Administrator、プロジェクトBrowser"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "セキュリティチームが組織内のすべてのプロジェクトの構成を確認できるようにするには、読み取り専用の IAM 権限が適しています。\nそのため「組織Viewer」と「プロジェクトViewer」の組み合わせが最も安全かつ適切な選択です。\n\n📚 参考: https://cloud.google.com/iam/docs/using-iam-securely"
+  },
+  {
+    "id": "B5",
+    "question": "あなたの会社では、オンプレミスのデータセンターをクラウドに移行しています。移行の一環として、ワークロードのオーケストレーションにGoogle Kubernetes Engine（GKE）を統合したいと考えています。また、アーキテクチャの一部はPCI DSSに準拠している必要があります。\n\n次のうち、最も正確な情報はどれですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "App Engineは、GCPのコンピュートプラットフォームの中で唯一、PCI DSSホスティングの認定を受けている。"
+      },
+      {
+        "id": "B",
+        "text": "GKE は共有ホスティングとみなされるため、PCI DSS で使用することはできない。"
+      },
+      {
+        "id": "C",
+        "text": "GKE は、PCI DSS に準拠した環境を構築するために必要なツールを提供する。"
+      },
+      {
+        "id": "D",
+        "text": "Google Cloud Platform は PCI に準拠していると認定されているため、すべての Google Cloud サービスを使用することができる。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "GCPは、GKEをはじめとする複数のサービスにおいてPCI DSSの認定を受けていますが、すべてのサービスが対象ではありません。\nGKE は、PCI DSS 環境を構築するための必要なツールや設定を提供しています。\n\n📚 参考: https://cloud.google.com/security/compliance/pci-dss\nhttps://cloud.google.com/architecture/pci-dss-and-gke-guide"
+  },
+  {
+    "id": "B6",
+    "question": "あなたの会社では、App Engine Standardを使用したサポートチケットソリューションを導入しています。App Engineアプリケーションを含むプロジェクトには、Cloud VPNトンネルを通じて会社のオンプレミス環境に接続されたVirtual Private Cloud（VPC）ネットワークがすでにあります。あなたは、App Engineアプリケーションが会社のオンプレミス環境で実行されているデータベースと通信できるようにしたいと思います。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Google のプライベートアクセスを設定する。" },
+      { "id": "B", "text": "サービスのプライベートアクセスを設定する。" },
+      { "id": "C", "text": "サーバーレス VPC アクセスを構成する。" },
+      {
+        "id": "D",
+        "text": "オンプレミスのホストのみにGoogleのプライベートアクセスを設定する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "サーバーレス VPC アクセスを使用すると、Google Cloud のサーバーレス環境（App Engine、Cloud Run、Cloud Functionsなど）から VPC ネットワークに内部 IP 経由でアクセスできます。\nこの設定により、App Engine アプリがオンプレミスにあるリソースと安全に通信できます。\n\n📚 参考: https://cloud.google.com/vpc/docs/serverless-vpc-access#use_cases"
+  },
+  {
+    "id": "B7",
+    "question": "あなたのWebアプリケーションは、Google Kubernetes Engineを使用して複数のワークロードを管理しています。あるワークロードは、ポッドのスケーリングや再起動後も一貫したホスト名のセットを必要とします。\n\nこれを実現するために、Kubernetesのどの機能を使うべきでしょうか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "永続ボリューム" },
+      { "id": "B", "text": "ロールベースのアクセスコントロール" },
+      { "id": "C", "text": "コンテナの環境変数" },
+      { "id": "D", "text": "StatefulSets" }
+    ],
+    "answer": ["D"],
+    "explanation": "StatefulSet は、スケジュールされた場所にかかわらず GKE が保持する一意で永続的な ID と固有のホスト名を持つ Pod のセットを表します。Kafka や MySQL など、永続的な ID が必要なステートフルアプリケーションに適しています。\n\n📚 参考: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset"
+  },
+  {
+    "id": "B8",
+    "question": "TerramEarthには、クラウドに移行できないレガシーWebアプリケーションがあります。しかし、アプリケーションを監視するクラウドネイティブな方法を構築したいと考えています。アプリケーションがダウンした場合は、できるだけ早くURLが「Site is unavailable」ページを指すようにしたい。また、運用チームが問題の通知を受け取れるようにしたいと考えています。信頼性の高いソリューションを最小限のコストで構築する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Runでスケジュールされたジョブを作成し、1分ごとにコンテナを起動する。このコンテナは、アプリケーションのURLをチェックする。アプリケーションがダウンしている場合は、URLを「サイトが利用できません」のページに切り替え、Opsチームに通知する"
+      },
+      {
+        "id": "B",
+        "text": "Compute Engine VM上に、1分ごとに実行されるcronジョブを作成する。cronジョブはPythonプログラムを起動して、アプリケーションのURLをチェックする。アプリケーションがダウンしている場合は、URLを「サイトが利用できません」ページに切り替えて、Opsチームに通知する"
+      },
+      {
+        "id": "C",
+        "text": "Cloud Error Reportingを使用して、アプリケーションのURLを確認する。アプリケーションがダウンしている場合は、URLを「サイトが利用できません」ページに切り替えて、運用チームに通知する"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Monitoringのアップタイムチェックを作成して、アプリケーションのURLを検証する。失敗した場合は、URLを「サイトが利用できません」ページに切り替えるCloud FunctionをトリガーするPub/Subキューにメッセージを入れて、運用チームに通知する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Cloud Monitoring のアップタイムチェックにより、オンプレミスの URL をチェックし、失敗時に Cloud Function を介して自動的に通知やフェイルオーバー処理が行える構成が可能です。\n\n📚 参考: https://cloud.google.com/monitoring/uptime-checks"
+  },
+  {
+    "id": "B9",
+    "question": "Google Kubernetes Engineクラスターで、CPU負荷に応じて自動的にノードを追加・削除したい。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "デプロイメントを作成し、maxUnavailableとmaxSurgeのプロパティを設定する。gcloudコマンドを使用して、クラスタのオートスケーラを有効にする。"
+      },
+      {
+        "id": "B",
+        "text": "HorizontalPodAutoscalerを目標CPU使用率で設定する。GCPコンソールからCluster Autoscalerを有効にする。"
+      },
+      {
+        "id": "C",
+        "text": "HorizontalPodAutoscalerを目標CPU使用率で構成する。gcloudコマンドを使用して、クラスタの管理対象インスタンスグループでオートスケーリングを有効にする。"
+      },
+      {
+        "id": "D",
+        "text": "デプロイメントを作成し、maxUnavailable と maxSurge のプロパティを設定する。GCP コンソールから、クラスター管理下のインスタンスグループでオートスケーリングを有効にする。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Horizontal Pod Autoscalerは、CPU使用率などのメトリクスに基づいてPod数をスケーリングします。GKEではCluster Autoscalerを別途GCPコンソールから有効にする必要があり、Compute Engineのオートスケーラーと競合させないよう注意が必要です。\n\n📚 参考: https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler"
+  },
+  {
+    "id": "B10",
+    "question": "あなたはマイクロサービスベースのアプリケーションを公開していますが、一部のAPIリクエストは非常に長い時間がかかっていることが分かりました。APIへの各リクエストが多くのGCPサービスを横断することがわかっています。そのため、どのサービスが最も時間がかかるのかを知りたいと思っています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Stackdriver Monitoring を使用して、API のレイテンシーが高いことを示すインサイトを探す"
+      },
+      {
+        "id": "B",
+        "text": "Stackdriver Trace を使ってアプリケーションを計測し、各マイクロサービスのリクエストの待ち時間を把握する"
+      },
+      {
+        "id": "C",
+        "text": "各リクエストのカスタムメトリクスをStackdriver Monitoringに送信する"
+      },
+      {
+        "id": "D",
+        "text": "アプリケーションにタイムアウトを設定することで、より早くリクエストを失敗させる"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Stackdriver Trace（Cloud Trace）は、マイクロサービス間の呼び出しにかかる遅延時間を視覚的に把握し、ボトルネックを特定するのに適しています。APIがどのサービスで時間を消費しているか詳細にトレース可能です。\n\n📚 参考: https://cloud.google.com/trace/docs"
+  },
+  {
+    "id": "B11",
+    "question": "Google Compute Engine上の本番用データベース仮想マシンには、データファイル用にext4形式の永続ディスクがあります。現在データベースのストレージ容量が逼迫しています。\n\n最小限のダウンタイムで問題を修復するにはどうすればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "クラウドプラットフォームコンソールで、永続ディスクのスナップショットを作成し、そのスナップショットを新しいより大きなディスクに復元し、古いディスクをアンマウントし、新しいディスクをマウントし、データベースサービスを再起動する"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Platform Consoleで、永続ディスクのサイズを増やし、Linuxのresize2fsコマンドを使用する"
+      },
+      {
+        "id": "C",
+        "text": "クラウドプラットフォームコンソールで、仮想マシンに接続された新しい永続ディスクを作成し、フォーマットしてマウントし、新しいディスクにファイルを移動するようにデータベースサービスを設定する"
+      },
+      {
+        "id": "D",
+        "text": "クラウドプラットフォームコンソールで、永続ディスクのサイズを増やし、Linuxのfdiskコマンドで新しいスペースが使用可能であることを確認する"
+      },
+      {
+        "id": "E",
+        "text": "仮想マシンをシャットダウンし、Cloud Platform Consoleを使用して永続ディスクのサイズを増やし、仮想マシンを再起動する"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Linux の ext4 ファイルシステムでは、Cloud Console からディスクサイズを拡張した後に、`resize2fs` コマンドでファイルシステムを拡張することが可能です。これによりダウンタイムなしで容量拡張ができるため、本番環境に最適です。\n\n📚 参考: https://cloud.google.com/compute/docs/disks/add-persistent-disk"
+  },
+  {
+    "id": "B12",
+    "question": "全国展開している企業で、タイムクリティカルではないものも含め、複数のバッチワークロードにGCPを利用する予定です。また、HIPAA認証を受けたGCPサービスを利用し、サービスコストを管理する必要があります。\n\nGoogleのベストプラクティスを満たすためには、どのように設計すればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "プリエンプト可能なVMをプロビジョニングし、コストを削減する。HIPAA に準拠していないすべての GCP サービスと API を無効にしてから使用を中止する。"
+      },
+      {
+        "id": "B",
+        "text": "同じリージョンで標準的な VM を提供してコストを削減する。HIPAAに対応していないすべてのGCPサービスとAPIの使用を中止する。"
+      },
+      {
+        "id": "C",
+        "text": "プリエンプト可能なVMをプロビジョニングし、コストを削減する。HIPAAに準拠していないすべてのGCPサービスおよびAPIの使用を中止する。"
+      },
+      {
+        "id": "D",
+        "text": "コストを削減するために、同じリージョンに標準的な VM をプロビジョニングする。HIPAAに準拠していないすべてのGCPサービスとAPIを無効にしてから使用を中止する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "バッチワークロードでタイムクリティカルでない処理には、コスト削減のためにプリエンプティブルVMが最適です。さらに、HIPAAに準拠する必要があるため、非準拠サービスは明示的に無効化し、使用を停止する必要があります。\n\n📚 参考: https://cloud.google.com/compute/docs/instances/preemptible\n📚 参考: https://cloud.google.com/security/compliance/hipaa"
+  },
+  {
+    "id": "B13",
+    "question": "Google Cloud Platformのリソースは、組織、フォルダ、プロジェクトを使って階層的に管理されています。\n\nクラウドのIAM（Identity and Access Management）ポリシーがこれらの異なるレベルに存在する場合、階層の特定のノードではどのようなポリシーが有効になるでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "有効なポリシーは、ノードで設定されたポリシーと、その継承元から継承したポリシーの組合わせ（和集合）である"
+      },
+      {
+        "id": "B",
+        "text": "有効なポリシーは、ノードで設定されたポリシーによってのみ決定される"
+      },
+      {
+        "id": "C",
+        "text": "有効なポリシーは、ノードで設定されたポリシーとその継承元から継承したポリシーに共通に含まれている（部分集合の）ポリシーである"
+      },
+      {
+        "id": "D",
+        "text": "有効なポリシーは、そのノードで設定されたポリシーであり、その継承元から継承したポリシーによって制限される"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "GCPのIAMポリシーは階層的に継承され、有効なアクセス権はノード自身に設定されたロールとその上位（親）リソースから継承されたロールの「和集合」によって構成されます。\n\n📚 参考: https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy"
+  },
+  {
+    "id": "B14",
+    "question": "Webアプリケーションを提供するためにKubernetes Engine （GKE）上でクラスタを実行しています。ユーザーから、アプリケーションの特定の部分が応答しなくなったという報告がありました。デプロイメントのすべてのポッドが2秒後に再起動していることに気づきました。アプリケーションは、標準出力にログを書き込みます。あなたは、問題の原因を見つけるためにログを検査したいと考えています。\n\nどのように調査を行うことが適切ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "gcloud の認証情報を使用してクラスタに接続し、いずれかのポッドのコンテナに接続してログを読み取ります。"
+      },
+      {
+        "id": "B",
+        "text": "アプリケーションの応答しない部分を提供している特定のGKEコンテナのStackdriverログを確認する。"
+      },
+      {
+        "id": "C",
+        "text": "クラスターのノードとして機能している各Compute EngineインスタンスのStackdriverログを確認する。"
+      },
+      {
+        "id": "D",
+        "text": "クラスタのノードとして機能している各Compute EngineインスタンスのSerial Portログを確認する。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "GKEではStackdriver Logging（現在はCloud Logging）がデフォルトで有効化されており、ポッドの標準出力に書かれたログは自動でCloud Loggingに転送されます。問題のコンテナに関するログを確認することで、アプリケーションの挙動を特定できます。\n\n📚 参考: https://cloud.google.com/monitoring/kubernetes-engine/legacy-stackdriver/logging"
+  },
+  {
+    "id": "B15",
+    "question": "Cloud Datastore のインデックスの欠落が原因で App Engine アプリケーションにエラーが発生しました。必要なインデックスを含むYAMLファイルを作成し、これらの新しいインデックスをCloud Datastoreにデプロイしたいと考えています。\n\nどのような方法でこのデプロイを完了させられますか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "設定ファイルにgcloud datastore create-indexesを指定する。"
+      },
+      {
+        "id": "B",
+        "text": "App EngineのデフォルトのCloud Storageバケットに設定ファイルをアップロードし、App Engineに新しいインデックスを検出させる。"
+      },
+      {
+        "id": "C",
+        "text": "組み込みのPythonモジュールにHTTPリクエストを作成し、インデックス設定ファイルをアプリケーションに送信する"
+      },
+      {
+        "id": "D",
+        "text": "GCPコンソールで、Datastore Adminを使用して現在のインデックスを削除し、新しい構成ファイルをアップロードする。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "gcloud datastore create-indexes コマンドは、YAML形式のインデックス定義ファイルから必要なインデックスを Cloud Datastore にデプロイするための公式な方法です。これによりアプリケーションで発生するインデックス不足によるエラーを修正できます。\n\n📚 参考: https://cloud.google.com/appengine/docs/standard/python/datastore/indexes"
+  },
+  {
+    "id": "B16",
+    "question": "アップデートが必要なApp Engineアプリケーションがあります。現在のアプリケーションのバージョンを置き換える前に、本番トラフィックでアップデートをテストしたいと考えています。\n\nどのようにすればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "新しいVPCにアップデートを配置し、GoogleのグローバルHTTPロードバランシングを使用して、アップデートと現行のアプリケーションの間でトラフィックを分割する。"
+      },
+      {
+        "id": "B",
+        "text": "Instance Group Updater を使用してアップデートを展開し、部分的なロールアウトを作成することで、カナリアテストを行うことができます。"
+      },
+      {
+        "id": "C",
+        "text": "App Engine アプリケーションに新しいバージョンとしてアップデートを展開し、新しいバージョンと現在のバージョンでトラフィックを分割する。"
+      },
+      {
+        "id": "D",
+        "text": "新しいApp Engineアプリケーションとしてアップデートを配置し、GoogleのグローバルHTTPロードバランシングを使用して、新しいアプリケーションと現在のアプリケーションの間でトラフィックを分割する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "App Engine では複数のバージョンを同一サービス内にデプロイし、トラフィックをバージョンごとに分割する機能があります。この仕組みを活用することで、本番トラフィックの一部を新バージョンに向けてテストを行う A/B テストやカナリアリリースが可能になります。\n\n📚 参考: https://cloud.google.com/appengine/docs/standard/python/splitting-traffic"
+  },
+  {
+    "id": "B17",
+    "question": "10TBのオンプレミスデータベースをCloud Storageに移行したいと考えています。この作業にかかる時間、全体のコスト、データベースの負荷を最小限に抑えたいと考えています。オンプレミス環境とGoogle Cloudの間の帯域幅は1 Gbpsです。移行にあたってはGoogleが推奨する方法に従いたいと考えています。\n\nどのようにすればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "データベースから直接データを読み込んで、Cloud Storageに書き込むDataflowジョブを開発する。"
+      },
+      {
+        "id": "B",
+        "text": "商用パートナーのETLソリューションを使って、オンプレミスのデータベースからデータを抽出し、Cloud Storageにアップロードする。"
+      },
+      {
+        "id": "C",
+        "text": "Transfer Applianceを使用してオフライン移行を行う。"
+      },
+      {
+        "id": "D",
+        "text": "gsutil -m でデータを圧縮してアップロードし、マルチスレッドコピーを可能にする。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "10TBのデータを1Gbpsの帯域幅で転送するには約30時間かかります。ネットワーク経由の高速転送が望ましい場合、gsutil の -m オプションで並列アップロードを行い、データを事前に圧縮して帯域効率を高めるのがベストプラクティスです。\n\n📚 参考: https://cloud.google.com/architecture/migration-to-google-cloud-transferring-your-large-datasets"
+  },
+  {
+    "id": "B18",
+    "question": "HRLの開発チームは、毎週火曜日の夜3時（UTC）に、レース結果を予想するアプリケーションの新バージョンをリポジトリにリリースしています。HRLのセキュリティチームは、Airwolfと呼ばれる社内侵入テスト用Cloud Functionを開発しました。セキュリティチームは、毎週火曜日にリリースされるこのアプリケーションに対してAirwolfを実行したいと考えています。あなたはAirwolfが毎週定期的に実行されるようにセットアップする必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Functionを起動するPub/Subキューに通知するように展開ジョブを設定する"
+      },
+      {
+        "id": "B",
+        "text": "IAM（Identity and Access Management）とConfidential Computingを設定して、Cloud Functionをトリガーする"
+      },
+      {
+        "id": "C",
+        "text": "Cloud Tasksと、Cloud FunctionのトリガーとなるCloud Storageのバケットを設定する"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Loggingシンクと、Cloud FunctionのトリガーとなるCloud Storageバケットを設定する"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Pub/Sub と Cloud Function を連携させることで、イベントベースの自動実行が可能になります。特にCI/CDパイプラインの一部としてジョブをデプロイし、Pub/Sub経由で Cloud Function を起動することで、毎週のリリースに合わせた侵入テストを自動化できます。\n\n📚 参考: https://cloud.google.com/scheduler/docs/tut-pub-sub"
+  },
+  {
+    "id": "B19",
+    "question": "あなたはMountkirk GamesにFirestoreを実装しています。Mountkirk Gamesは、古いゲームのFirestoreデータベースに新しいゲームがプログラムでアクセスできるようにしたいと考えています。\n\nアクセスは可能な限り制限する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "古いゲームのGoogle Cloudプロジェクトでサービスアカウント（SA）を作成し、そのSAにFirebase Adminロールを与え、新しいゲームを古いゲームのプロジェクトに移行する"
+      },
+      {
+        "id": "B",
+        "text": "古いゲームのGoogle Cloudプロジェクトでサービスアカウント（SA）を作成し、SAにOrganization Adminロールを与え、さらに両方のプロジェクトでFirebase Adminロールを与える"
+      },
+      {
+        "id": "C",
+        "text": "古いゲームのGoogle Cloudプロジェクトでサービスアカウント（SA）を作成し、新しいゲームのIAMページでこのSAを追加し、両方のプロジェクトでFirebase Adminロールを与える"
+      },
+      {
+        "id": "D",
+        "text": "古いゲームのGoogle Cloudプロジェクトでサービスアカウント（SA）を作成し、新しいゲームのIAMページで2つ目のSAを追加し、両方のSAに組織管理者ロールを与える"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "新しいゲームが古いゲームのFirestoreにアクセスするためには、古いゲームのプロジェクトでサービスアカウント（SA）を作成し、そのSAを新しいゲーム側でIAMに追加し、アクセス許可を与えるのがベストプラクティスです。\n\n📚 参考: https://cloud.google.com/iam/docs/granting-changing-revoking-access"
+  },
+  {
+    "id": "B20",
+    "question": "あなたは、Compute Engine上で動作するアプリケーションの全体設計しています。ゾーン障害が発生した場合、アプリケーションは別のゾーンで最新のアプリケーションデータを使ってできるだけ早く復旧させる必要があります。あなたは、この要件を満たすためにソリューションを設計する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "アプリケーション用のインスタンステンプレートでCompute Engineインスタンスを構成し、アプリケーションデータにはリージョナル永続ディスクを使用する。ゾーン障害が発生するたびに、インスタンステンプレートを使用して、同じリージョン内の別のゾーンでアプリケーションをスピンアップする。"
+      },
+      {
+        "id": "B",
+        "text": "アプリケーション用のインスタンステンプレートでCompute Engineインスタンスを構成し、アプリケーションデータにはリージョンの永続ディスクを使用する。アプリケーションデータには、リージョンの永続ディスクを使用する。"
+      },
+      {
+        "id": "C",
+        "text": "アプリケーション用のインスタンステンプレートでCompute Engineインスタンスを構成し、アプリケーションデータ用にリージョナル永続ディスクを使用する"
+      },
+      {
+        "id": "D",
+        "text": "アプリケーションデータの入ったディスクのスナップショットスケジュールを作成する。ゾーン障害が発生するたびに、最新のスナップショットを使用して、同じリージョン内の別のゾーンのディスクを復元する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "リージョナル永続ディスクは、同一リージョンの2つのゾーンにわたって同期されるため、ゾーン障害が発生しても迅速に別ゾーンでサービスを復旧できます。\n\n📚 参考: https://cloud.google.com/compute/docs/disks/high-availability-regional-persistent-disk"
+  },
+  {
+    "id": "B21",
+    "question": "あなたは、ビジネスクリティカルなトランザクションデータを含む単一のCloud SQL MySQL第2世代データベースを実装しています。致命的な障害が発生した場合に、最小限のデータが失われることを保証したいと考えています。\n\n要件を達成するために、どの機能を実装する必要がありますか？（2つ選択）",
+    "type": "multi",
+    "options": [
+      { "id": "A", "text": "バックアップの自動化" },
+      { "id": "B", "text": "準同期レプリケーション" },
+      { "id": "C", "text": "バイナリロギング" },
+      { "id": "D", "text": "シャーディング" },
+      { "id": "E", "text": "リードレプリカ" }
+    ],
+    "answer": ["A", "C"],
+    "explanation": "Cloud SQLでデータ損失を最小限に抑えるには、**自動バックアップ**と**バイナリログ（Binary Logging）**の有効化が推奨されます。これにより、障害時でもバックアップとログを使ってポイントインタイムリカバリが可能になります。\n\n📚 参考: https://cloud.google.com/sql/docs/mysql/backup-recovery/backups"
+  },
+  {
+    "id": "B22",
+    "question": "あなたの会社のテストスイートは、Linuxの仮想マシン上で1日中テストを実行するカスタムC++アプリケーションです。テスト用に確保された限られた数のオンプレミスサーバ上で、完全なテストスイートを実行するには数時間かかります。あなたの会社は、テストインフラをクラウドに移行して、システムへの変更を完全にテストするのにかかる時間を短縮しつつ、テストの変更をできる限り少なくしたいと考えています。\n\nあなたはどのクラウドインフラストラクチャを推奨しますか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Google Compute Engineのアンマネージドインスタンスグループとネットワークロードバランサー"
+      },
+      {
+        "id": "B",
+        "text": "Google App Engineとログ用のGoogle StackDriver"
+      },
+      {
+        "id": "C",
+        "text": "Google Cloud DataprocでApache Hadoopのジョブを実行し、各テストを処理する"
+      },
+      {
+        "id": "D",
+        "text": "オートスケーリング機能付きのCompute Engineのマネージドインスタンスグループ"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "長時間かかるテストスイートの高速化にはスケーラブルな環境が必要です。**Compute Engineのマネージドインスタンスグループ**は、スケーリングやテンプレート適用が可能なため、クラウドへの移行時に最小限の変更で高性能な実行環境を実現できます。\n\n📚 参考: https://cloud.google.com/compute/docs/instance-groups"
+  },
+  {
+    "id": "B23",
+    "question": "あなたの会社では、Compute Engine上で、ユーザーが好きな音楽を再生できるアプリケーションを実行しています。インスタンスの数は決まっています。ファイルはCloud Storageに保存され、データはユーザーに直接ストリーミングされます。ユーザーからの報告によると、人気のある曲の再生を何度も試みないと成功しないことがあるそうで、このアプリケーションのパフォーマンスを改善する必要があります。\n\n問題を解決するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "人気曲をCloudSQLにblobとしてコピーする。Cloud StorageがオーバーロードしたときにCloudSQLからデータを取得するようにアプリケーションコードを更新する。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Filestore NFSボリュームを作成し、Compute Engineにアタッチして人気のある曲をダウンロードする。インスタンスから音楽ファイルを直接提供する。"
+      },
+      {
+        "id": "C",
+        "text": "Compute Engineインスタンスでマネージドインスタンスグループを作成する。グローバルロードバランサーを作成し、次の2つのバックエンド（マネージドインスタンスグループとCloud Storageバケット）で構成する。バケットのバックエンドでCloud CDNを有効にする。"
+      },
+      {
+        "id": "D",
+        "text": "gcsfuseを使用してCloud Storageバケットをマウントし、Compute Engineインスタンスから音楽ファイルを直接配信する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "人気の音楽ファイルの読み込みパフォーマンスを向上させるには、Cloud CDN を有効にすることで世界中のユーザーに高速配信できます。ロードバランサを介して Cloud Storage バケットをバックエンドとして接続し、キャッシュを提供するのが Google のベストプラクティスです。\n\n📚 参考: https://cloud.google.com/cdn"
+  },
+  {
+    "id": "B24",
+    "question": "組織内のすべてのプロダクションプロジェクトのログを、他のプロジェクトのログを含めずに運用チームが保存できるようする必要があります。すべてのプロダクションプロジェクトは、1つのフォルダに格納されています。また、既存および新規のプロダクションプロジェクトのすべてのログが自動的に取り込まれるようにしたいとも考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "本番プロジェクトでログのエクスポートを作成し、ログシンクを本番プロジェクトのBigQueryデータセットに設定し、データセットでクエリを実行するためのIAMアクセスを運用チームに付与する。"
+      },
+      {
+        "id": "B",
+        "text": "運用プロジェクトでログのエクスポートを作成し、ログシンクを運用プロジェクトのCloud Storageバケットに設定する。"
+      },
+      {
+        "id": "C",
+        "text": "Productionフォルダに集約されたエクスポートを作成する。ログシンクを運用プロジェクトのCloud Storageのバケットに設定する。"
+      },
+      {
+        "id": "D",
+        "text": "Organizationリソースに集約されたエクスポートを作成する。ログシンクを運用プロジェクトのCloud Storageのバケットに設定する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "ログの自動集約には集約シンクの機能を利用します。Productionフォルダに対して集約シンクを作成すれば、今後追加されるプロダクションプロジェクトも含めてログを自動で収集し、Cloud Storage などに出力できます。\n\n📚 参考: https://cloud.google.com/logging/docs/export/aggregated_sinks"
+  },
+  {
+    "id": "B25",
+    "question": "あなたの会社は、外部ユーザーがファイルをアップロードして共有できるように、モノリシックな3層のアプリケーションを開発しました。このソリューションは簡単には拡張できず、信頼性にも欠けています。開発チームは、マイクロサービスと完全なマネージドサービスのアプローチを採用するために、アプリケーションを再構築したいと考えていますが、その努力が価値あるものであることをリーダーに納得させる必要があります。\n\nどのような利点をリーダーに強調すべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "このプロセスは、Migrate for Compute Engineで自動化できます。"
+      },
+      {
+        "id": "B",
+        "text": "モノリシックなソリューションは、Dockerを使ってコンテナに変換することができます。生成されたコンテナは、Kubernetesクラスターにデプロイすることができます。"
+      },
+      {
+        "id": "C",
+        "text": "新しいアプローチでは、コストが大幅に削減され、基礎となるインフラの管理が容易になり、CI/CDパイプラインを自動的に管理できるようになります。"
+      },
+      {
+        "id": "D",
+        "text": "新しいアプローチでは、インフラストラクチャとアプリケーションの切り離し、新機能の開発とリリース、基盤となるインフラストラクチャの管理、CI/CDパイプラインの管理とA/Bテストの実行、そして必要に応じたソリューションの拡張が容易になります。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "モノリシックからマイクロサービスへの移行は、スケーラビリティ、可用性、開発の効率性を大幅に向上させます。インフラとアプリの分離、新機能の迅速なリリース、柔軟なスケールが可能となるため、リーダーにはこれらの利点を説明することが重要です。\n\n📚 参考: https://cloud.google.com/architecture/migrating-a-monolithic-app-to-microservices-gke"
+  },
+  {
+    "id": "B26",
+    "question": "あなたの開発チームは、毎晩のバッチ処理を高速化するために、Google Compute Engine （GCE） の仮想マシン （VM） のバッチサーバーに新しい Linux カーネルモジュールをインストールしました。インストールしてから2日後、50％のバッチサーバーが夜間のバッチ実行に失敗しました。あなたは、開発チームにフィードバックするために、失敗の詳細を収集したいと考えています。\n\nあなたはどのアクションを取るべきですか？（3つ選んでください。）",
+    "type": "multi",
+    "options": [
+      {
+        "id": "A",
+        "text": "APIまたはCloud Consoleを使用して、デバッグGCEアクティビティログを読む"
+      },
+      {
+        "id": "B",
+        "text": "gcloudまたはCloud Consoleを使用してシリアルコンソールに接続し、ログを観察する"
+      },
+      {
+        "id": "C",
+        "text": "デバッグ VM をイメージにエクスポートし、そのイメージをローカルサーバで実行すると、カーネルログメッセージがネイティブ画面に表示される"
+      },
+      {
+        "id": "D",
+        "text": "Google Stackdriver のタイムラインを障害発生時に合わせて調整し、バッチサーバのメトリクスを観察する"
+      },
+      {
+        "id": "E",
+        "text": "障害が発生したサーバのライブマイグレーションイベントが発生したかどうかを、アクティビティログで確認する"
+      },
+      {
+        "id": "F",
+        "text": "Stackdriver Loggingを使用して、モジュールのログエントリを検索する"
+      }
+    ],
+    "answer": ["B", "D", "F"],
+    "explanation": "Linux カーネルモジュールの影響調査には、Stackdriver Logging によるログ確認、Cloud Monitoring の時系列メトリクス分析、シリアルコンソールによる詳細確認が有効です。特に、障害のあった時間帯に焦点をあててログを調査することが問題の切り分けに繋がります。\n\n📚 参考:\n- https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-using-serial-console\n- https://cloud.google.com/monitoring\n- https://cloud.google.com/logging"
+  },
+  {
+    "id": "B27",
+    "question": "あなたの会社は、世界中に分散しているユーザーが写真をアップロードし、選択した他のユーザーと共有できるようにする新しいアプリケーションを開発しています。このアプリケーションは、数百万人の同時ユーザーをサポートする予定です。開発者は、基盤となるインフラを構築・維持することなく、コードの作成に専念できるようにしたいと考えています。\n\nこのアプリケーションのデプロイには、どのサービスを使うべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Endpoints"
+      },
+      {
+        "id": "B",
+        "text": "Google Kubernetes Engine"
+      },
+      {
+        "id": "C",
+        "text": "Compute Engine"
+      },
+      {
+        "id": "D",
+        "text": "Google App Engine"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Google App Engine は、開発者がインフラ管理に煩わされることなく、アプリケーションコードの開発に集中できるフルマネージド型のプラットフォームです。自動スケーリングやセキュリティ機能、グローバル配信に対応しており、大量ユーザーを前提としたアプリケーションに適しています。\n\n📚 参考: https://cloud.google.com/terms/services"
+  },
+  {
+    "id": "B28",
+    "question": "【ケーススタディ問題】この質問については、Mountkirk Gamesのケーススタディを参照してください。\n\nMountkirk Games は、新しいゲーム アプリケーション プラットフォームから Google Cloud への接続を確保することを望んでいます。あなたは、プロセスを合理化し、Googleが推奨するプラクティスに従いたいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "デフォルトで難読化されているKubernetesのSecretを使用する。これらのシークレットをアプリケーションプラットフォームで使用するように設定する"
+      },
+      {
+        "id": "B",
+        "text": "秘密を保存するためにKubernetes Secretsを構成し、Application-Layer Secrets Encryptionを有効にして、Cloud Key Management Service (Cloud KMS)を使用して暗号化キーを管理する。これらのSecretsをアプリケーションプラットフォームが使用するように設定する"
+      },
+      {
+        "id": "C",
+        "text": "HashiCorp VaultをCompute Engine上で構成し、顧客が管理する暗号化キーとCloud Key Management Service（Cloud KMS）を使用して暗号化キーを管理する。これらのシークレットをアプリケーションプラットフォームで使用するように構成する"
+      },
+      {
+        "id": "D",
+        "text": "アプリケーションプラットフォームで使用されるWorkload Identityとサービスアカウントを設定する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "GKE 上のアプリケーションが Google Cloud サービスに安全にアクセスするには、Workload Identity を使用するのが推奨されます。これにより、IAM サービスアカウントのキーを明示的に管理することなく、Kubernetes のサービスアカウントと IAM アカウントを安全に関連付けてアクセス制御できます。\n\n📚 参考: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity"
+  },
+  {
+    "id": "B29",
+    "question": "ある会社は、Google Cloud上でWebサービスのインフラを実装しています。このWebサービスは、1秒間に50万件のリクエストからデータを受け取り、保存する必要があります。このデータは、属性セットの完全な一致に基づいて、バックエンドでリアルタイムで照会されます。一方で、ウェブサービスがリクエストを受け取らない期間もあります。サービスの展開にあたってはインフラのコストを最低限にしたいと考えています。\n\nこのアプリケーションには、どのWebサービスプラットフォームとデータベースを使用すべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud RunとBigQuery"
+      },
+      {
+        "id": "B",
+        "text": "Compute Engineのオートスケーリング・マネージドインスタンスグループとBigQuery"
+      },
+      {
+        "id": "C",
+        "text": "Compute Engineのオートスケーリング・マネージドインスタンスグループとCloud Bigtable"
+      },
+      {
+        "id": "D",
+        "text": "Cloud RunとCloud Bigtable"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Cloud Run はトラフィックに応じてスケールするサーバーレスな実行環境で、リクエストがない時間帯は自動的にゼロスケールし、費用を抑えることができます。一方、Cloud Bigtable はリアルタイムな完全一致クエリに強く、高スループットを要するアプリケーションに最適です。BigQuery はバッチ分析向けであり、このようなリアルタイムクエリ用途には不向きです。\n\n📚 参考: https://cloud.google.com/run, https://cloud.google.com/bigtable"
+  },
+  {
+    "id": "B30",
+    "question": "あるアプリケーション開発チームは、現在使用しているログ収集ツールでは、新しいクラウドベースのプロダクトのニーズを満たせないと考えています。彼らは、エラーをキャプチャし、過去のログデータを分析するためのより良いツールを求めています。あなたは、彼らのニーズを満たすソリューションを見つける手助けをしたいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "ロギングのベストプラクティスに関するオンラインリソースのリストを送る"
+      },
+      {
+        "id": "B",
+        "text": "Google StackDriverのCloud Loggingエージェントをダウンロードしてインストールするように指示する"
+      },
+      {
+        "id": "C",
+        "text": "要件の定義と実行可能なロギングツールの評価を支援する"
+      },
+      {
+        "id": "D",
+        "text": "新機能を利用するために、現在のツールのアップグレードを支援する"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Cloud Logging（旧Stackdriver Logging）エージェントは、アプリケーションやシステムのログを Cloud Logging に転送するための公式ツールで、GCP やハイブリッド環境に対応しています。リアルタイムエラー監視やログ解析のニーズに対応でき、Google が推奨する導入方法です。\n\n📚 参考: https://cloud.google.com/logging/docs/agent"
+  },
+  {
+    "id": "B31",
+    "question": "あなたは、30のマイクロサービスからなる大規模な分散型アプリケーションを設計しています。分散したマイクロサービスのそれぞれがデータベースのバックエンドに接続する必要があり、その接続に関わる認証情報を安全に保管したいと考えています。\n\nどこに認証情報を保存すべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "ACLでアクセスを制限した設定ファイルの中"
+      },
+      {
+        "id": "B",
+        "text": "環境変数の中"
+      },
+      {
+        "id": "C",
+        "text": "ソースコードの中"
+      },
+      {
+        "id": "D",
+        "text": "シークレット管理システムの中"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "認証情報はセキュリティ上、コードや設定ファイルに直接含めるべきではありません。Google Cloud では Secret Manager のような専用のシークレット管理システムを使用することで、アクセス制御、監査ログ、暗号化などの機能を通じて安全に管理できます。\n\n📚 参考: https://cloud.google.com/secret-manager"
+  },
+  {
+    "id": "B32",
+    "question": "あなたの会社のウェブホスティングプラットフォームで、エラーを含む本番環境のデプロイによる計画外のロールバック回数を減らす必要があります。QA/テストプロセスの改善により、80%の削減が達成されました。\n\nロールバックをさらに減らすために、あなたはさらにどの2つのアプローチを取ることができますか？（2つ選択）",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "リレーショナルデータベースシステムへの依存度を低減する"
+      },
+      {
+        "id": "B",
+        "text": "モノリシックなプラットフォームをマイクロサービスに分割する"
+      },
+      {
+        "id": "C",
+        "text": "リレーショナルデータベースをNoSQLデータベースで置き換える"
+      },
+      {
+        "id": "D",
+        "text": "グリーン・ブルーのデプロイモデルを導入する"
+      },
+      {
+        "id": "E",
+        "text": "QA環境をカナリア・リリースで置き換える"
+      }
+    ],
+    "answer": ["B", "D"],
+    "explanation": "マイクロサービスへの分割は、障害の影響範囲を限定し、部分的なロールバックや迅速な修正が可能になります。\n\nまた、グリーン・ブルー・デプロイモデルは段階的な切り替えを通じて、安全かつ迅速なリリースが可能です。これらはいずれも本番ロールバックの頻度を下げる効果的な戦略です。\n\n📚 参考: https://cloud.google.com/architecture/implementing-deployment-and-testing-strategies-on-gke"
+  },
+  {
+    "id": "B33",
+    "question": "【ケーススタディ問題】この質問については、TerramEarthのケーススタディを参照してください。\n\nTerramEarthは、プライベートデータセンターに約1ペタバイト（PB）の車両テストデータを持っています。このデータを機械学習チームのためにCloud Storageに移動させたいと考えています。現在、1Gbpsの相互接続リンクが利用できます。機械学習チームは、1ヶ月後にデータの使用を開始したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Google CloudからStorage Transferサービスを設定して、データセンターからCloud Storageにデータを送信する。"
+      },
+      {
+        "id": "B",
+        "text": "暗号化されたUSBデバイスにファイルをエクスポートし、そのデバイスをGoogle Cloudに送信して、Cloud Storageへのデータのインポートを要求する"
+      },
+      {
+        "id": "C",
+        "text": "Google CloudからTransfer Appliancesをリクエストし、データをアプライアンスにエクスポートし、アプライアンスをGoogle Cloudに返却する。"
+      },
+      {
+        "id": "D",
+        "text": "他のユーザーが1Gbpsのリンクを消費していないことを確認し、マルチスレッド転送を使用してデータをCloud Storageにアップロードする。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "1PB のデータを 1Gbps のネットワーク経由で転送すると約 123 日かかります。要件として 1 ヶ月以内に使用開始する必要があるため、物理デバイスによるオフライン移行（Transfer Appliance）が最も適しています。\n\n📚 参考: https://cloud.google.com/transfer-appliance"
+  },
+  {
+    "id": "B34",
+    "question": "【ケーススタディ問題】この質問については、Mountkirk Gamesのケーススタディを参照してください。\n\nあなたは、定義されたビジネス要件と技術要件を満たす新しいゲームのために、ネットワークIngressを実装する必要があります。Mountkirk Gamesは、各地にある物理的なゲームインスタンスを複数のGoogle Cloudリージョンに配置したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "グローバルロードバランサーとGoogle Kubernetes Engineでkubemciを構成する"
+      },
+      {
+        "id": "B",
+        "text": "Compute Engineインスタンスを実行するマネージドインスタンスグループに接続するグローバルロードバランサーを設定する"
+      },
+      {
+        "id": "C",
+        "text": "AnthosのIngressをグローバルロードバランサーとGoogle Kubernetes Engineで構成する"
+      },
+      {
+        "id": "D",
+        "text": "Google Kubernetes Engineでグローバルロードバランサーを構成する"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "マルチリージョンに展開された GKE クラスタでグローバル Ingress を構成するには、推奨される方法は Anthos Ingress の使用です。\nkubemci は非推奨であり、マルチクラスタIngress構成は Anthos でサポートされています。\n\n📚 参考: https://cloud.google.com/kubernetes-engine/docs/concepts/multi-cluster-ingress"
+  },
+  {
+    "id": "B35",
+    "question": "あなたの会社は最近、ユーザーを管理するためにCloud Identityを有効にしました。また、Google Cloud Organization も設定されています。セキュリティチームは、組織の一部となるプロジェクトを保護する必要があります。今後、ドメイン外のIAMユーザーがパーミッションを取得することを禁止したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "ドメインごとにIDを制限する組織ポリシーを設定する"
+      },
+      {
+        "id": "B",
+        "text": "1時間ごとにCloud Identityドメインに属さない全てのユーザーを全てのプロジェクトから削除するCloud Functionを実行するようにCloud Schedulerを設定する"
+      },
+      {
+        "id": "C",
+        "text": "技術系ユーザー(例: crawler@yourdomain.com)を作成し、ルート組織レベルでのプロジェクトオーナーの役割を与える。以下のようなbashスクリプトを作成します\n- 組織内の全プロジェクトのIAMルールをすべてリストアップする\n- 会社ドメインに属さないすべてのユーザーを削除する。組織内のプロジェクトにCompute Engineインスタンスを作成し、テクニカルユーザー認証で実行されるようにgcloudを構成する。bashスクリプトを1時間ごとに実行するcronジョブを設定します"
+      },
+      {
+        "id": "D",
+        "text": "サービスアカウントの作成を禁止する組織ポリシーを設定する"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "IAM ポリシーでドメイン外ユーザーを禁止したい場合、Organization Policy によるドメイン制限（`constraints/iam.allowedPolicyMemberDomains`）を使うのが推奨される方法です。これにより、会社ドメインに属さないユーザーがアクセス権を持つことを防げます。\n\n📚 参考: https://cloud.google.com/resource-manager/docs/organization-policy/restricting-domains"
+  },
+  {
+    "id": "B36",
+    "question": "あなたの会社では、Compute Engine上のインスタンスとオンプレミスのデータセンターとの間にプライベート接続を構築する必要性が出てきました。接続に際しては、最低でも20Gbpsの帯域幅が必要です。また、Googleが推奨するプラクティスに従いたいとも考えています。\n\nどのように接続をセットアップしますか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "VPCを作成し、単一のCloud VPNを使用してオンプレミスのデータセンターに接続する"
+      },
+      {
+        "id": "B",
+        "text": "VPCを作成し、専用 Interconnectを使用してオンプレミスのデータセンターに接続する"
+      },
+      {
+        "id": "C",
+        "text": "Cloud Content Delivery Network（Cloud CDN）を作成し、専用 Interconnectを使用してオンプレミスデータセンターに接続する"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Content Delivery Network（Cloud CDN）を作成し、単一のCloud VPNを使用してオンプレミス・データセンターに接続する"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "20Gbps 以上の帯域を確保する場合は、Cloud VPN や Partner Interconnect ではなく、**専用 Interconnect** を使うことが Google の推奨です。\n\n専用 Interconnect は最大 80Gbps にも対応可能で、安定・高速なオンプレミス接続が求められるユースケースに最適です。\n\n📚 参考: https://cloud.google.com/network-connectivity/docs/interconnect/concepts/overview"
+  },
+  {
+    "id": "B37",
+    "question": "あなたは、新しいプロダクトのローンチにあたってWebトラフィックを提供するために、オートスケーリングのインスタンスグループを設定しました。インスタンスグループをHTTP（S）ロードバランサーのバックエンドサービスとして設定した後、仮想マシン（VM）インスタンスが1分ごとに終了し、再起動していることに気づきます。インスタンスはパブリックIPアドレスを持っていません。\n\ncurlコマンドを使用して、各インスタンスから適切なWebレスポンスが得られていることを確認しています。バックエンドが正しく構成されていることを確認したいと思います。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "各インスタンスにロードバランサーの名前でタグを作成する。ロードバランサーの名前を送信元、インスタンスタグを送信先とするファイアウォールルールを設定する"
+      },
+      {
+        "id": "B",
+        "text": "各インスタンスにパブリックIPを割り当て、ロードバランサーがインスタンスのパブリックIPに到達することを許可するファイアウォールルールを設定する"
+      },
+      {
+        "id": "C",
+        "text": "HTTP/HTTPSのソーストラフィックがロードバランサーに到達することを許可するファイアウォールルールが存在することを確認する"
+      },
+      {
+        "id": "D",
+        "text": "ロードバランサーのヘルスチェックがインスタンスグループ内のインスタンスに到達することを許可するファイアウォールルールが存在することを確認する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "インスタンスが定期的に再起動する場合、原因の一つとしてロードバランサーのヘルスチェックが失敗している可能性があります。Cloud Load Balancer のヘルスチェックは、対象インスタンスの特定ポートへのアクセスを行います。\n\nヘルスチェックが適切に通過できないと、インスタンスが不健全と見なされ、自動的に停止・再起動の処理が行われます。\n\nしたがって、ヘルスチェックのトラフィックがインスタンスに到達できるようにするファイアウォールルールの存在を確認することが重要です。\n\n📚 参考: https://cloud.google.com/load-balancing/docs/health-checks"
+  },
+  {
+    "id": "B38",
+    "question": "あなたの会社では、複数のマイクロサービスを実行しているアプリケーションをAnthosクラスタ（旧Anthos GKE）にデプロイしています。このクラスターには、Anthos Service Mesh と Anthos Config Management の両方が構成されています。エンドユーザーから、アプリケーションの応答が非常に遅いと連絡がありました。あなたは、遅延の原因となっているマイクロサービスを特定したいと思います。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud ConsoleのService Meshビジュアライゼーションを使用して、マイクロサービス間のテレメトリーを検査する。"
+      },
+      {
+        "id": "B",
+        "text": "リクエストレイテンシーを収集するために、デフォルトのistioプロファイルを使用してistioを再インストールする。Cloud Consoleでマイクロサービス間のテレメトリを評価する。"
+      },
+      {
+        "id": "C",
+        "text": "Anthos Config Managementを使用して、関連するクラスタを選択するClusterSelectorを作成する。Google Kubernetes EngineのGoogle Cloud Consoleページで、「Workloads」を表示し、クラスタにフィルタをかけます。フィルタリングされたワークロードの構成を検査する。"
+      },
+      {
+        "id": "D",
+        "text": "Anthos Config Managementを使用してnamespaceSelectorを作成し、該当するクラスタの名前空間を選択する。Google Kubernetes EngineのGoogle Cloud Consoleページで、「ワークロード」を表示し、ネームスペースにフィルタをかけます。フィルタリングされたワークロードの構成を検査する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Anthos Service Mesh にはマイクロサービス間の可視化とトラフィックメトリクス表示機能が含まれており、Service Mesh ビジュアライゼーション機能により、各サービスのレイテンシーやエラー率、トラフィック量をグラフィカルに確認することができます。\n\n特にパフォーマンスの問題（レスポンス遅延）がある場合には、可視化によって問題のボトルネックとなるマイクロサービスを迅速に特定できます。\n\n📚 参考: https://cloud.google.com/service-mesh/docs/observability/explore-dashboard"
+  },
+  {
+    "id": "B39",
+    "question": "あなたの会社は、すべてのGoogle CloudログをCloud Loggingに送信しています。セキュリティチームは、このログを監視したいと考えています。望ましくないファイアウォールの変更やサーバーの侵害などの異常が検出された場合、セキュリティチームが迅速に対応できるようにしたいと考えています。監視にあたってはGoogleが推奨するプラクティスに従いたいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "ログをCloud Storageバケットにエクスポートし、関連するログイベントでCloud Runをトリガーする。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Schedulerでcronジョブをスケジュールする。スケジュールされたジョブは、関連するイベントのために1分ごとにログを照会する。"
+      },
+      {
+        "id": "C",
+        "text": "ログをBigQueryにエクスポートし、BigQueryでクエリを起動して関連イベントのログデータを処理する。"
+      },
+      {
+        "id": "D",
+        "text": "ログをPub/Subトピックにエクスポートし、関連するログイベントでCloud Functionをトリガーする。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Cloud Logging のログシンクを Pub/Sub に接続し、Pub/Sub トピックに送られたログイベントを Cloud Function で即時処理する構成は、Google が推奨するリアルタイム監視アーキテクチャです。\n\nファイアウォール変更や不正アクセスなどの特定イベントを検知し、即座にメール通知や自動修復プロセスを起動することが可能です。\n\n📚 参考: https://cloud.google.com/blog/products/management-tools/automate-your-response-to-a-cloud-logging-event"
+  },
+  {
+    "id": "B40",
+    "question": "あなたの会社では、Google Kubernetes Engine （GKE）クラスタ上にアプリケーションを実行しています。クラスタは開発用、ステージング用、本番用に分かれています。その中で、開発とステージングでデプロイメントをテストすることなく、チームが本番クラスタにDockerイメージをデプロイできることがわかりました。あなたは、チームの自律性を尊重したいと考えていますが、このようなことが起こらないようにしたいと考えています。また、最小限の労力で迅速に導入できるGoogle Cloudソリューションを求めています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Kubernetesのライフサイクルフックを設定して、所定の環境での使用が承認されていないコンテナの起動を防止する。"
+      },
+      {
+        "id": "B",
+        "text": "与えられた環境での使用が承認されていない場合、コンテナの起動を防止するためにKubernetesアドミッションコントローラを作成する。"
+      },
+      {
+        "id": "C",
+        "text": "Dockerイメージが以前の環境でテストされていない限り、チームがDockerイメージを環境にデプロイすることを防ぐために、企業ポリシーを導入する。"
+      },
+      {
+        "id": "D",
+        "text": "開発クラスター、ステージングクラスター、本番クラスターに対して、バイナリ認証ポリシーを設定する。CI/CDパイプラインの一部として認証を作成する。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Binary Authorization は、Google Cloud 上の GKE クラスタで使用されるコンテナイメージが、社内ポリシーで定義された署名と認証ステップを経ない限り本番環境にデプロイされないように制御するセキュリティ機能です。\n\nCI/CD パイプラインで署名を追加し、段階的な承認を経て本番環境に届くことで、テスト漏れのイメージが実行されることを防ぎます。\n\n📚 参考: https://cloud.google.com/binary-authorization/docs/overview"
+  },
+  {
+    "id": "B41",
+    "question": "【ケーススタディ問題】この質問については、EHR Healthcareのケーススタディを参照してください。\n\nあなたは、EHRのオンプレミスシステムとGoogle Cloudの間のハイブリッド接続のための技術的なアーキテクチャを定義する必要があります。本番レベルのアプリケーションに対しては、Googleの推奨するプラクティスに従いたいと考えています。\n\nEHRヘルスケアのビジネス要件と技術要件を考慮した上で必要となるアーキテクチャは次のうちどれですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "1つのメトロ（都市）で2つのパートナー Interconnect接続を構成し、Interconnect接続が異なるメトロゾーンに配置されていることを確認する。"
+      },
+      {
+        "id": "B",
+        "text": "1つのメトロ（都市）で2つの専用 Interconnect接続を構成し、別のメトロで2つの接続を構成し、Interconnect接続が異なるメトロゾーンに配置されていることを確認する"
+      },
+      {
+        "id": "C",
+        "text": "EHR HealthcareとGoogle Cloudの間にダイレクトピアリングを設定し、少なくとも2つのGoogleのロケーションとピアリングしていることを確認する。"
+      },
+      {
+        "id": "D",
+        "text": "オンプレミスからGoogle Cloudへの2つのVPN接続を構成し、オンプレミスのVPNデバイスが別々のラックに配置されていることを確認する。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "99.9% の可用性要件を満たすには、Google Cloud の推奨構成に従い、2 つのメトロ（都市）でそれぞれ 2 本の専用 Interconnect を構成する必要があります。これにより冗長性と障害耐性が確保され、業務継続性が保証されます。\n\n📚 参考: https://cloud.google.com/network-connectivity/docs/interconnect/tutorials/production-level-overview"
+  },
+  {
+    "id": "B42",
+    "question": "Cloud CDNを使用して、Compute Engineのインスタンスグループにホストされている静的なHTTP（S）ウェブサイトコンテンツを配信しています。キャッシュヒット率を改善したいと考えています。\n\nどのようにすればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "キャッシュキーをカスタマイズして、キーからプロトコルを省略する。"
+      },
+      {
+        "id": "B",
+        "text": "静的コンテンツをCloud Storageのバケットに複製する。そのバケットのロードバランサーにCloudCDNを向ける。"
+      },
+      {
+        "id": "C",
+        "text": "キャッシュされたオブジェクトの有効期限を短くする。"
+      },
+      {
+        "id": "D",
+        "text": "HTTP(S)ヘッダのCache-Regionがユーザの最も近いリージョンを指すようにする。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Cloud CDN のデフォルトキャッシュキーにはプロトコルや完全なリクエスト URL が含まれるため、わずかな違い（HTTP vs HTTPS やクエリ文字列）でもキャッシュが効かなくなります。\n\nキャッシュキーをカスタマイズし、プロトコルを省略することで同一コンテンツへのキャッシュヒット率を向上させることができます。\n\n📚 参考: https://cloud.google.com/cdn/docs/caching#cache-keys"
+  },
+  {
+    "id": "B43",
+    "question": "【ケーススタディ問題】この質問については、Mountkirk Gamesのケーススタディを参照してください。\n\n開発チームは、Google Kubernetes Engine 上で動作するゲームの新バージョンを毎日リリースしています。ユーザーの視点から新バージョンの品質を評価するサービスレベルメトリクス（SLI）を作成したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "サービスレベルメトリクスとして、Server UptimeとError Rateを作成する"
+      },
+      {
+        "id": "B",
+        "text": "GKEのCPU使用率とメモリ使用率をサービスレベルのメトリクスとして作成する"
+      },
+      {
+        "id": "C",
+        "text": "サービスレベルメトリクスとして、「CPU Utilization」と「Request Latency」を作成する"
+      },
+      {
+        "id": "D",
+        "text": "サービスレベルメトリクスとして、Request LatencyとError Rateを作成する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "ユーザー視点での新バージョンの品質評価には、実際のユーザー体験に関連するメトリクスが重要です。\n\nCPUやメモリ使用率は内部のインフラ監視には有効ですが、SLI（Service Level Indicator）としては Request Latency（応答時間）と Error Rate（エラー発生率）がより適切です。\n\n📚 参考: https://sre.google/workbook/implementing-slos/"
+  },
+  {
+    "id": "B44",
+    "question": "あなたの会社では、お客様のニーズに迅速に対応することに高い価値を置いています。ビジネス上の主な目的は、リリースのスピードとアジリティです。あなたは、誤ってセキュリティエラーが発生する可能性を減らしたいと考えています。\n\nあなたはどの2つのアクションを取ることができますか？（2つ選択）",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "CI/CDパイプラインに統合されたコード署名と信頼できるバイナリリポジトリを有効にする"
+      },
+      {
+        "id": "B",
+        "text": "ソースコードセキュリティアナライザをCI/CDパイプラインの一部として使用する"
+      },
+      {
+        "id": "C",
+        "text": "すべてのコードのチェックインがセキュリティSMEによってピアレビューされるようにする"
+      },
+      {
+        "id": "D",
+        "text": "CI/CDパイプラインの一部として、脆弱性セキュリティスキャナを実行する。"
+      },
+      {
+        "id": "E",
+        "text": "コンポーネント間のすべてのインターフェースをユニットテストするためのスタブを確保する"
+      }
+    ],
+    "answer": ["B", "D"],
+    "explanation": "リリーススピードとセキュリティの両立を実現するには、CI/CD パイプラインにセキュリティ対策を組み込むのが重要です。\n\n静的コード解析（SAST）ツールによるソースコードの自動スキャン（B）と、脆弱性スキャナによる依存関係や構成のチェック（D）が効果的です。\n\n📚 参考: https://cloud.google.com/container-registry/docs/container-analysis"
+  },
+  {
+    "id": "B45",
+    "question": "あなたの会社では、Cloud Storageのバケットに機密データを保存しています。データアナリストは、バケットを読むためのIAM（Identity Access Management）権限を持っています。あなたは、データアナリストがオフィスネットワークの外からバケット内のデータを取得することを防ぎたいと考えています。\n\nどのようにすればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "バケットからIAM権限を削除するCloud Functionと、バケットにIAM権限を追加する別のCloud Functionを作成する。Cloud Schedulerで業務開始・終了にパーミッションの変更を行う。"
+      },
+      {
+        "id": "B",
+        "text": "オフィスネットワークへのCloud VPNを作成し、オンプレミスのホストにプライベート Google アクセスを設定する。"
+      },
+      {
+        "id": "C",
+        "text": "バケットのあるプロジェクトを含むVPC Service Controlsの境界を作成する。オフィスネットワークのCIDRでアクセスレベルを作成する。"
+      },
+      {
+        "id": "D",
+        "text": "仮想プライベートクラウド（VPC）ネットワーク内のすべてのインスタンスに、ソース範囲のファイアウォールルールを作成する。オフィスネットワークのCIDRを使用する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "VPC Service Controls は、Cloud Storage 等へのデータアクセスをネットワーク境界で制限するセキュリティ機能です。\nCIDR を用いたアクセスレベルと組み合わせることで、オフィスネットワーク外からのアクセスを制限できます。\n\n📚 参考: https://cloud.google.com/vpc-service-controls/docs/overview"
+  },
+  {
+    "id": "B46",
+    "question": "【ケーススタディ問題】この質問については、EHR Healthcareのケーススタディを参照してください。\n\nあなたは、EHRのカスタマーポータルチームの開発者です。あなたのチームは最近、カスタマーポータルアプリケーションをGoogle Cloudに移行しました。アプリケーションサーバーの負荷が増大し、アプリケーションは多くのタイムアウトエラーを記録しています。そのため最近、アプリケーションアーキテクチャにPub/Subを組み込みましたが、アプリケーションはPub/Subのパブリッシングエラーを記録していません。今後は、パブリッシングのレイテンシーを改善したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Pub/Subのサブスクライバーのプルモデルからプッシュモデルに移行する。"
+      },
+      {
+        "id": "B",
+        "text": "Pub/Sub Total Timeoutのリトライ値を大きくする。"
+      },
+      {
+        "id": "C",
+        "text": "Pub/Subメッセージのバッチ処理をオフにする。"
+      },
+      {
+        "id": "D",
+        "text": "バックアップのPub/Subメッセージキューを作成する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "Pub/Sub ではバッチ処理を有効にすると、メッセージがネットワーク送信までキューに溜まるため、個々のメッセージのレイテンシが増大する可能性があります。\nレイテンシー最小化が目的であれば、バッチ処理をオフにすべきです。\n\n📚 参考: https://cloud.google.com/pubsub/docs/publisher#batching"
+  },
+  {
+    "id": "B47",
+    "question": "マネージドインスタンスグループで実行されているアプリケーションで、クリティカルではないアップデートを開発し、リリースしたいアップデートを含む新しいインスタンステンプレートを作成しました。アプリケーションへの影響を防ぐために、実行中のインスタンスは更新しないようにします。今後マネージドインスタンスグループで作成された新しいインスタンスには、新しいアップデートが含まれるようにしたい。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "新しいローリングアップデートを開始する。Opportunistic updateモードを選択する。"
+      },
+      {
+        "id": "B",
+        "text": "新規のローリングアップデートを開始する。プロアクティブアップデートモードを選択する。"
+      },
+      {
+        "id": "C",
+        "text": "新しいローリングリプレースメント操作を開始する。"
+      },
+      {
+        "id": "D",
+        "text": "新規にローリングリスタート運転を開始する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Opportunistic updateモードでは、既存のインスタンスには影響せず、今後新規に作成されるインスタンスのみ新しいテンプレートが反映されます。プロアクティブモードでは既存インスタンスも対象になるため不適切です。\n\n📚 参考: https://cloud.google.com/compute/docs/instance-groups/rolling-out-updates-to-managed-instance-groups"
+  },
+  {
+    "id": "B48",
+    "question": "あなたのチームのシニアエンジニアが、新しいアプリケーションの設計で、ウェブサーバーにロードバランスされていないWebSocketとHTTPセッションを使用していると話します。あなたは、彼のアプリケーションがGoogle Cloud Platform上で適切に動作することを保証するために、彼を支援したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "エンジニアがWebSocketのコードをHTTPストリーミングを使用するように変換できるようにする"
+      },
+      {
+        "id": "B",
+        "text": "セキュリティチームと一緒に、WebSocket接続の暗号化要件を確認する"
+      },
+      {
+        "id": "C",
+        "text": "クラウドオペレーションチームとエンジニアがロードバランサーのオプションについて話し合う"
+      },
+      {
+        "id": "D",
+        "text": "WebソケットとHTTPセッションに依存しない分散型ユーザーセッションサービスを使用するように、エンジニアがアプリケーションを再設計するのを支援する"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "Google Cloud の HTTP(S) ロードバランサーは WebSocket をネイティブサポートしており、セッション維持の必要がある場合もロードバランサー設定で適切に動作させられます。したがってまずロードバランサーの設計を見直すことが適切です。\n\n📚 参考: https://cloud.google.com/compute/docs/load-balancing/http/"
+  },
+  {
+    "id": "B49",
+    "question": "あなたは、Google Compute EngineとCloud Bigtable上で動作する主要なクラウドサービスの拡張性をテストするために、QAチームが新しいロードテストツールを展開するのを手伝っています。\n\nどの3つの要件を含めるべきですか？(3つ選んでください)",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "負荷テストツールによる再現のために、すべてのトランザクションを記録するよう、本番サービスに機能を組み込む"
+      },
+      {
+        "id": "B",
+        "text": "負荷テストツールが本番環境に対して定期的に実行されるようスケジュールする"
+      },
+      {
+        "id": "C",
+        "text": "負荷テストツールおよび対象サービスに、詳細なロギングおよびメトリクスの収集機能を持たせる"
+      },
+      {
+        "id": "D",
+        "text": "負荷テストでCloud Bigtableの性能が検証されていることを確認する。"
+      },
+      {
+        "id": "E",
+        "text": "サービスが使用するすべてのサードパーティシステムが高負荷に対応できることを確認する"
+      },
+      {
+        "id": "F",
+        "text": "負荷テストの環境として、別のGoogle Cloudプロジェクトを作成する。"
+      }
+    ],
+    "answer": ["C", "D", "F"],
+    "explanation": "負荷テストにおける正しい要件は以下の3つ：\n- 詳細なメトリクスとロギングにより分析性と再現性を確保（C）\n- Cloud Bigtableの性能確認も含めて本番相当の実装性能を検証（D）\n- 権限や設定の分離のために独立したプロジェクトで検証を実施（F）\n\n📚 参考: https://cloud.google.com/bigtable/docs/performance"
+  },
+  {
+    "id": "B50",
+    "question": "あなたのチームは、視聴者、商品購入者、シーズンチケット保有者への請求に使用されるカード番号のために、支払いカードデータの保管システムの作成を担当しています。以下の要件を満たすカスタムカードトークナイゼーションサービスを実装する必要があります：\n\n- 最小限のコストで低遅延を実現すること\n- 重複したクレジットカードを識別でき、平文のカード番号を保存しないこと\n- 年1回の鍵のローテーションに対応していること\n\nトークン化サービスには、どのようなストレージ アプローチを採用すべきでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "データストアモードを使用して、Firestoreに保存された決定論的アルゴリズムでカードデータを暗号化する。"
+      },
+      {
+        "id": "B",
+        "text": "クエリを実行して重複を確認した後、カードデータをSecret Managerに保存する。"
+      },
+      {
+        "id": "C",
+        "text": "カードデータを決定論的アルゴリズムで暗号化し、複数のMemorystoreインスタンスにシャードする。"
+      },
+      {
+        "id": "D",
+        "text": "列レベルの暗号化を使用して、Cloud SQLにデータを保存する"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Firestore（Datastore モード）を使った決定論的暗号化は、重複検出・コスト効率・低レイテンシ・鍵ローテーション対応をすべて満たすために最適です。\n\n📚 参考: https://cloud.google.com/community/tutorials/pci-tokenizer"
+  },
+  {
+    "id": "C01",
+    "question": "あなたの開発チームは、モバイルゲームアプリを作成しました。この新しいモバイルアプリを、様々な設定のAndroidとiOSデバイスでテストしたいと考えています。テストを効率的かつ費用対効果の高いものにしなければなりません。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Google Kubernetes Engine（GKE）にAndroidとiOSのコンテナを作成し、コンテナにモバイルアプリをインストールして、モバイルアプリをテストする"
+      },
+      {
+        "id": "B",
+        "text": "Firebase Test Labにモバイルアプリをアップロードし、AndroidおよびiOSデバイスでモバイルアプリをテストする"
+      },
+      {
+        "id": "C",
+        "text": "異なる構成のモバイルアプリをFirebase Hostingにアップロードし、それぞれの構成をテストする"
+      },
+      {
+        "id": "D",
+        "text": "Google Cloud上にAndroidとiOSのVMを作成し、VM上にモバイルアプリをインストールして、モバイルアプリをテストする"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Firebase Test Labは、クラウドベースのモバイルアプリテストサービスであり、AndroidおよびiOSデバイスでの自動およびカスタムテストをサポートします。物理デバイスや仮想デバイスでの広範囲なテストが可能なため、コストと効率の両面で優れています。\n\n📚 参考: https://firebase.google.com/docs/test-lab"
+  },
+  {
+    "id": "C02",
+    "question": "最近アップデートしたGoogle App Engineアプリケーションのロードに約30秒かかるという報告を一部のユーザーから受けています。この現象は、アップデート前には報告されていませんでした。\n\nどのような対策をとるべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "安定稼働していたリリースにロールバックしてから、静かな時期に再度リリースをプッシュして調査する。その後、Stackdriver Trace and Logging を使用して問題を診断する"
+      },
+      {
+        "id": "B",
+        "text": "サポートチケットを開き、問題を診断するためにネットワークキャプチャとフローデータを要求し、アプリケーションをロールバックする"
+      },
+      {
+        "id": "C",
+        "text": "ユーザーのISPと協力して問題を診断する"
+      },
+      {
+        "id": "D",
+        "text": "安定稼働していたリリースにロールバックし、Stackdriver Trace and Logging を使用して開発/テスト/ステージング環境で問題を診断する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "App Engineアプリケーションのパフォーマンス劣化がアップデート後に発生したため、まずは安定していたバージョンへロールバックするのが合理的です。さらに、Cloud Operations（旧Stackdriver）ツールを使って原因を特定すべく、開発やテスト環境で再現性を確認しながら診断します。\n\n📚 参考: https://cloud.google.com/logging"
+  },
+  {
+    "id": "C03",
+    "question": "GCP上のコンピューティングリソースで信頼性の高いタスクスケジューリングをサポートすることで、アプリケーションとオペレーションの信頼性を確保する必要があります。\n\nGoogleのベストプラクティスを参考に、どのように実装をすればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "App Engineが提供するCronサービスを使って、Cloud Pub/Subトピックにメッセージを発行する。Compute Engineインスタンス上で動作するメッセージ処理ユーティリティサービスを使って、そのトピックにサブスクライブする。"
+      },
+      {
+        "id": "B",
+        "text": "GKEが提供するCronサービスを使用して、Cloud Pub/Subトピックにメッセージを発行する。Compute Engineインスタンス上で動作するメッセージ処理ユーティリティサービスを用いて、そのトピックにサブスクライブする"
+      },
+      {
+        "id": "C",
+        "text": "Google Kubernetes Engine (GKE)が提供するCronサービスを使って、Compute Engineインスタンス上で動作するメッセージ処理ユーティリティサービスに、直接メッセージを発行する。"
+      },
+      {
+        "id": "D",
+        "text": "App Engineが提供するCronサービスを使って、Compute Engineインスタンス上で動作するメッセージ処理ユーティリティサービスに直接メッセージを発行する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "App Engine Cron + Cloud Pub/Sub + Compute Engineの構成は、Googleが推奨する信頼性の高いスケジューリング方式です。Cloud SchedulerのようなマネージドサービスとPub/Subを活用することで、オートスケーリング構成における分散タスクの確実な実行を可能にします。\n\n📚 参考: https://cloud.google.com/solutions/reliable-task-scheduling-compute-engine"
+  },
+  {
+    "id": "C04",
+    "question": "あなたのオペレーションチームは現在、10TBのデータをサードパーティのオブジェクトストレージサービスに保存しています。Googleが推奨する方法で、このデータをできるだけ早くCloud Storageのバケットに移行したいと考えています。また、このデータ移行にかかるコストを最小限に抑えたいと考えています。\n\nどのようなアプローチをとるべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "オンプレミスのデータセンターにデータをダウンロードして、Cloud Storageのバケットにアップロードする"
+      },
+      {
+        "id": "B",
+        "text": "gsutil mvコマンドでデータを移動する"
+      },
+      {
+        "id": "C",
+        "text": "Storage Transfer Service を使用してデータを移動する"
+      },
+      {
+        "id": "D",
+        "text": "Transfer Applianceにデータをダウンロードして、Googleに出荷する"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "Storage Transfer Serviceは、他クラウドやオンプレミスからCloud Storageへのデータ移行を高速かつ低コストで行えるフルマネージドサービスです。10TB程度のデータにはTransfer Applianceはオーバースペックであり、ネットワーク転送が現実的です。\n\n📚 参考: https://cloud.google.com/storage-transfer-service"
+  },
+  {
+    "id": "C05",
+    "question": "お客様の会社では、Compute Engine上で動作するエンタープライズアプリケーションがあり、高可用性と高パフォーマンスが求められています。このアプリケーションは、同じリージョンの2つのゾーンにある2つのインスタンスに、アクティブ - パッシブモードで展開されています。このアプリケーションは、データを永続ディスクに書き込みます。1つのゾーンで障害が発生した場合、そのデータは他のゾーンにあるもう1つのインスタンスですぐに利用できるようにする必要があります。あなたは、ダウンタイムとデータ損失を最小限に抑えながら、パフォーマンスを最大化したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "1.最初のインスタンスにパーシステントSSDディスクを装着する。\n2.1時間ごとにスナップショットを作成する。\n3.ゾーン障害が発生した場合、作成したスナップショットからデータが来る2つ目のインスタンスにパーシステントSSDディスクを再作成する。"
+      },
+      {
+        "id": "B",
+        "text": "1.リージョナル SSD 永続ディスクを 1 つ目のインスタンスに取り付けます。\n2. ゾーン障害が発生した場合、ディスクをもう一方のインスタンスに強制的に取り付けます。"
+      },
+      {
+        "id": "C",
+        "text": "1.最初のインスタンスのディスクに、ローカルSSDを取り付けます。\n2. 1時間ごとにrsyncコマンドを実行する。ターゲットは、2番目のインスタンスに接続された永続的なSSDディスクです。\n3. ゾーンが停止した場合には、2つ目のインスタンスを使用する。"
+      },
+      {
+        "id": "D",
+        "text": "1.Cloud Storageのバケットを作成する。\n2. gcs-fuse を使ってバケットを 1 つ目のインスタンスにマウントする。\n3. ゾーン障害が発生した場合は、Cloud Storageのバケットを gcs-fuse で 2 番目のインスタンスにマウントする。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "リージョンSSD永続ディスクは、同一リージョン内の2ゾーンにレプリケーションされ、高可用性・低レイテンシ・自動フェイルオーバーに対応。--force-attachで障害時にスタンバイへ即時移行可能です。\n\n📚 参考: https://cloud.google.com/compute/docs/disks/repd-failover"
+  },
+  {
+    "id": "C06",
+    "question": "あなたの会社は、小売店向けのレコメンデーションエンジンを提供しています。あなたは、小売顧客がユーザーIDを送信すると、APIがそのユーザーに対するレコメンデーションのリストを返すAPIを提供しています。あなたはAPIのライフサイクルに責任を持ち、APIが後方互換性のない変更を行った場合に備えて、顧客の安定性を確保したいと考えています。またGoogleが推奨するプラクティスに従いたいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "古いAPIを新しいAPIに置き換える少なくとも1ヶ月前に、すべてのお客様の配布リストを作成し、今後の後方互換性のない変更についてお知らせする。"
+      },
+      {
+        "id": "B",
+        "text": "後方互換性のない変更のたびに、現在のAPIのバージョン番号にDEPRECATEDという接尾辞を付加するAPIのバージョン戦略を使用する。新しいAPIには現在のバージョン番号を使用する。"
+      },
+      {
+        "id": "C",
+        "text": "APIドキュメントを生成する自動プロセスを作成し、APIの更新をデプロイする際にCI/CDプロセスの一部として公開APIドキュメントを更新する。"
+      },
+      {
+        "id": "D",
+        "text": "後方互換性のない変更ごとにバージョン番号を増加させるAPIのバージョン管理戦略を使用する。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "APIの後方互換性を保ちつつ安定性を維持するには、メジャーバージョンのインクリメントによる明確なAPIバージョン管理が必要です。Googleの設計原則においても、破壊的変更時は必ず新バージョンとしてリリースすることが推奨されています。\n\n📚 参考: https://cloud.google.com/apis/design/versioning"
+  },
+  {
+    "id": "C07",
+    "question": "開発チームは、あなたにKubernetes Deploymentファイルを提供しました。あなたはまだインフラを持っていませんがアプリケーションをデプロイする必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "kubectl を使用して Kubernetes クラスタを作成する。kubectl を使用してデプロイメントを作成する。"
+      },
+      {
+        "id": "B",
+        "text": "kubectl を使用して Kubernetes クラスタを作成する。Deployment Manager を使用してデプロイメントを作成する。"
+      },
+      {
+        "id": "C",
+        "text": "gcloud を使用して Kubernetes クラスタを作成する。kubectl を使用してデプロイメントを作成する。"
+      },
+      {
+        "id": "D",
+        "text": "gcloud を使用して Kubernetes クラスタを作成する。Deployment Managerを使用して、デプロイメントを作成する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "まだクラスタが存在していないため、gcloud でクラスタを作成する必要があります。その後、kubectl で Deployment を適用するのが標準のワークフローです。\n\n📚 参考: https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster"
+  },
+  {
+    "id": "C08",
+    "question": "あなたの会社は、オンプレミスのユーザー認証用PostgreSQLデータベースのバックアップレプリカをGoogle Cloud Platform上に構築することにしました。データベースは4TBで、大規模な更新が頻繁に行われます。レプリケーションにはプライベートアドレス空間での通信が必要です。\n\nあなたはどのネットワークアプローチを使用する必要がありますか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "データセンターのネットワークに接続されたGoogle Cloud VPN"
+      },
+      {
+        "id": "B",
+        "text": "Google Cloud 専用Interconnect"
+      },
+      {
+        "id": "C",
+        "text": "VPNサーバーがインストールされたGoogle Compute Engineインスタンスをデータセンターのネットワークに接続する"
+      },
+      {
+        "id": "D",
+        "text": "オンプレミスに設置されたNATとTLSの変換ゲートウェイ"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "4TBかつ更新が多いワークロードには、高帯域・低遅延・プライベートIP対応の専用Interconnectが最適です。VPNはスループットが制限され、TLSゲートウェイなどでは安定性・一貫性が不足します。\n\n📚 参考: https://cloud.google.com/interconnect/docs/details/dedicated"
+  },
+  {
+    "id": "C09",
+    "question": "あなたは、Compute Engine VMからの公共のインターネットアクセスが許可されていない、高度なセキュリティ環境で作業しています。オンプレミスのファイルサーバーにアクセスするためのVPN接続がまだありません。一方で、特定のソフトウェアをCompute Engineインスタンスにインストールする必要があります。\n\nどのようにソフトウェアをインストールすればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "必要なインストールファイルをCloud Storageにアップロードし、ファイアウォールルールを使用して、Cloud StorageのIPアドレス範囲以外のすべてのトラフィックをブロックする。gsutilを使ってファイルをVMにダウンロードする。"
+      },
+      {
+        "id": "B",
+        "text": "必要なインストールファイルをCloud Storageにアップロードする。VMをGoogle Accessのプライベートサブネットに設定する。VMには、内部IPアドレスのみを割り当てる。gsutilを使ってVMにインストールファイルをダウンロードする。"
+      },
+      {
+        "id": "C",
+        "text": "必要なインストール・ファイルをCloud Source Repositoriesにアップロードする。VMをGoogle Accessのプライベートサブネット上に設定する。VMには、内部IPアドレスのみを割り当てる。gcloudを使ってインストールファイルをVMにダウンロードする。"
+      },
+      {
+        "id": "D",
+        "text": "必要なインストールファイルをCloud Source Repositoriesにアップロードし、ファイアウォールルールを使用して、Cloud Source RepositoriesのIPアドレス範囲以外のすべてのトラフィックをブロックする。gsutilを使ってファイルをVMにダウンロードする。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "プライベート サービス アクセスを構成すれば、Compute Engine VMは外部IPを持たずにCloud Storageへアクセスできます。gsutilも使用可能です。\n\n📚 参考: https://cloud.google.com/vpc/docs/configure-private-services-access"
+  },
+  {
+    "id": "C10",
+    "question": "貴社はヘルスケア関連の新興企業を買収したため、顧客の医療情報を作成時期に応じて最大4年以上保持しなければなりません。あなたの会社の方針は、このデータを安全に保持し、規則の期限が過ぎたらすぐに削除することです。\n\nどのようなアプローチを取るべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Storageにデータを保存し、期限切れのデータをすべて削除するバッチスクリプトを毎晩実行する。"
+      },
+      {
+        "id": "B",
+        "text": "Google Driveにデータを保存し、有効期限が切れたレコードを手動で削除する。"
+      },
+      {
+        "id": "C",
+        "text": "Cloud Storageにデータを保存し、ライフサイクル管理を使用して期限切れになったファイルを削除する。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Data Loss Prevention APIを使用してデータを匿名化し、無期限に保存する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "Cloud Storage のライフサイクル管理を利用することで、指定した期間が経過したファイルを自動的に削除できます。医療データの法的保持義務とコスト管理の両立が可能です。\n\n📚 参考: https://cloud.google.com/storage/docs/lifecycle"
+  },
+  {
+    "id": "C11",
+    "question": "リクエストされたURLのパスに基づいて、グローバルなロードバランシングを行うソリューションを設計する必要があります。Googleのベストプラクティスに基づいて、運用の信頼性とエンドツーエンドの転送中の暗号化を確保する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "URLマップを使ったクロスリージョンのロードバランサーを作成する。"
+      },
+      {
+        "id": "B",
+        "text": "グローバルフォワーディングルールを作成する。SSLプロキシのロードバランシングを設定する。"
+      },
+      {
+        "id": "C",
+        "text": "URL Mapsを使ってHTTPSロードバランサーを作成する。"
+      },
+      {
+        "id": "D",
+        "text": "適切なインスタンスグループとインスタンスを作成する。SSLプロキシのロードバランサーを設定する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "Google Cloud の HTTP(S) ロードバランサは URL Maps を利用して、URL パスごとのリクエストルーティングを可能にします。\nグローバルなHTTPS対応とパスベースの処理にはこれが最適です。\n\n📚 参考: https://cloud.google.com/load-balancing/docs/https/url-map"
+  },
+  {
+    "id": "C12",
+    "question": "あなたはCloud Shellを使用していて、数週間以内に使用するカスタムユーティリティをインストールする必要があります。\n\nデフォルトの実行パスにありセッションを超えて持続するようにするには、どこにファイルを保存すればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "~/bin"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Storage"
+      },
+      {
+        "id": "C",
+        "text": "/usr/local/bin"
+      },
+      {
+        "id": "D",
+        "text": "/google/scripts"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "Cloud Shell では、ユーザーのホームディレクトリ（~/）は永続ストレージにマウントされています。\n~/bin はデフォルトのPATHに含まれており、次回以降のセッションでも同じ場所からスクリプトが使用可能です。\n\n📚 参考: https://cloud.google.com/shell/docs/how-cloud-shell-works"
+  },
+  {
+    "id": "C13",
+    "question": "Google Kubernetes Engine （GKE） クラスタを Cloud Monitoring ワークスペースで監視しています。Site Reliability Engineer （SRE）として、インシデントが発生した場合は迅速に対処できるようになる必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "GKE ノードからメトリクスを収集し、これらのメトリクスを Pub/Sub トピックにパブリッシュし、データを BigQuery にエクスポートし、Data Studio ダッシュボードを作成するシェルスクリプトを記述する。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Monitoringのワークスペースで定義済みのダッシュボードを表示し、メトリクスを追加してアラートポリシーを作成する。"
+      },
+      {
+        "id": "C",
+        "text": "各インシデント用にCloud Monitoringワークスペースでカスタムダッシュボードを作成し、メトリクスを追加してアラートポリシーを作成する。"
+      },
+      {
+        "id": "D",
+        "text": "クラウド監視ワークスペースの定義済みダッシュボードをナビゲートし、カスタムメトリクスを作成し、Compute Engine インスタンスにアラートソフトウェアをインストールする。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "Cloud Monitoring の定義済みダッシュボードを活用し、そこに必要なメトリクスとアラートポリシーを組み合わせることで、迅速な異常検知と対応が可能になります。\n\n📚 参考: https://cloud.google.com/monitoring/charts/predefined-dashboards"
+  },
+  {
+    "id": "C14",
+    "question": "GCPを利用したリモートリカバリーにおけるディザスターリカバリーのレジリエンスを検証する手順を作成する必要があります。本番環境はオンプレミスで運用されています。オンプレミスのネットワークとGCPのネットワークの間に、安全で冗長性のある接続を確立する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "専用 InterconnectがGCPにファイルをレプリケートできることを確認する。専用 Interconnectに障害が発生した場合、Cloud VPNがネットワーク間のセキュアな接続を確立できることを確認する。"
+      },
+      {
+        "id": "B",
+        "text": "Transfer Applianceが故障した場合に、Cloud VPNがネットワーク間に安全な接続を確立できることを確認する。"
+      },
+      {
+        "id": "C",
+        "text": "Transfer ApplianceがGCPにファイルを複製できることを確認する"
+      },
+      {
+        "id": "D",
+        "text": "専用 InterconnectがGCPにファイルをレプリケートできることを確認する。専用 Interconnectに障害が発生した場合、ダイレクトピアリングでネットワーク間の安全な接続を確立できることを確認する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "本番オンプレミス環境からのリモートリカバリー構成では、専用 Interconnect を利用した高速・安定な接続と、障害時には Cloud VPN による冗長接続を併用するのが推奨パターンです。\n\n📚 参考: https://cloud.google.com/hybrid-connectivity/"
+  },
+  {
+    "id": "C15",
+    "question": "あなたの会社は、アプリケーションの運用機能をアウトソーシングすることを決定しました。開発者がクラウドベースのアプリケーションの新バージョンを本番環境に簡単にステージングできるようにし、アウトソースされたオペレーションチームがステージングされたバージョンを本番環境に自律的にプロモートできるようにしたいと思います。このソリューションの運用にあたってはオーバーヘッドを最小限に抑えたいと考えています。\n\nどのGoogle Cloudサービスに移行するべきでしょうか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Google Kubernetes Engine" },
+      { "id": "B", "text": "GKEオンプレミス" },
+      { "id": "C", "text": "Compute Engine" },
+      { "id": "D", "text": "Google App Engine" }
+    ],
+    "answer": ["D"],
+    "explanation": "App Engineはサーバーレスで、オペレーションのオーバーヘッドを最小限に抑えつつ、ステージングと本番への自動プロモートが容易です。\n\n📚 参考: https://cloud.google.com/appengine/docs"
+  },
+  {
+    "id": "C16",
+    "question": "オペレーションチームのマネージャーから、J2EEアプリケーションをクラウドに移行する際に考慮すべき推奨プラクティスのリストを求められます。\n\nあなたはどの3つのプラクティスを推奨しますか？（3つ選択）",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "自動テスト機能を備えた継続的インテグレーションツールをステージング環境に導入する"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Dataflowをアプリケーションに統合し、リアルタイムメトリクスを取得する"
+      },
+      {
+        "id": "C",
+        "text": "MySQLから、Google Cloud DatastoreやBigtableなどのマネージドNoSQLデータベースに移行する"
+      },
+      {
+        "id": "D",
+        "text": "クラウドインフラストラクチャを確実にプロビジョニングするための自動化フレームワークの選択する"
+      },
+      {
+        "id": "E",
+        "text": "アプリケーションコードをGoogle App Engine上で動作するように移植する"
+      },
+      {
+        "id": "F",
+        "text": "Stackdriver Debuggerなどの監視ツールでアプリケーションを導入する"
+      }
+    ],
+    "answer": ["A", "E", "F"],
+    "explanation": "クラウド移行時のアプリケーションの最適化には、CI/CD導入（A）、App Engineへの移植（E）、Stackdriverによる監視強化（F）が推奨されます。\n\n📚 参考: https://cloud.google.com/appengine/docs/standard/java"
+  },
+  {
+    "id": "C17",
+    "question": "500TBのデータをGoogle Cloudに移行することになりました。現在利用可能なネットワーク帯域幅は1Gbpsです。保存先としてはCloud Storageを使用し、Googleが推奨する方法に従いたいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "データをTransfer Applianceに移する。Transfer Appliance Rehydratorを使用して、データをCloud Storageに復号する。"
+      },
+      {
+        "id": "B",
+        "text": "データを含む各サーバーに gsutil をインストールする。再開可能な転送を使用して、データをCloud Storageにアップロードする。"
+      },
+      {
+        "id": "C",
+        "text": "データを転送アプライアンスに移動させます。Cloud Dataprepを使用して、データをCloud Storageに復号する。"
+      },
+      {
+        "id": "D",
+        "text": "データを含む各サーバーに gsutil をインストールする。ストリーミング転送を使用してデータをCloud Storageにアップロードする。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "1Gbps回線で500TBを転送すると約46日かかるため、Googleの推奨するオフライン物理移行手段であるTransfer Applianceが最適です。Transfer Appliance Rehydratorにより安全にCloud Storageへ復元可能です。\n\n📚 参考: https://cloud.google.com/blog/products/storage-data-transfer/introducing-transfer-appliance-in-the-eu-for-cloud-data-migration"
+  },
+  {
+    "id": "C18",
+    "question": "ある会社では、アプリケーションに保存されているデータの信頼性を担保することが、ビジネス上の主要な目的の1つです。アプリケーションのデータに対するすべての変更をログに記録したいと考えています。\n\nログの信頼性を検証するためには、どのようにログシステムを設計すればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "SQLデータベースを使用し、ログテーブルを変更できる人を制限する"
+      },
+      {
+        "id": "B",
+        "text": "各ログエントリのJSONダンプを作成し、それをGoogle Cloud Storageに保存する"
+      },
+      { "id": "C", "text": "クラウドとオンプレミスで同時進行でログを書く" },
+      {
+        "id": "D",
+        "text": "各タイムスタンプとログエントリにデジタル署名を行い、その署名を保存する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "ログの信頼性を担保するには、ハッシュと秘密鍵によるデジタル署名を各ログに施し、署名の保存と検証を行うことで改ざん検出が可能になります。\n\n📚 参考: https://cloud.google.com/kms/docs/create-validate-signatures"
+  },
+  {
+    "id": "C19",
+    "question": "あなたは、スタートアップ企業が試験的にGoogle Cloudを使用することをサポートするために、ビジネスプロセスの分析と定義を行っています。一方で、この企業の製品に対する消費者の需要はまだわかりません。また上司からは、GCPサービスのコストを最小限に抑え、Googleのベストプラクティスを遵守するよう求められています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "無料期間およびコミットメント利用割引を利用する。サービスコスト管理に関するトレーニングをチームに提供する。"
+      },
+      {
+        "id": "B",
+        "text": "無料期間およびコミットメント利用割引を利用する。サービスコスト管理のためのスタッフを新たに配置する。"
+      },
+      {
+        "id": "C",
+        "text": "無料期間および継続利用割引を利用する。サービスコスト管理に関するトレーニングをチームに提供する。"
+      },
+      {
+        "id": "D",
+        "text": "無料期間および継続利用割引を活用する。サービスコスト管理のためのスタッフを新たに配置する。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "消費者需要が不明瞭な初期フェーズでは、コミットメント利用割引よりも使用量に応じて自動で適用される継続利用割引（SUD）が適しています。また、コスト管理のスキルを既存チームに教育で付与することが、追加の人員を配置するよりもコスト効率が良好です。\n\n📚 参考: https://cloud.google.com/compute/docs/sustained-use-discounts"
+  },
+  {
+    "id": "C20",
+    "question": "あなたのチームの開発者の一人が、以下のDockerfileを使って、Google Container Engineにアプリケーションをデプロイしました。\nしかし、アプリケーションのデプロイに時間がかかりすぎていることがわかっています。\n\nFROM ubuntu:16.04\nCOPY . /src\nRUN apt-get update && apt-get install -y python python-pip\nRUN pip install -r requirements.txt\n\nあなたはこのDockerfileを最適化して、アプリケーションの機能に悪影響を与えることなく、デプロイ時間を短縮したいと考えています。\n\nあなたはどの2つのアクションを取るべきですか？（2つ選んでください。）",
+    "type": "multiple",
+    "options": [
+      { "id": "A", "text": "pip実行後にPythonを削除する" },
+      { "id": "B", "text": "requirements.txtから依存関係を削除する" },
+      {
+        "id": "C",
+        "text": "Pythonやpipなどの依存パッケージをインストールしてからソースをコピーする"
+      },
+      {
+        "id": "D",
+        "text": "Google Container Engineのノードプールに大きなマシンタイプを使用する"
+      },
+      {
+        "id": "E",
+        "text": "Alpine Linuxのようなスリム化されたベースイメージを使用する"
+      }
+    ],
+    "answer": ["C", "E"],
+    "explanation": "Dockerイメージのビルド高速化には、キャッシュレイヤーの活用（依存関係→ソース順）と軽量なベースイメージの採用が有効です。Alpineは代表的なスリムOSであり、不要なサイズ増加を防ぎます。\n\n📚 参考: https://www.docker.com/blog/intro-guide-to-dockerfile-best-practices/"
+  },
+  {
+    "id": "C21",
+    "question": "あなたの顧客は、認証レイヤーのレジリエンステストを行いたいと考えています。このアプリケーションは、リージョンで管理されたインスタンスグループがパブリックREST APIを提供し、Cloud SQLインスタンスとの間で読み取りと書き込みを行うものです。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "災害シミュレーション演習を実施し、ゾーン内の全ての仮想マシンを停止させ、アプリケーションがどのように動作するかを確認する。"
+      },
+      {
+        "id": "B",
+        "text": "仮想マシンに侵入検知ソフトウェアを導入し、不正なアクセスを検知・記録する。"
+      },
+      {
+        "id": "C",
+        "text": "セキュリティ会社に依頼して、悪意のあるWebサイトのユーザ'の認証データを探すWebスクレーパーを実行してもらい、何か見つかった場合には通知してもらう。"
+      },
+      {
+        "id": "D",
+        "text": "マスターとは別のゾーンにあるCloud SQLインスタンスにリードレプリカを構成し、REST APIのKPIを監視しながら手動でフェイルオーバーをトリガーする。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "アプリケーションのレジリエンス（回復力）を検証するには、インフラストラクチャ障害を模擬した災害シミュレーションを行うことが有効です。ゾーン内のVMを意図的に停止させ、システムがどのように対応するかを観察することで、フォールトトレランスや自動復旧能力を確認できます。\n\n📚 参考: https://cloud.google.com/solutions/scalable-and-resilient-apps"
+  },
+  {
+    "id": "C22",
+    "question": "ある企業では、既存のエンタープライズアプリケーションをオンプレミスのデータセンターからGoogle Cloud Platformに移行しようとしています。ビジネスオーナーは、ユーザーの混乱を最小限に抑えることを求めています。また、パスワードの保存に関しては、セキュリティチームの厳しい要求があります。\n\nどのような認証戦略を採用すべきでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "G Suite Password Sync を使用して、パスワードを Google に複製する"
+      },
+      {
+        "id": "B",
+        "text": "Google のパスワードを企業のパスワードと一致させるようにユーザに求める"
+      },
+      {
+        "id": "C",
+        "text": "Google Cloud Directory Sync ツールを使用して Google でユーザをプロビジョニングする"
+      },
+      {
+        "id": "D",
+        "text": "SAML 2.0 を使用して既存の ID プロバイダに認証を統合する"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "SAML 2.0 によるフェデレーション認証は、既存のIDプロバイダとの統合を可能にし、ユーザーに新しいパスワードの設定や運用変更を強いることなくセキュアなSSOを実現します。GCDSはユーザー属性の同期に用いますが、パスワード同期には対応していません。\n\n📚 参考: https://cloud.google.com/architecture/identity/federating-gcp-with-active-directory-synchronizing-user-accounts"
+  },
+  {
+    "id": "C23",
+    "question": "あなたの会社は他の会社を買収したばかりで、その会社の既存のGoogle Cloud環境をあなたの会社のデータセンターに統合するように依頼されています。調査の結果、新会社の仮想プライベートクラウド（VPC）で使用されているRFC 1918 IPレンジの一部が、あなたのデータセンターのIPスペースと重複していることがわかりました。\n\n接続を可能にし、接続が確立されたときにルーティングの競合が発生しないようにするためには、どうすればよいでしょうか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "新しいVPCからデータセンターへのCloud VPN接続を作成し、Cloud Routerを作成し、IP空間が重ならないように新しいIPアドレスを適用する。"
+      },
+      {
+        "id": "B",
+        "text": "新しいVPCからデータセンターへのCloud VPN接続を作成し、オーバーラップするIP空間をブロックするファイアウォールルールを適用する。"
+      },
+      {
+        "id": "C",
+        "text": "新しいVPCからデータセンターへのCloud VPN接続を作成し、Cloud Routerを作成し、カスタムルートアドバタイズメントを適用して重複するIPスペースをブロックする。"
+      },
+      {
+        "id": "D",
+        "text": "新しいVPCからデータセンターへのCloud VPN接続を作成し、Cloud NATインスタンスを作成して重複するIP空間にNATを実行する。"
+      }
+    ],
+    "answer": ["A"],
+    "explanation": "IPレンジの重複を避けるために、新たなVPCに変更し、Cloud VPN + Cloud Router を構成し、競合を回避する新しいIPアドレスレンジを適用します。\n\n📚 参考:\n- https://cloud.google.com/network-connectivity/docs/router/how-to/advertising-removing-routes\n- https://cloud.google.com/network-connectivity/docs/router/how-to/advertising-custom-ip"
+  },
+  {
+    "id": "C24",
+    "question": "あなたの会社は、Google Cloud上でデータレイクを設計しており、さまざまなソースから非構造化データを収集するために、さまざまな取り込みパイプラインを開発したいと考えています。データはGoogle Cloudに保存された後、いくつかのデータパイプラインで処理され、Webサイトのエンドユーザーに対するレコメンデーションエンジンを構築する予定です。ソースシステムから取得したデータの構造は、いつでも変更される可能性があります。データ構造が現在の処理パイプラインと互換性がない場合に備えて、再処理の目的でデータを取得したときとまったく同じように保存する必要があります。あなたはデータを取得した後のアーキテクチャを設計する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "データを処理パイプラインに送り、処理されたデータをBigQueryのテーブルに格納して再処理する。"
+      },
+      {
+        "id": "B",
+        "text": "データをBigQueryテーブルに格納する。テーブルからデータを取り出すための処理パイプラインを設計する。"
+      },
+      {
+        "id": "C",
+        "text": "処理パイプラインを通じてデータを送信し、処理されたデータを再処理のためにCloud Storageのバケットに保存する。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Storageのバケットにデータを保存する。バケットからデータを取り出すための処理パイプラインを設計する。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "非構造化データは直接BigQueryには保存できず、Cloud Storage に原型のまま保存し、後続のパイプラインで処理するのが最適です。\n\n📚 参考:\n- https://cloud.google.com/blog/topics/developers-practitioners/map-storage-options-google-cloud\n- https://cloud.google.com/products/storage"
+  },
+  {
+    "id": "C25",
+    "question": "あなたの会社はGoogle Cloudを利用しています。組織の下にFinanceとShoppingのフォルダを持っています。開発チームのメンバーは、Googleグループに所属しています。開発チームグループには、組織のプロジェクト所有者ロールが割り当てられています。あなたは、開発チームがFinanceフォルダのプロジェクトにリソースを作成するのを防ぐよう権限設定をする必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "開発チームのグループにFinanceフォルダのProject Viewerロールを割り当て、開発チームのグループにShoppingフォルダのProject Ownerロールを割り当てる。"
+      },
+      {
+        "id": "B",
+        "text": "開発チームグループに、Shopping フォルダの Project Owner ロールのみを割り当てる。"
+      },
+      {
+        "id": "C",
+        "text": "開発チームグループにShoppingフォルダのProject Ownerロールを割り当て、開発チームグループのProject Ownerロールを組織から削除する。"
+      },
+      {
+        "id": "D",
+        "text": "開発チームのグループに、Finance フォルダの Project Viewer ロールのみを割り当てる。"
+      }
+    ],
+    "answer": ["C"],
+    "explanation": "IAM 権限は階層的に継承されるため、上位で与えたロールは下位にも適用されます。\n\nFinance フォルダへのアクセスを制限したい場合、まず組織レベルの Project Owner ロールを削除し、Shopping フォルダに対してのみ適切なロールを与える必要があります。\n\n📚 参考:\n- https://cloud.google.com/resource-manager/docs/creating-managing-folders"
+  },
+  {
+    "id": "C26",
+    "question": "あなたの会社では、1つの MySQL インスタンスで複数のデータベースを運用しています。特定のデータベースのバックアップを定期的に取る必要がある。バックアップアクティビティはできるだけ早く完了する必要があり、ディスクパフォーマンスに影響を与えることはできません。\n\nどのようにストレージを構成するべきでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "cronジョブを設定し、gcloudツールを使用して永続ディスクスナップショットを使用して定期的にバックアップを取る。"
+      },
+      {
+        "id": "B",
+        "text": "各仮想マシン（VM）インスタンスに追加の永続ボリュームを RAID10 アレイでマウントし、LVM を使用してスナップショットを作成し、Cloud Storage に送信する。"
+      },
+      {
+        "id": "C",
+        "text": "gcsfuse を使用して、Google Cloud Storage のバケットをボリュームとしてインスタンスに直接マウントし、mysqldump を使用してマウントされた場所にバックアップを書き込む。"
+      },
+      {
+        "id": "D",
+        "text": "ローカルSSDボリュームをバックアップ先としてマウントする。バックアップが完了したら、gsutilを使ってGoogle Cloud Storageにバックアップを移動する。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "MySQL バックアップの際に本番ディスクのパフォーマンスに影響を与えたくない場合、ローカル SSD に一時保存してから GCS に転送する多階層アプローチが有効です。\n\nこれは処理速度と安全性の両方を確保できます。\n\n📚 参考:\n- https://cloud.google.com/compute/docs/instances/sql-server/best-practices#backing_up"
+  },
+  {
+    "id": "C27",
+    "question": "あなたは、クラスタの内部で完結する、異なるマイクロサービスを使用してアプリケーションを開発しています。各マイクロサービスに特定の数のレプリカを設定できるようにしたいと考えています。また、マイクロサービスのレプリカの数に関わらず、他のマイクロサービスから特定のマイクロサービスに統一的にアクセスできるようにしたいと考えています。このソリューションをGoogle Kubernetes Engineに実装する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "各マイクロサービスを「デプロイメント」として配置する。Ingress を使用してクラスタ内の Deployment を公開し、Ingress IP アドレスを使用してクラスタ内の他のマイクロサービスから Deployment のアドレスを指定する。"
+      },
+      {
+        "id": "B",
+        "text": "各マイクロサービスを「デプロイメント」として展開する。サービスを使用してクラスタ内でデプロイメントを公開し、クラスタ内の他のマイクロサービスからのアドレスにサービスのDNS名を使用する。"
+      },
+      {
+        "id": "C",
+        "text": "各マイクロサービスを「Pod」としてデプロイする。クラスタ内の Pod を Service を使用して公開し、Service の DNS 名を使用してクラスタ内の他のマイクロサービスからマイクロサービスのアドレスを指定する。"
+      },
+      {
+        "id": "D",
+        "text": "各マイクロサービスを「Pod」としてデプロイする。Ingressを使用してクラスタ内のPodを公開し、クラスタ内の他のマイクロサービスからPodのアドレスを指定するためにIngress IPアドレス名を使用する。"
+      }
+    ],
+    "answer": ["B"],
+    "explanation": "GKEではDeploymentでレプリカを管理し、Serviceを通じて各PodをDNS経由で統一的にアクセス可能にするのがベストプラクティスです。これによりスケーラブルかつ保守性の高いマイクロサービス間通信が可能になります。\n\n📚 参考:\n- https://kubernetes.io/docs/concepts/services-networking/service\n- https://cloud.google.com/kubernetes-engine/docs/concepts/service-discovery"
+  },
+  {
+    "id": "C28",
+    "question": "【ケーススタディ: TerramEarth】レガシーなモノリシックアプリケーションをいくつかのコンテナ化されたRESTfulなマイクロサービスに分解しました。これらのマイクロサービスをCloud Runで実行したいと考えています。また、顧客に対して低遅延で高可用性のあるサービスを提供したいと考えています。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Runサービスを複数のリージョンにデプロイする。クラウドDNSで、サービスを指すレイテンシーベースのDNS名を作成する。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Runサービスを複数のアベイラビリティ・ゾーンにデプロイする。TCP/IPグローバルロードバランサーを作成する。そのバックエンドサービスにCloud Run Endpointsを追加する"
+      },
+      {
+        "id": "C",
+        "text": "Cloud Runサービスを複数のアベイラビリティーゾーンに展開する。サービスを指し示すCloud Endpointsを作成する。グローバルなHTTP(S) Load Balancingインスタンスを作成し、そのバックエンドにCloud Endpointsをアタッチする。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Runサービスを複数のリージョンにデプロイする。サービスを指すサーバーレスネットワークエンドポイントグループを作成する。グローバルHTTP(S)ロードバランシングインスタンスが使用するバックエンドサービスに、サーバーレスNEGを追加する。"
+      }
+    ],
+    "answer": ["D"],
+    "explanation": "Cloud Runはリージョンベースのサービスであり、グローバル負荷分散を実現するには、各リージョンにCloud Runをデプロイし、それらをサーバーレスNEG (Network Endpoint Group) を通じてHTTPSロードバランサに接続する構成が最適です。\n\n📚 参考:\n- https://cloud.google.com/load-balancing/docs/negs/serverless-neg-concepts\n- https://cloud.google.com/run/docs/multiple-regions"
+  },
+  {
+    "id": "C29",
+    "question": "あなたの会社は、低リスクでクラウドを試してみたいと考えています。約100TBのログデータをクラウドにアーカイブし、そこで利用できる分析機能をテストしたいと考えていますが、同時に長期的なディザスタリカバリのバックアップとしてデータを保持したいと考えています。\n\nあなたが取るべき2つのステップは？（2つ選択）",
+    "type": "multiple",
+    "options": [
+      { "id": "A", "text": "Google Cloud SQLにログを読み込む" },
+      { "id": "B", "text": "Google Cloud Bigtableにログを挿入する" },
+      { "id": "C", "text": "Google Stackdriverにログを読み込む" },
+      { "id": "D", "text": "Google BigQueryにログを読み込む" },
+      {
+        "id": "E",
+        "text": "Google Cloud Storageにログファイルをアップロードする"
+      }
+    ],
+    "answer": ["D", "E"],
+    "explanation": "Cloud Storage は低頻度アクセス向けの Coldline ストレージクラスを提供し、長期的な災害復旧バックアップに最適です。\n\nBigQuery はフルマネージドなデータウェアハウスで、分析に最適です。Cloud Storage に保存したログデータをすぐにクエリできるため、低リスクかつ迅速にクラウド分析を試すことができます。\n\n**したがって正解は：**\n- Google BigQueryにログを読み込む（D）\n- Google Cloud Storageにログファイルをアップロードする（E）"
+  },
+  {
+    "id": "C30",
+    "question": "あなたはMySQLを使用するアプリケーションを、オンプレミスからGoogle Cloudに移行しています。このアプリケーションはCompute Engine上で動作し、Cloud SQLを使用します。アプリケーションのダウンタイムを最小限に抑え、顧客のデータを失うことなく、Compute Engineのデプロイメントに移行したいと考えています。また、最小限の変更でアプリケーションを移行したいと考えています。更に、カットオーバー戦略を決定する必要があります。\n\n要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud VPNを設定し、Compute EngineアプリケーションとオンプレミスのMySQLサーバーの間にプライベートネットワーク接続を提供する。\nオンプレミスのアプリケーションを停止する。\nmysqldumpを作成し、Cloud Storageにアップロード後、Cloud SQLにインポートする。\nアプリをCloud SQLとオンプレDB両方に対応させて起動する。"
+      },
+      {
+        "id": "B",
+        "text": "オンプレミスのアプリケーションを停止する。\nmysqldumpをCloud Storageにアップロードし、Cloud SQLにインポートする。\nCompute Engineでアプリケーションを起動する。"
+      },
+      {
+        "id": "C",
+        "text": "Cloud VPNを設定し、Compute EngineアプリケーションとオンプレミスのMySQL間に接続を確立する。\nCloud SQL にレプリカ構成を設定し、同期完了後に Cloud SQL を昇格し、Compute Engine アプリを再起動して切り替える。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud SQL ProxyとMySQL Proxyを設定して、Cloud SQLにデータをインポートし、Compute Engineにアプリケーションを展開する。"
+      }
+    ],
+    "answer": "C",
+    "explanation": "**要件：** ダウンタイムを最小限に抑え、データ損失なしでCloud SQLに移行するには、MySQLレプリケーションを用いた移行が最適です。\n\nこのプロセスでは Cloud SQL をリードレプリカとして構成し、オンプレミスの MySQL サーバーと同期させた上で、最終的にスタンドアロン化（プロモート）して本番切り替えを行います。\n\n**したがって正解は：C**"
+  },
+  {
+    "id": "C31",
+    "question": "ニュースフィードのWebサービスは、Google App Engine上で次のようなコードを実行しています。負荷のピーク時には、ユーザーから「すでに見たニュース記事が表示される」という報告があります。この問題の最も可能性の高い原因は何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "キャッシュ機能を停止するには、HTTP Expires ヘッダーを -1 にする必要がある"
+      },
+      {
+        "id": "B",
+        "text": "キャッシュされないように、APIのURLを変更する必要がある"
+      },
+      {
+        "id": "C",
+        "text": "セッション変数がCloud Datastoreで上書きされている"
+      },
+      {
+        "id": "D",
+        "text": "セッション変数はインスタンス内のローカル変数である"
+      }
+    ],
+    "answer": "D",
+    "explanation": "コードを見てみると、セッション変数は1つのインスタンスの中に固有のローカル変数で、ユーザーのデータとそのユーザーが閲覧した記事が格納されます。負荷が高い場合、リクエストが別のインスタンスに送られると、そのインスタンスは履歴情報を持っていないため、「すでに見たニュース記事が表示される」現象が起こります。"
+  },
+  {
+    "id": "C32",
+    "question": "Google Compute Engineの仮想マシンからGoogle BigQueryに接続するためのPythonスクリプトを記述します。スクリプトは、BigQueryに接続できないというエラーを出力しています。スクリプトを修正するにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "BigQuery のアクセススコープを有効にした新しい仮想マシンでスクリプトを実行する"
+      },
+      {
+        "id": "B",
+        "text": "最新の BigQuery API クライアントライブラリ（Python 用）をインストールする"
+      },
+      {
+        "id": "C",
+        "text": "gcloud components install bq というコマンドで、gcloud 用の bq コンポーネントをインストールする"
+      },
+      {
+        "id": "D",
+        "text": "BigQuery のアクセス権を持つ新しいサービスアカウントを作成し、そのユーザーでスクリプトを実行する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "サービスアカウントをVMに割り当てることがGCPにおけるベストプラクティスです。アクセススコープはレガシーであり、IAM権限のあるサービスアカウントを割り当てる方が推奨されます。"
+  },
+  {
+    "id": "C33",
+    "question": "Google Cloud でデータウェアハウスを設計しており、機密データを BigQuery に保存したいと考えています。会社は、暗号化キーをGoogle Cloudの外で生成することを要求しています。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud KMS で新しいキーを生成する。customer-managed key オプションを使用して BigQuery でデータセットを作成し、作成したキーを選択する。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Key Management Service (Cloud KMS) で新しいキーを生成する。customer-managed keyオプションを使用してすべてのデータをCloud Storageに保存し、作成したキーを選択する。Dataflow・パイプラインをセットアップして、データを復号化し、新しいBigQueryデータセットに保存する。"
+      },
+      {
+        "id": "C",
+        "text": "Cloud KMS でキーをインポートする。顧客が提供するキーオプションを使用して BigQuery でデータセットを作成し、作成したキーを選択する。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud KMS でキーをインポートする。customer-managed keyオプションを使用してすべてのデータをCloud Storageに保存し、作成したキーを選択する。データを復号化し、新しい BigQuery データセットに保存するための Dataflow パイプラインを設定する。"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Cloud KMS で顧客が外部生成したキーをインポートし、それを BigQuery で CMEK（Customer-Managed Encryption Keys）として使用するのが、顧客の要件（Google Cloud外で生成された鍵を使う）を満たす方法です。"
+  },
+  {
+    "id": "C34",
+    "question": "あなたは、LinuxベースのアプリケーションをプライベートデータセンターからGoogle Cloudに移行しています。セキュリティチームから、最近のLinuxのCVE（Common Vulnerabilities and Exposures）について通知を受けました。これが移行に与える影響を理解するにはどうすればよいですか？（2つ選択）",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "Google Cloud Platform Security Bulletins に掲載されている CVE情報を確認し、影響を把握する"
+      },
+      {
+        "id": "B",
+        "text": "Google CloudのディスカッショングループにCVEに関する質問を投稿し、説明を受ける"
+      },
+      {
+        "id": "C",
+        "text": "Google Cloud Status DashboardからCVEを読み、影響を理解する"
+      },
+      {
+        "id": "D",
+        "text": "Stack OverflowにCVEに関する質問を投稿し、説明を受ける"
+      },
+      {
+        "id": "E",
+        "text": "CVEに関するサポートケースを開き、サポートエンジニアとチャットする"
+      }
+    ],
+    "answer": ["A", "E"],
+    "explanation": "CVEの影響を把握するには、Google Cloudのセキュリティブリテン（Security Bulletins）を確認することと、サポートケースを開いて公式のエンジニアと相談するのが最適です。他の手段は信頼性や公式性に欠けます。"
+  },
+  {
+    "id": "C35",
+    "question": "あなたは、バックエンドにいくつかのCloud Functionを使用する新しいアプリケーションの構築を開始します。あるユースケースでは、Cloud Function func_displayが別のCloud Function func_queryを呼び出す必要があります。この時、func_displayからの呼び出しをfunc_queryだけが受け付けるようにする必要があります。また、Googleの推奨するベストプラクティスにも従いたいと考えています。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "func_queryを「認証を必須にする」ようにする。固有のサービスアカウントを作成し、それをfunc_displayに関連付ける。func_queryにサービスアカウントのinvokerロールを付与する。func_displayにidトークンを作成し、func_queryの起動時にそのトークンをリクエストに含める"
+      },
+      {
+        "id": "B",
+        "text": "トークンを作成し、環境変数としてfunc_displayに渡する。func_queryを起動するときに、リクエストにトークンを含める。同じトークンをfunc_queryに渡し、トークンが異なる場合は呼び出しを拒否する"
+      },
+      {
+        "id": "C",
+        "text": "これらの2つのFunctionを同じプロジェクトとVPCに作成する。func_queryが内部トラフィックのみを受け入れるようにする。func_queryには、func_displayからのトラフィックのみを許可するingressファイアウォールを作成する。また、両方のFunctionが同じサービスアカウントを使用するようにする"
+      },
+      {
+        "id": "D",
+        "text": "func_queryを「認証を必須にする」ようにして、内部トラフィックのみを受け付けるようにする。この2つのFunctionを同じVPC内に作成する。func_queryにingressファイアウォールルールを作成し、func_displayからのトラフィックのみを許可する"
+      }
+    ],
+    "answer": "A",
+    "explanation": "特定のCloud Function間の安全な通信には、呼び出し元Functionのサービスアカウントに対して、呼び出し先FunctionにInvokerロールを付与し、IDトークンを使って認証させるのがGoogleのベストプラクティスです。"
+  },
+  {
+    "id": "C36",
+    "question": "あなたの会社はクラウドへの移行に成功し、業務を最適化するためにデータストリームを分析したいと考えています。現在この分析のための既存のコードがないため、あらゆる選択肢を検討しています。これらのオプションには、バッチ処理とストリーム処理の組み合わせが含まれています。要件を達成するためにどのサービスを使うべきですか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Google Compute Engine, Google BigQuery" },
+      { "id": "B", "text": "Google Cloud Dataflow" },
+      { "id": "C", "text": "Google Cloud Dataproc" },
+      { "id": "D", "text": "Google Container Engine, Bigtable" }
+    ],
+    "answer": "B",
+    "explanation": "Cloud Dataflowはバッチ処理とストリーム処理の両方に対応するフルマネージドのデータ処理サービスであり、今回の要件に最も適した選択肢です。"
+  },
+  {
+    "id": "C37",
+    "question": "VPC内のすべてのCompute Engineインスタンスは、特定のポートでActive Directoryサーバーに接続できる必要があります。インスタンスからのその他のトラフィックは許可されません。VPCのファイアウォールルールを使用してこれを強制したいと考えています。ファイアウォールルールはどのように設定すればよいでしょうか。",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "優先度 100 の egress ルールを作成して Active Directory トラフィックを許可する。すべてのインスタンスのすべてのトラフィックをブロックするために、優先度1000の暗黙の拒否のegressルールに依存する。"
+      },
+      {
+        "id": "B",
+        "text": "優先度1000のEgressルールを作成し、Active Directoryのトラフィックを許可する。すべてのインスタンスのすべてのトラフィックをブロックするために、優先度100の暗黙のdeny egressルールを利用する。"
+      },
+      {
+        "id": "C",
+        "text": "優先度100のEgressルールを作成し、すべてのインスタンスのすべてのトラフィックを拒否する。優先度1000の別のEgressルールを作成し、すべてのインスタンスのActive Directoryトラフィックを許可する。"
+      },
+      {
+        "id": "D",
+        "text": "優先度1000のEgressルールを作成し、すべてのインスタンスのすべてのトラフィックを拒否する。優先度100の別のEgressルールを作成し、すべてのインスタンスのActive Directoryトラフィックを許可する。"
+      }
+    ],
+    "answer": "D",
+    "explanation": "VPCファイアウォールでは、優先度の小さいルールが優先されます。特定のトラフィックを許可（Active Directory用）し、それ以外をブロックするには、まず優先度の高い（値が小さい）許可ルールを定義し、次にそれよりも優先度が低い（値が大きい）拒否ルールを定義します。"
+  },
+  {
+    "id": "C38",
+    "question": "あなたは、Compute Engine上で動作するアプリケーションを持っています。リージョンの障害が発生した場合に、アプリケーションを別のリージョンにフェイルオーバーさせるという災害復旧計画を考慮したアーキテクチャを設計する必要があります。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "アプリケーションを2つのCompute Engineインスタンスグループに展開し、それぞれを別のプロジェクト、別のリージョンに配置する。最初のインスタンスグループでトラフィックを処理し、災害時にはHTTPロードバランシングサービスを使用してスタンバイインスタンスグループにフェイルオーバーする。"
+      },
+      {
+        "id": "B",
+        "text": "アプリケーションを2つのCompute Engineインスタンスグループにデプロイする。それぞれは同じプロジェクト内にあるが、異なるリージョンにデプロイする。最初のインスタンスグループでトラフィックを処理し、災害時にはHTTPロードバランシングサービスを使用してスタンバイインスタンスグループにフェイルオーバーする。"
+      },
+      {
+        "id": "C",
+        "text": "アプリケーションをCompute Engineインスタンスに配備する。災害時には、HTTPロードバランシングサービスを使用して構内のインスタンスにフェイルオーバーする。"
+      },
+      {
+        "id": "D",
+        "text": "アプリケーションを、同じプロジェクト内の、異なるリージョンにある2つのCompute Engineインスタンス上にデプロイする。トラフィックの処理には最初のインスタンスを使用し、災害時にはHTTPロードバランシングサービスを使用してスタンバイインスタンスにフェイルオーバーする。"
+      }
+    ],
+    "answer": "B",
+    "explanation": "災害復旧計画においては、耐障害性を高めるため、異なるリージョンにインスタンスグループを配置し、HTTP(S)ロードバランサを用いてフェイルオーバーを構成するのが推奨されるアーキテクチャです。"
+  },
+  {
+    "id": "C39",
+    "question": "Google Kubernetes Engine （GKE）で動作するアプリケーションがあります。この2週間で、アプリケーションの特定の部分が頻繁にエラーを返すという報告を顧客から受けました。現在、GKEクラスタではロギングやモニタリングのソリューションは有効になっていません。問題を診断したいがすることができず再現することもできないため、監視を有効化する必要があります。一方で、有効化するにあたってアプリケーションへの影響は最小限に抑えたいと考えています。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Cloud Operations for GKE を有効にした新しい GKE クラスタを作成する。影響を受けるPodを新しいクラスターに移行し、それらのPodのトラフィックを新しいクラスターにリダイレクトする。GKE 監視ダッシュボードを使用して、影響を受ける Pod からのログを調査する。"
+      },
+      {
+        "id": "B",
+        "text": "GKEクラスターを更新してCloud Operations for GKEを使用し、Prometheusを展開する。アプリケーションがエラーを返すたびにトリガーするアラートを設定する。"
+      },
+      {
+        "id": "C",
+        "text": "GKE クラスタをアップデートして、Cloud Operations for GKE を使用するようにする。[GKE モニタリング] ダッシュボードを使用して、影響を受けるポッドからのログを調査する。"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Operations for GKE を有効にした新しい GKE クラスターを作成し、Prometheus を展開する。影響を受けるPodを新しいクラスターに移行し、それらのPodのトラフィックを新しいクラスターにリダイレクトする。アプリケーションがエラーを返すたびにアラートが発生するように設定する。"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Cloud Operations for GKE を既存クラスタに対して有効にすることで、アプリケーションを再デプロイせずにログやメトリクスを収集できます。影響を抑えるためには既存クラスタを更新し、GKE モニタリングダッシュボードを活用するのがベストプラクティスです。"
+  },
+  {
+    "id": "C40",
+    "question": "Mountkirk Gamesの新しいGoogle Cloudソリューションでは、Cloud Storageへのバッチファイル転送を最適化する必要があります。バッチファイルにはゲームの統計情報が含まれており、Cloud Storageにステージングされ、ETL（Extract Transform Load）ツールで処理される必要があります。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "gsutilを使用して、ETLの最後の部分としてファイルをロードする"
+      },
+      { "id": "B", "text": "gsutilを使ってファイルを連続して一括移動する" },
+      {
+        "id": "C",
+        "text": "gsutil を使用して、ファイルを並列に一括コピーする"
+      },
+      {
+        "id": "D",
+        "text": "ETLの最初の部分として、gsutilを使ってファイルを抽出する"
+      }
+    ],
+    "answer": "C",
+    "explanation": "gsutil -m cp を使用することで、複数のファイルを並列に高速転送でき、大量データのバッチアップロード時のパフォーマンスを最適化できます。これはCloud StorageでのETL前のステージングに適した方法です。"
+  },
+  {
+    "id": "C41",
+    "question": "EHRヘルスケアのビジネスと技術要件を考慮し、Google Kubernetes Engine (GKE) のネットワークアーキテクチャ設計で外部ネットワークへの露出を減らすには、どうすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "マスター認証されたネットワークを有効にし、ファイアウォールルールを設定したパブリッククラスターを使用する"
+      },
+      {
+        "id": "B",
+        "text": "マスター認証されたネットワークが設定されたプライベートエンドポイントを持つプライベートクラスタを使用する"
+      },
+      {
+        "id": "C",
+        "text": "マスター認証されたネットワークが設定されたパブリックエンドポイントを持つプライベートクラスターを使用する"
+      },
+      {
+        "id": "D",
+        "text": "ファイアウォールルールとVPCルートを持つパブリッククラスターを使用する"
+      }
+    ],
+    "answer": "B",
+    "explanation": "GKE クラスタの外部露出を最小限に抑えるには、パブリックエンドポイントを無効にし、プライベートエンドポイントに認証されたネットワークのみからアクセス可能とするのがベストプラクティスです。EHRのようなセキュリティ重視のユースケースに適しています。"
+  },
+  {
+    "id": "C42",
+    "question": "サードパーティのアプリケーションをオンプレミスから Google Cloud に移行するにあたり、最小限のコストで最適な CPU とメモリ構成を決定するにはどうすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "利用可能な最小のマシンタイプでインスタンステンプレートを作成し、平均CPU使用率を使ってオートスケールを構成する"
+      },
+      {
+        "id": "B",
+        "text": "CPUとメモリのオプションを変えた複数のCompute Engineインスタンスで高負荷テストを行い最適構成を決定する"
+      },
+      {
+        "id": "C",
+        "text": "App Engineフレキシブル環境を使い、オンプレミスのVMと同様のリソース設定でアプリを展開する"
+      },
+      {
+        "id": "D",
+        "text": "オンプレミスと同様の構成でCompute Engineを作成し、Cloud Monitoringエージェントを使ってトラフィック負荷テスト後に最適サイズの推奨を参照する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "最小コストで最適な構成を得るには、まず現在の構成と同様のVMを作成し、Cloud Monitoringで負荷を監視します。通常トラフィック下でのデータに基づくレコメンデーションを利用するのが、Google のベストプラクティスです。"
+  },
+  {
+    "id": "C43",
+    "question": "EHR Healthcareのネットワーク構成をアップグレードしてビジネスクリティカルな要件とセキュリティポリシーに準拠させるには、どのような対応が必要ですか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "新しい専用 Interconnect接続を追加する" },
+      { "id": "B", "text": "新しいCarrier Peering接続を追加する" },
+      {
+        "id": "C",
+        "text": "専用Interconnect接続の帯域幅を100Gにアップグレードする"
+      },
+      { "id": "D", "text": "3つの新しいCloud VPN接続を追加する" }
+    ],
+    "answer": "A",
+    "explanation": "EHRの要件には、オンプレミスとGoogle Cloud間で安全かつ高速な接続が求められています。これを満たすには、直接的な物理接続を提供する専用 Interconnect を新たに追加するのが最適です。"
+  },
+  {
+    "id": "C44",
+    "question": "あなたの会社はGoogle Cloud VPNを使ってオンプレミスのMySQLデータベースをGCPにレプリケートしていますが、レイテンシーとパケットロスの問題に直面しています。どう対応すべきですか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Google Cloud 専用 Interconnect を設定する" },
+      { "id": "B", "text": "UDPを使用するようにレプリケーションを設定する" },
+      {
+        "id": "C",
+        "text": "複製されたトランザクションをGoogle Cloud Pub/Subに送信する"
+      },
+      { "id": "D", "text": "VPN接続を追加し、負荷分散する" },
+      {
+        "id": "E",
+        "text": "Google Cloud SQL を使用してデータベースを毎日リストアする"
+      }
+    ],
+    "answer": "A",
+    "explanation": "VPN接続ではスループットは改善できても、レイテンシーの根本的な解決にはなりません。専用 Interconnect を使えば、レイヤー2の低遅延・高信頼接続を確保でき、今回の問題に対処できます。"
+  },
+  {
+    "id": "C45",
+    "question": "組織内のインスタンスで外部IPアドレスの使用を、承認されたインスタンスのみに制限し、すべてのVPCにこのポリシーを適用したい場合、どうすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "すべてのVPCでデフォルトルートを削除する。承認されたすべてのインスタンスを、インターネットゲートウェイへのデフォルトルートを持つ新しいサブネットに移動する。"
+      },
+      {
+        "id": "B",
+        "text": "カスタムモードで新しいVPCを作成する。承認されたインスタンスのために新しいサブネットを作成し、この新しいサブネットにインターネットゲートウェイへのデフォルトルートを設定する。"
+      },
+      {
+        "id": "C",
+        "text": "Cloud NATソリューションを導入し、外部IPアドレスの必要性を完全に排除する。"
+      },
+      {
+        "id": "D",
+        "text": "constraints/compute.vmExternalIpAccessを制約条件とする組織ポリシーを設定する。許可されたインスタンスをallowedValuesリストに列挙する。"
+      }
+    ],
+    "answer": "D",
+    "explanation": "組織ポリシー constraints/compute.vmExternalIpAccess を使うことで、外部IPアドレスを持てるVMを明示的に制限できます。allowedValues リストに許可インスタンスを追加することで要件を満たせます。"
+  },
+  {
+    "id": "C46",
+    "question": "Pub/SubからのメッセージをFilestoreに保存するKubernetesアプリケーションが、メッセージの処理に遅延しています。このI/O集中型の処理をスケーリングするにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "subscription/push_request_latenciesメトリックに基づいてKubernetesのオートスケーリング展開を構成する。"
+      },
+      {
+        "id": "B",
+        "text": "Kubernetes クラスタの作成時に --enable-autoscaling フラグを使用する。"
+      },
+      {
+        "id": "C",
+        "text": "kubectl autoscale deployment APP_NAME --max 6 --min 2 --cpu-percent 50 を使用して、Kubernetes のオートスケーリング展開を設定する。"
+      },
+      {
+        "id": "D",
+        "text": "subscription/num_undelivered_messagesメトリックに基づいてKubernetesのオートスケーリング展開を構成する。"
+      }
+    ],
+    "answer": "D",
+    "explanation": "subscription/num_undelivered_messages は未処理メッセージ数を示し、このメトリクスに基づくスケーリングはPub/Subバックログが原因の遅延を解消する最適な方法です。"
+  },
+  {
+    "id": "C47",
+    "question": "会社のセキュリティチームは、オンプレミスとGoogle Cloud間のVPN環境において、BigQueryを使用するプロジェクトのデータ流出を防ぎたいと考えています。悪意のあるインサイダーや偶発的な情報漏えいを防ぐために、どうすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "VPC サービスコントロールを構成し、プライベート Google アクセスを構成する。"
+      },
+      {
+        "id": "B",
+        "text": "プライベート Google アクセスをオンプレミスのみに設定する。"
+      },
+      {
+        "id": "C",
+        "text": "サービス アカウントを作成し、BigQuery JobUserロールとStorage Readerロールを与え、他のすべての IAM アクセスを削除する。"
+      },
+      { "id": "D", "text": "プライベート Google アクセスを設定する。" }
+    ],
+    "answer": "A",
+    "explanation": "VPC Service Controls は、BigQueryやCloud Storageなどのサービスに対してセキュリティ境界を作成することで、IAMに加えた多層的なデータ保護を提供します。プライベート Google アクセスと併用することで、オンプレミスやVPCからの安全なアクセスが可能になります。"
+  },
+  {
+    "id": "C48",
+    "question": "マーケティング部門が実施する大量アクセスが予想されるメールキャンペーンのため、運用管理の手間を抑えながら柔軟にスケール可能なインフラを選ぶ必要があります。どの2つの構成を推奨すべきですか？",
+    "type": "multiple",
+    "options": [
+      {
+        "id": "A",
+        "text": "Google Container Engine クラスタを使用して Web サイトを提供し、データを永続ディスクに保存する"
+      },
+      {
+        "id": "B",
+        "text": "単一のCompute Engine仮想マシン（VM）を使用してWebサーバーをホストし、Google Cloud SQLでバックエンドを行う。"
+      },
+      {
+        "id": "C",
+        "text": "Google App Engineを使用してWebサイトを提供し、Google Cloud Datastoreを使用してユーザーデータを保存する"
+      },
+      {
+        "id": "D",
+        "text": "マネージドインスタンスグループを使用してWebサイトを提供し、Google Cloud Bigtableを使用してユーザーデータを保存する"
+      }
+    ],
+    "answer": ["C", "D"],
+    "explanation": "App Engineは運用負荷を軽減しながら自動スケーリング可能なプラットフォームであり、Cloud Datastoreとの組み合わせでクリック収集に適しています。MIGとBigtableの構成も高スケーラビリティと耐障害性を提供し、大量アクセスに対応できます。"
+  },
+  {
+    "id": "C49",
+    "question": "オンプレミス環境のファイルをCloud Storageにアップロードする必要があります。Cloud Storage上では、クライアントが用意した暗号化キーを使ってファイルを暗号化したいと考えています。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "gsutil でバケットを作成し、フラグ --encryption-key で暗号化キーを指定する。gsutil を使用して、そのバケットにファイルをアップロードする。"
+      },
+      {
+        "id": "B",
+        "text": "暗号化キーを.boto設定ファイルに記述する。gsutilを使ってファイルをアップロードする。"
+      },
+      {
+        "id": "C",
+        "text": "gcloud config で暗号化キーを指定する。gsutilを使用して、そのバケットにファイルをアップロードする。"
+      },
+      {
+        "id": "D",
+        "text": "gsutilを使ってファイルをアップロードし、フラグ--encryption-keyを使って暗号化キーを指定する。"
+      }
+    ],
+    "answer": "B",
+    "explanation": "顧客提供の暗号鍵（CSEK）を使用してCloud Storageにファイルを暗号化する場合、gsutilの.boto設定ファイルに鍵を記述する必要があります。これにより、アップロード時にgsutilが自動的に指定された鍵を使用してファイルを暗号化します。"
+  },
+  {
+    "id": "C50",
+    "question": "開発者向けにAPIを改訂し、古いバージョンを維持しつつ、新しいAPIも試せるようにしたい。また、同じSSL証明書とDNSレコードを維持したい。要件を達成するにはどうすべきか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "古いAPIに、パスに基づいて新しいAPIにトラフィックを転送させる"
+      },
+      {
+        "id": "B",
+        "text": "新しいAPIの新しいエンドポイントを使用するように古いクライアントを再設定する"
+      },
+      {
+        "id": "C",
+        "text": "新しいバージョンのAPI用に新しいロードバランサーを設定する"
+      },
+      {
+        "id": "D",
+        "text": "ロードバランサーのバックエンドで、各APIパスに別々のバックエンドプールを使用する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "HTTP(S)ロードバランサを使えば、同一のSSL証明書とDNS設定のもとで、URLパスごとに異なるバックエンドサービス（旧APIと新API）へトラフィックをルーティングできます。これにより、複数APIバージョンの共存とシームレスな移行が可能になります。"
+  },
+  {
+    "id": "D1",
+    "question": "リアルタイムで更新される天気図アプリケーションのパフォーマンスを最適化したいと考えています。データは、50,000個のセンサーが1秒間に10個の読み取り値を送信したもので、タイムスタンプとセンサーの読み取り値の形式で表示されます。このデータはどのストレージに保存すればよいのでしょうか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Google BigQuery" },
+      { "id": "B", "text": "Google Cloud SQL" },
+      { "id": "C", "text": "Google Cloud Bigtable" },
+      { "id": "D", "text": "Google Cloud Storage" }
+    ],
+    "answer": "C",
+    "explanation": "Google Cloud Bigtableは、低レイテンシーでの大量データの読み書きに適した、スケーラブルなNoSQLワイドカラムデータベースであり、リアルタイムかつ時系列データの取り扱いに向いています。天気センサーのようなIoTデータには理想的な選択肢です。"
+  },
+  {
+    "id": "D2",
+    "question": "開発インフラをオンプレミスの仮想マシンからGoogle Cloudに移行するにあたり、インスタンスは1日に何度も起動／停止を繰り返します。財務部門にコストの可視性を提供しながら、状態を保持した開発環境を構築するには、どの2つのステップを取るべきですか？",
+    "type": "multi",
+    "options": [
+      {
+        "id": "A",
+        "text": "すべての永続ディスクに --auto-delete フラグを使用し、VMを終了させる"
+      },
+      {
+        "id": "B",
+        "text": "Google BigQuery の請求書のエクスポートとラベルを使用して、コストをグループに関連付ける"
+      },
+      {
+        "id": "C",
+        "text": "すべての状態をGoogle Cloud Storageに保存し、永続ディスクをスナップショットして、VMを終了させる"
+      },
+      {
+        "id": "D",
+        "text": "すべての永続ディスクに --no-auto-delete フラグを使用し、VM を停止する"
+      },
+      {
+        "id": "E",
+        "text": "すべての状態をローカルSSDに保存し、永続ディスクをスナップショットして、VMを終了させる"
+      },
+      {
+        "id": "F",
+        "text": "VM の CPU 使用率のラベルを適用して、BigQuery の請求書のエクスポートに含める"
+      }
+    ],
+    "answer": ["B", "D"],
+    "explanation": "永続ディスクを削除しないよう --no-auto-delete フラグを使えば、VMを停止してもデータを保持できます。また、BigQuery への請求書エクスポートとリソースへのラベル付けを活用すれば、部門別のコスト追跡が可能になります。これにより、開発環境の運用とコスト管理を効率的に両立できます。"
+  },
+  {
+    "id": "D3",
+    "question": "あなたの会社では、Anthosクラスターにアプリケーションを展開しています。会社のSREプラクティスによると、リクエストのレイテンシーが特定の閾値を超えた状態が一定時間続いた場合、アラートを出す必要があります。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Anthos Config Managementをクラスターに設定し、SLOとアラートポリシーを定義するyamlファイルを作成する"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Profilerを使用して、リクエストのレイテンシーを追跡し、カスタムメトリックに基づいてアラートポリシーを作成する"
+      },
+      {
+        "id": "C",
+        "text": "Anthos Service Meshをクラスタにインストールする。Google Cloud Consoleを使用してSLOを定義し、このSLOに基づいてアラートポリシーを作成する"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Trace APIを有効にし、Cloud Monitoring Alertsでアラートを送信する"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Anthos Service Meshを使えば、各サービスに対してSLOを定義し、Google Cloud Consoleからしきい値と期間に基づくアラートを設定できます。これにより、SREの要件を満たす信頼性の高い監視が可能になります。"
+  },
+  {
+    "id": "D4",
+    "question": "あなたの会社では、いくつかの重要なファイルをCloud Storageにアップロードする予定です。アップロード完了後に、アップロードされたコンテンツがオンプレミスのものと同一であるかどうかを確認したいと考えています。また、この確認作業にかかるコストと労力を最小限に抑えたいと考えています。要件を達成するためにするべきことは何ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "gsutil -m を使用してアップロードし、カスタムJavaアプリケーションでCRC32Cを計算して比較する"
+      },
+      {
+        "id": "B",
+        "text": "Linuxのshasumを使ってダイジェストを計算し、Cloud Storageからダウンロードして比較する"
+      },
+      {
+        "id": "C",
+        "text": "gsutil -m を使用してアップロードし、Linux diffで内容を比較する"
+      },
+      {
+        "id": "D",
+        "text": "gsutil -m でアップロードし、gsutil hash -c でローカルのCRC32Cハッシュを生成、gsutil ls -L でCloud Storage側と比較する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "gsutil hash -c を使えばローカルファイルのCRC32Cを簡単に取得でき、gsutil ls -L でCloud Storage上のオブジェクトのCRC32Cを確認できます。両者を比較することで、データの整合性確認が低コストかつ容易に行えます。"
+  },
+  {
+    "id": "D5",
+    "question": "あなたの会社では、Google Network Intelligence Centerのファイアウォールインサイト機能を使用しています。Compute Engineインスタンスに複数のファイアウォールルールが適用されていますが、Firewall Insightsページにはログが表示されません。問題のトラブルシューティングのために何をすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "ユーザーアカウントに compute.networkAdmin IAM ロールがあることを確認する"
+      },
+      {
+        "id": "B",
+        "text": "Google Cloud SDK を使ってファイアウォールログを確認する"
+      },
+      {
+        "id": "C",
+        "text": "監視対象のファイアウォールルールに対してファイアウォールルールロギングを有効にする"
+      },
+      { "id": "D", "text": "VPC のフローロギングを有効にする" }
+    ],
+    "answer": "C",
+    "explanation": "Firewall Insights でルールの使用状況を確認するには、対象のファイアウォールルールでロギングを有効にする必要があります。ロギングが無効だとインサイトにデータが表示されません。"
+  },
+  {
+    "id": "D6",
+    "question": "大規模なCRMをCloud SQLで運用しています。ストレージの不足、CPU使用率の管理、レプリケーションの遅延（60秒以内）などの要件があります。これらの要件を満たすには、どのような設定が必要ですか？",
+    "type": "multiple",
+    "options": [
+      { "id": "A", "text": "インスタンスのストレージの自動増加を有効にする" },
+      { "id": "B", "text": "memcachedを導入してCPU使用率を軽減する" },
+      {
+        "id": "C",
+        "text": "CPU使用率が75%を超えたらStackdriverアラートを作成し、より大きなマシンタイプに変更する"
+      },
+      {
+        "id": "D",
+        "text": "レプリケーションの遅延に対してStackdriverアラートを作成し、データベースをシャード化して対応する"
+      }
+    ],
+    "answer": ["A", "C", "D"],
+    "explanation": "Cloud SQLの自動ストレージ増加、Stackdriverアラートによる監視、インスタンスタイプのスケーリング、データベースのシャーディングは、可用性とスケーラビリティを確保するためのベストプラクティスです。memcachedの導入はこの文脈では最適解ではありません。"
+  },
+  {
+    "id": "D7",
+    "question": "アプリケーションサーバーVMからCloud Pub/Subへ機密トランザクションデータをプッシュしています。Googleが推奨する認証方法はどれですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "VMサービスアカウントがCloud Pub/Subへのアクセスを持っていないことを確認し、アクセススコープを使ってIAMロールを付与する"
+      },
+      {
+        "id": "B",
+        "text": "VMサービスアカウントに適切なCloud Pub/Sub IAMロールを付与する"
+      },
+      {
+        "id": "C",
+        "text": "OAuth2アクセストークンを生成し暗号化してCloud Storageに保存する"
+      },
+      {
+        "id": "D",
+        "text": "Cloud Functionをゲートウェイとして使い、そこにIAMロールを付与する"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Google Cloudの推奨する方法は、各VMが割り当てられたサービスアカウントを使って必要なIAMロールで認証・認可することです。アクセストークン管理やCloud Function経由の迂回方法は非効率です。"
+  },
+  {
+    "id": "D8",
+    "question": "Cloud SQLをバックエンドに使うPHP App Engine Standardアプリケーションで、SQLクエリ数を最小限に抑えるにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "memcacheのサービスレベルをsharedにし、cronでcached_queriesキーに定期保存する"
+      },
+      {
+        "id": "B",
+        "text": "memcacheのサービスレベルを専用にし、クエリのハッシュからキーを作成し、memcacheから先に値を返す"
+      },
+      {
+        "id": "C",
+        "text": "memcacheのサービスレベルを専用にしてcronでキャッシュ投入する"
+      },
+      {
+        "id": "D",
+        "text": "memcacheのサービスレベルをsharedにし、cached_queries€キーを参照してクエリ結果を返す"
+      }
+    ],
+    "answer": "B",
+    "explanation": "最も効率的な方法は、専用memcacheを使用し、クエリのハッシュキーに基づいてキャッシュを先に参照し、該当がなければCloud SQLに問い合わせる方法です。これにより負荷とクエリ数が大きく削減されます。"
+  },
+  {
+    "id": "D9",
+    "question": "あなたの会社では物理的に分離されたハードウェアでワークロードを実行する必要があります。ノードグループを作成した上で、正しいノードにワークロードを展開するにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Compute Engineインスタンス作成時にノードグループ名に基づくノードアフィニティラベルを使用する"
+      },
+      {
+        "id": "B",
+        "text": "Compute Engineインスタンス作成時にノード名に基づくノードアフィニティラベルを使用する"
+      },
+      {
+        "id": "C",
+        "text": "Compute Engineインスタンス作成時にネットワークタグとしてノード名を追加する"
+      },
+      {
+        "id": "D",
+        "text": "Compute Engineインスタンス作成時にネットワークタグとしてノードグループ名を追加する"
+      }
+    ],
+    "answer": "B",
+    "explanation": "単一テナントノードにワークロードを割り当てるには、インスタンス作成時にノードの名前に基づいたノードアフィニティラベルを使用する必要があります。これはハードウェアレベルで物理的分離を保証するGoogle Cloudの仕組みです。"
+  },
+  {
+    "id": "D10",
+    "question": "GKEクラスタをus-central1に配置しています。アジアのユーザーのレイテンシを減らすにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "asia-southeast1に第2のGKEクラスタを作成し、LoadBalancer型のサービスで公開しDNSに登録する"
+      },
+      { "id": "B", "text": "クラスタ内のメモリとCPUを増やす" },
+      {
+        "id": "C",
+        "text": "クラウドCDNを有効にしたグローバルHTTPロードバランサーを使う"
+      },
+      {
+        "id": "D",
+        "text": "asia-southeast1に第2のGKEクラスタを作成し、kubemciを使用してグローバルHTTP(s)ロードバランサーを作成する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Google CloudのグローバルHTTP(s)ロードバランサーとkubemciを使用することで、複数リージョンのGKEクラスタにまたがってトラフィックを自動で分散でき、アジア地域のレイテンシ低減に最適な構成となります。"
+  },
+  {
+    "id": "D11",
+    "question": "トラフィックが多い時間帯にリレーショナルデータベースのレプリカがマスターに昇格しなかった問題を今後回避するためには、何をすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "より定期的にデータベースのスナップショットを作成する"
+      },
+      { "id": "B", "text": "データベースのフェイルオーバーを定期的に行う" },
+      { "id": "C", "text": "別のデータベースを使用する" },
+      { "id": "D", "text": "データベースのインスタンスを大きくする" }
+    ],
+    "answer": "B",
+    "explanation": "レプリカの昇格失敗を避けるには、フェイルオーバーの動作検証が不可欠です。定期的なフェイルオーバーテストにより問題を早期に発見し、適切な対応が可能になります。"
+  },
+  {
+    "id": "D12",
+    "question": "GKE上で動作するマイクロサービスにおいて、クラッシュ時の動作を検証するにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "Istioのトラフィック管理機能を使って、クラッシュしたマイクロサービスからトラフィックを誘導する"
+      },
+      {
+        "id": "B",
+        "text": "Kubernetesノードにtaintを設定し、アンチアフィニティラベルで対象ポッドを配置しないようにする"
+      },
+      {
+        "id": "C",
+        "text": "Istioのフォールト・インジェクション機能を、不具合のある動作をシミュレートしたい特定のマイクロサービスに使用する"
+      },
+      {
+        "id": "D",
+        "text": "Kubernetesクラスタのノードの1つを破壊して挙動を観察する"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Istioのフォールト・インジェクション機能は、遅延やエラーを意図的に発生させることで、アプリケーションの回復性や耐障害性をテストするのに最適な手段です。"
+  },
+  {
+    "id": "D13",
+    "question": "Kubernetes Engine上でマイクロサービスアーキテクチャを用いたアプリケーション開発において、developブランチへのコード変更が自動的にビルド・テスト・デプロイされ、かつそのプロセスに従っていることを保証するにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "開発ブランチにコードがプッシュされたときに、コードをテストしてコンテナをビルドするポストコミットフックをリモートリポジトリにインストールする。開発者が手動でデプロイする。"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Buildトリガーを使ってdevelopブランチの変更でビルド・テスト・イメージ作成を自動化し、開発クラスターへの自動デプロイメントパイプラインを作成する。デプロイ権限はデプロイメントツールのみに与える。"
+      },
+      {
+        "id": "C",
+        "text": "脆弱性スキャンを含むCloud Buildプロセスを使って、開発ブランチの変更に基づいてコンテナをビルド・保存し、Cloud Buildから直接開発クラスタにデプロイする。"
+      },
+      {
+        "id": "D",
+        "text": "開発者のローカルにプリコミットフックを設定し、ビルド後に手動でクラスタへデプロイさせる。"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Cloud Buildトリガーと自動デプロイメントパイプラインを組み合わせることで、継続的インテグレーションと継続的デリバリー（CI/CD）を実現できます。自動化と権限管理により、全コード変更の一貫性とセキュリティが確保されます。"
+  },
+  {
+    "id": "D14",
+    "question": "Compute Engine上で稼働するステートレスアプリケーションがピーク時に遅くなる問題を解消するために、どのような構成変更を行うべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "既存ディスクのスナップショットからインスタンステンプレートを作成し、それを使ってオートスケールのマネージドインスタンスグループを作成する"
+      },
+      {
+        "id": "B",
+        "text": "既存ディスクのスナップショットからカスタムイメージを作成し、それを元にマネージドインスタンスグループを構築する"
+      },
+      {
+        "id": "C",
+        "text": "既存のディスクからカスタムイメージを作成し、それからインスタンステンプレートを作成し、テンプレートを元にオートスケーリングのマネージドインスタンスグループを構築する"
+      },
+      {
+        "id": "D",
+        "text": "既存のディスクからインスタンステンプレートを直接作成し、そのテンプレートを使ってカスタムイメージを作成する"
+      }
+    ],
+    "answer": "C",
+    "explanation": "ステートレスアプリケーションの可用性とスケーラビリティを高めるには、カスタムイメージをベースとしたインスタンステンプレートと、オートスケーリング可能なマネージドインスタンスグループの構築が最適です。これにより即時スケーリングと高速起動が可能になります。"
+  },
+  {
+    "id": "D15",
+    "question": "Cloud Storage バケットに機密データを保存しており、規制対応のために使用する暗号化キーのローテーションが求められています。Googleの推奨に従うにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "AES-256 暗号化キーを生成し、お客様提供の暗号化キー機能（CSEK）を使ってバケットのデータを暗号化する"
+      },
+      {
+        "id": "B",
+        "text": "Cloud Key Management Service (KMS) で鍵を作成し、バケットの暗号化キーとして Cloud KMS キーを指定する"
+      },
+      {
+        "id": "C",
+        "text": "Cloud KMS の encrypt メソッドを使って手動でファイルを暗号化してからバケットにアップロードする"
+      },
+      {
+        "id": "D",
+        "text": "GPG キーを使ってデータを暗号化し、暗号化済みデータを Cloud Storage に保存する"
+      }
+    ],
+    "answer": "B",
+    "explanation": "Cloud KMS（CMEK）を使うことで、鍵のローテーションやアクセス制御を簡便に管理でき、Google Cloud のセキュリティベストプラクティスに合致します。"
+  },
+  {
+    "id": "D16",
+    "question": "Debian Linux ベースのアプリケーションを Google Cloud に展開する際、最小限の手動操作でアップデート対応を行うにはどのようにすべきですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "最新のDebianイメージを使ってCompute Engineインスタンステンプレートを作成し、アプリを起動スクリプトで設定する。アップデートごとにこの作業を繰り返す"
+      },
+      {
+        "id": "B",
+        "text": "Debianベースのインスタンスを作成し、アプリケーションを構成した後、OS Patch Managementを使って自動でパッチを適用する"
+      },
+      {
+        "id": "C",
+        "text": "最新のDebianイメージでインスタンスを作成し、SSHで手動構成し、Google が新しいイメージを出すたびに同じ作業を繰り返す"
+      },
+      {
+        "id": "D",
+        "text": "DebianベースのDockerイメージを作り、アプリを設定してGKEでホスティングし、更新ごとにコンテナを再構築・再起動する"
+      }
+    ],
+    "answer": "B",
+    "explanation": "OS Patch Management により、Google Cloud 上の VM へ自動で安全にセキュリティパッチを適用可能になり、手動操作の手間を最小限に抑えることができます。"
+  },
+  {
+    "id": "D17",
+    "question": "あなたの会社では、3つのリージョンにある1000の会議室で、毎秒センサーデータを送信するモーションセンサーを設置し、部屋の使用状況を追跡したいと考えています。データにはセンサーIDやロケーションなどの情報が含まれており、アナリストはユーザーや場所の情報と組み合わせて分析を行います。この用途に最も適したデータベースタイプはどれですか？",
+    "type": "single",
+    "options": [
+      { "id": "A", "text": "Blobストア" },
+      { "id": "B", "text": "NoSQL" },
+      { "id": "C", "text": "リレーショナル" },
+      { "id": "D", "text": "フラットファイル" }
+    ],
+    "answer": "B",
+    "explanation": "センサーデータは構造が柔軟かつ大量で、時系列や非構造データが中心となるため、NoSQL（たとえば Bigtable など）のようなスケーラブルで柔軟なデータベースが最適です。"
+  },
+  {
+    "id": "D18",
+    "question": "データサイエンスチームの既存Hadoopジョブを、基盤構成の大幅な変更なしにGoogle Cloudへ移行したいと考えています。コストと運用管理の手間を最小限に抑えるにはどうすればよいですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "標準的なワーカーインスタンスを使用してDataprocクラスタを作成する"
+      },
+      {
+        "id": "B",
+        "text": "標準インスタンスを使ってCompute EngineにHadoopクラスタを手動で構築する"
+      },
+      {
+        "id": "C",
+        "text": "プリエンプト可能なインスタンスを使ってCompute EngineにHadoopクラスタを手動で構築する"
+      },
+      {
+        "id": "D",
+        "text": "プリエンプティブルワーカーインスタンスを使用して Dataproc クラスタを作成する"
+      }
+    ],
+    "answer": "D",
+    "explanation": "Dataproc は Hadoop ワークロードに最適なマネージドサービスであり、プリエンプティブルワーカーを用いることでコストをさらに削減できます。"
+  },
+  {
+    "id": "D19",
+    "question": "自社で運用するアプリケーションのリクエスト数に応じて、Google Kubernetes Engine クラスタを自動的にスケーリングしたいと考えています。最も適切な対応方法はどれですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "gcloud container clusters resize CLUSTER_NAME --size=10 を使ってノードを手動で追加する"
+      },
+      {
+        "id": "B",
+        "text": "gcloud compute instances add-tags INSTANCE --tags enable-autoscaling --max-nodes=10 でタグを追加する"
+      },
+      {
+        "id": "C",
+        "text": "gcloud container clusters update CLUSTER_NAME --enable-autoscaling --min-nodes=1 --max-nodes=10 を使ってクラスタを更新する"
+      },
+      {
+        "id": "D",
+        "text": "gcloud container clusters create CLUSTER_NAME --enable-autoscaling --min-nodes=1 --max-nodes=10 を使って新しいクラスタを作成する"
+      }
+    ],
+    "answer": "C",
+    "explanation": "すでに存在するクラスタに対してオートスケーリングを有効化するには、`gcloud container clusters update` コマンドを使用します。これにより、クラスタがリクエスト数に応じてノード数を自動調整できるようになります。"
+  },
+  {
+    "id": "D20",
+    "question": "インターネット上のサードパーティサービスへアクセスが必要な新しいアプリケーションを GKE クラスタ上に展開する予定です。ただし、セキュリティ方針により、Google Cloud 上の Compute Engine インスタンスにパブリック IP アドレスを持たせることは禁止されています。この条件を満たすためにはどの構成が適切ですか？",
+    "type": "single",
+    "options": [
+      {
+        "id": "A",
+        "text": "GKE クラスタをルートベースのクラスタとして構成し、VPC にプライベート Google アクセスを構成する"
+      },
+      {
+        "id": "B",
+        "text": "GKE クラスタをプライベートクラスタとして構成し、VPC 上でプライベート Google アクセスを構成する"
+      },
+      {
+        "id": "C",
+        "text": "GKE クラスタをプライベートクラスタとして構成し、クラスタのサブネットに Cloud NAT Gateway を設定する"
+      },
+      {
+        "id": "D",
+        "text": "Compute Engine に NAT プロキシを構築し、すべてのトラフィックをそのプロキシ経由にする"
+      }
+    ],
+    "answer": "C",
+    "explanation": "Cloud NAT を使えば、パブリック IP を持たない GKE ノードや Pod がインターネットへ送信通信を行えるようになります。これは、セキュリティポリシーに準拠しつつ、外部サービスへのアクセスを可能にする推奨構成です。"
   }
 ]
