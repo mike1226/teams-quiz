@@ -15,5 +15,6 @@ steps:
     args:
       - app
       - deploy
+      - 'app.yaml'
       - '--version=$_VERSION'
       - '--quiet'
