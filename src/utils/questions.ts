@@ -1,4 +1,6 @@
 // utils/questions.ts
+import { Question } from "../types/types";
+
 let cachedRandomSet: Question[] | null = null;
 
 export function getRandomQuestions(all: Question[], count: number) {
