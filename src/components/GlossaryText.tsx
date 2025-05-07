@@ -19,49 +19,59 @@ const GlossaryText: React.FC<Props> = ({ text }) => {
 
   // 根据段落级别逐段分词（Markdown 渲染器会逐段送入）
   const renderWithGlossary = (raw: string) => {
-    const matches = findMatches(raw, trie);
-    const segments = splitText(raw, matches);
-
-    const getEntry = (term: string) => glossary.find((g) => g.term === term);
-
-    return segments.map((seg, i) =>
-      seg.term ? (
-        <Tooltip
-          key={i}
-          relationship="label"
-          content={(() => {
-            const e = getEntry(seg.term!);
-            return (
-              <div style={{
-                padding: '8px',
-                backgroundColor: '#ccccff',
-                borderColor: '#6666ff',
-                fontSize: '12px',
-                borderRadius: '6px',
-                lineHeight: 1.4
-              }}>
-                {e ? (
-                  <>
-                    <div>中文: {e.zh}</div>
-                    <div>日文: {e.ja}</div>
-                    <div>English: {e.en}</div>
-                  </>
-                ) : (
-                  <div>No glossary entry found.</div>
-                )}
-              </div>
-            );
-          })()}
-        >
-          <span style={{ textDecoration: "underline", cursor: "help" }}>
-            {seg.term}
-          </span>
-        </Tooltip>
-      ) : (
-        <span key={i}>{seg.text}</span>
-      )
-    );
+    const lines = raw.split('\n');
+    return lines.map((line, lineIndex) => {
+      const matches = findMatches(line, trie);
+      const segments = splitText(line, matches);
+  
+      const getEntry = (term: string) => glossary.find((g) => g.term === term);
+  
+      return (
+        <React.Fragment key={lineIndex}>
+          {segments.map((seg, i) =>
+            seg.term ? (
+              <Tooltip
+                key={i}
+                relationship="label"
+                content={(() => {
+                  const e = getEntry(seg.term!);
+                  return (
+                    <div style={{
+                      padding: '8px',
+                      backgroundColor: '#ccccff',
+                      borderColor: '#6666ff',
+                      fontSize: '12px',
+                      borderRadius: '6px',
+                      lineHeight: 1.4
+                    }}>
+                      {e ? (
+                        <>
+                          <div>中文: {e.zh}</div>
+                          <div>日文: {e.ja}</div>
+                          <div>English: {e.en}</div>
+                          <div>说明: {e.desc}</div>
+                        </>
+                      ) : (
+                        <div>No glossary entry found.</div>
+                      )}
+                    </div>
+                  );
+                })()}
+              >
+                <span style={{ textDecoration: "underline", cursor: "help" }}>
+                  {seg.term}
+                </span>
+              </Tooltip>
+            ) : (
+              <span key={i}>{seg.text}</span>
+            )
+          )}
+          {lineIndex < lines.length - 1 && <br />}
+        </React.Fragment>
+      );
+    });
   };
+  
 
   return (
     <ReactMarkdown

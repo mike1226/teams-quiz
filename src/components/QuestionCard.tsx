@@ -1,7 +1,6 @@
 import React, { useMemo, useState, useEffect } from "react";
 import { Question } from "../types/types";
 import GlossaryText from "./GlossaryText";
-import ReactMarkdown from "react-markdown";
 
 interface Props {
   question: Question;
@@ -102,7 +101,7 @@ const QuestionCard: React.FC<Props> = ({
       }}
     >
       <div>
-        <GlossaryText text={question.question}/>
+        <GlossaryText text={question.question} />
       </div>
 
       <form>
@@ -111,7 +110,7 @@ const QuestionCard: React.FC<Props> = ({
             key={opt.id}
             style={{
               display: "flex",
-              alignItems: "center",  
+              alignItems: "center",
               gap: "8px",
               margin: "8px 0",
               marginBottom: "12px",
@@ -142,11 +141,11 @@ const QuestionCard: React.FC<Props> = ({
 
       <div style={{ textAlign: "right", marginRight: "5px" }}>
         <button
-          style={{ marginTop: "12px", width: "100px", padding: "2px" }}
+          style={{ marginTop: "12px", width: "100px", padding: "12px"}}
           disabled={selection.length === 0}
           onClick={submitted ? handleNext : handleSubmit}
         >
-          {submitted ? "下一题" : "提交"}
+          {submitted ? "次へ" : "確認"}
         </button>
       </div>
 
@@ -164,7 +163,7 @@ const QuestionCard: React.FC<Props> = ({
               backgroundColor: "#f9f9f9",
             }}
           >
-            <ReactMarkdown>{question.explanation}</ReactMarkdown>
+            <GlossaryText text={question.explanation} />
           </div>
         </div>
       )}
