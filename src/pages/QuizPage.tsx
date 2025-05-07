@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import questionsData from "../data/questions.json";
 import { AnswerRecord, Question } from "../types/types";
 import QuestionCard from "../components/QuestionCard";
+import { getRandomQuestions } from '../utils/questions';
+
 
 // 问题数量 -1 表示全部
 // 答案记录
@@ -11,21 +13,7 @@ interface Props {
   showAnswerImmediately: boolean; // ✅ 新增
 }
 
-// 随机获取问题
-function getRandomQuestions(all: Question[], count: number) {
-  const uniqueMap = new Map<string, Question>();
-  for (const q of all) {
-    uniqueMap.set(q.id, q); // 用 id 去重
-  }
-
-  const unique = Array.from(uniqueMap.values());
-  if (count === -1 || count >= unique.length) return [...unique];
-
-  const shuffled = [...unique].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
-
-
+// QuizPage 组件
 const QuizPage: React.FC<Props> = ({
   questionCount,
   onFinish,

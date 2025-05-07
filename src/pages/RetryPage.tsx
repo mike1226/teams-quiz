@@ -9,7 +9,7 @@ interface Props {
   showAnswerImmediately: boolean; // ✅ 新增
 }
 
-const RetryPage: React.FC<Props> = ({ wrongIds, onFinish, showAnswerImmediately }) => {
+const RetryPage: React.FC<Props> = ({ wrongIds, onFinish }) => {
   const questions: Question[] = (questionsData as Question[]).filter((q) =>
     wrongIds.includes(q.id)
   );
@@ -31,7 +31,7 @@ const RetryPage: React.FC<Props> = ({ wrongIds, onFinish, showAnswerImmediately 
       <QuestionCard
         question={questions[idx]}
         onAnswer={handleAnswer}
-        showAnswerImmediately={showAnswerImmediately} // ✅ 传递下去
+        showAnswerImmediately={true} // RetryPage 里直接显示答案
       />
     </div>
   );
