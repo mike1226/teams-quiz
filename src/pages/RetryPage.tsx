@@ -30,7 +30,7 @@ const RetryPage: React.FC<Props> = ({ wrongIds, onFinish }) => {
       </h4>
       <QuestionCard
         question={questions[idx]}
-        onAnswer={handleAnswer}
+        onSubmit={handleAnswer}
         showAnswerImmediately={true} // RetryPage 里直接显示答案
       />
     </div>
