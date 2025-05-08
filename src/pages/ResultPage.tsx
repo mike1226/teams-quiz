@@ -21,10 +21,10 @@ const ResultPage: React.FC<Props> = ({ records, onRetryWrong, onRestart }) => {
       <div style={{ marginTop: "16px" }}>
         正确: {correct} / {records.length}
       </div>
-      <button style={{ margin: "8px" }} onClick={onRetryWrong} disabled={wrong === 0}>
+      <button className="bg-red text-black-600 border border-red-600 m-2 px-4 py-2 rounded hover:bg-red-50" onClick={onRetryWrong} disabled={wrong === 0}>
         错题再练
       </button>
-      <button style={{ margin: "8px" }} onClick={onRestart}>
+      <button className="bg-white text-blue-600 border border-blue-600 m-2 px-4 py-2 rounded hover:bg-blue-50" onClick={onRestart}>
         重新开始
       </button>
     </div>

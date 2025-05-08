@@ -9,7 +9,7 @@ interface Props {
 // count 是选择的题目数量，showAnswer 是是否显示答案
 // 这个组件的主要作用是让用户选择题目数量和是否显示答案
 const StartPage: React.FC<Props> = ({ onStart }) => {
-  const counts = [10, 30, 50, -1];
+  const counts = [2, 10, 30, 50, -1];
   const [showAnswer, setShowAnswer] = useState(true); // ✅ 是否显示答案开关
 
   return (
@@ -18,8 +18,8 @@ const StartPage: React.FC<Props> = ({ onStart }) => {
       {counts.map((c) => (
         <button
           key={c}
-          style={{ margin: "8px" }}
           onClick={() => onStart(c, showAnswer)}
+          className="bg-white text-blue-600 border border-blue-600 m-2 px-4 py-2 rounded hover:bg-blue-50"
         >
           {c === -1 ? "全部" : `${c} 题`}
         </button>

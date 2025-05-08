@@ -1,14 +1,13 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Question } from "../types/types";
 import GlossaryText from "./GlossaryText";
 
 interface Props {
   question: Question;
-  onAnswer: (selected: string[]) => void;
+  onSubmit: (selected: string[]) => void;
   showAnswerImmediately: boolean;
 }
 
-// ✅ Fisher-Yates shuffle
 function shuffle<T>(arr: T[]): T[] {
   const res = [...arr];
   for (let i = res.length - 1; i > 0; i--) {
@@ -20,14 +19,13 @@ function shuffle<T>(arr: T[]): T[] {
 
 const QuestionCard: React.FC<Props> = ({
   question,
-  onAnswer,
+  onSubmit,
   showAnswerImmediately,
 }) => {
   const [selection, setSelection] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
 
-  // ✅ 每道题切换时重置状态
   useEffect(() => {
     setSelection([]);
     setSubmitted(false);
@@ -47,122 +45,76 @@ const QuestionCard: React.FC<Props> = ({
     }
   };
 
-  const handleSubmit = () => {
+  const handleConfirm = () => {
     if (selection.length === 0) return;
-
     const correct =
       selection.length === question.answer.length &&
-      selection.every((s) => question.answer.includes(s));
-
-    if (showAnswerImmediately) {
-      setIsCorrect(correct);
-      setSubmitted(true);
-    } else {
-      onAnswer(selection);
-    }
+      selection.every((id) => question.answer.includes(id));
+    setIsCorrect(correct);
+    setSubmitted(true);
+    if (!showAnswerImmediately) onSubmit(selection);
   };
 
-  const handleNext = () => {
-    onAnswer(selection);
-  };
+  const handleNext = () => onSubmit(selection);
 
-  // ✅ 背景高亮函数
   const getOptionStyle = (id: string): React.CSSProperties => {
     if (!submitted) return {};
-    const isCorrect = question.answer.includes(id);
-    const isSelected = selection.includes(id);
-
-    if (isCorrect) {
-      return {
-        backgroundColor: "#e6ffe6",
-        padding: "6px",
-        borderRadius: "6px",
-      };
-    }
-
-    if (isSelected && !isCorrect) {
-      return {
-        backgroundColor: "#ffe6e6",
-        padding: "6px",
-        borderRadius: "6px",
-      };
-    }
-
+    const correct = question.answer.includes(id);
+    const selected = selection.includes(id);
+    if (correct) return { backgroundColor: "#e6ffe6" };
+    if (selected && !correct) return { backgroundColor: "#ffe6e6" };
     return {};
   };
 
   return (
     <div
-      style={{
-        padding: "16px",
-        border: "1px solid #ddd",
-        borderRadius: "8px",
-        marginBottom: "20px",
-      }}
+      className="bg-sky-50 rounded-md shadow-md border-double border-4 border-gray-200 p-4 mx-4 rounded-xl font-sans"
     >
-      <div>
-        <GlossaryText text={question.question} />
+      <div className="text-base leading-relaxed text-gray-800 whitespace-pre-wrap ml-8 py-4 ">
+      <GlossaryText text={question.question} />
       </div>
-
       <form>
-        {shuffledOptions.map((opt) => (
-          <label
-            key={opt.id}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "8px",
-              margin: "8px 0",
-              marginBottom: "12px",
-              padding: "5px",
-              border: "1px solid #ccc",
-              backgroundColor: submitted
-                ? getOptionStyle(opt.id).backgroundColor || "#f7f7f7"
-                : "#f7f7f7",
-              borderRadius: "6px",
-              cursor: submitted ? "default" : "pointer",
-              transition: "background-color 0.3s ease",
-              ...getOptionStyle(opt.id),
-            }}
-          >
-            <input
-              type={question.type === "single" ? "radio" : "checkbox"}
-              name="option"
-              value={opt.id}
-              disabled={submitted}
-              checked={selection.includes(opt.id)}
-              onChange={() => toggleSelect(opt.id)}
-              style={{ marginTop: "4px" }}
-            />{" "}
-            <GlossaryText text={opt.text} />
-          </label>
-        ))}
-      </form>
+          {shuffledOptions.map((opt) => (
+            <label
+              key={opt.id}
+              className={`flex items-start gap-2 p-3 border rounded-md transition py-4 my-4 bg-gray-50
+        ${submitted ? "cursor-default" : "cursor-pointer"} 
+        ${getOptionStyle(opt.id).backgroundColor || "bg-gray-50"}
+      `}
+              style={{
+                ...getOptionStyle(opt.id),
+              }}
+            >
+              <input
+                type={question.type === "single" ? "radio" : "checkbox"}
+                name="option"
+                value={opt.id}
+                checked={selection.includes(opt.id)}
+                onChange={() => toggleSelect(opt.id)}
+                disabled={submitted}
+                className="mt-1"
+              />
+              <div className="flex-1 leading-relaxed text-gray-800 whitespace-pre-wrap">
+                <GlossaryText text={opt.text} />
+              </div>
+            </label>
+          ))}
 
-      <div style={{ textAlign: "right", marginRight: "5px" }}>
+      </form>
+      <div style={{ textAlign: "right" }}>
         <button
-          style={{ marginTop: "12px", width: "100px", padding: "12px"}}
+          onClick={submitted ? handleNext : handleConfirm}
           disabled={selection.length === 0}
-          onClick={submitted ? handleNext : handleSubmit}
+          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50 w-40"
         >
           {submitted ? "次へ" : "確認"}
         </button>
       </div>
-
       {submitted && question.explanation && (
-        <div style={{ marginTop: "16px" }}>
-          <p style={{ fontSize: "14px", marginBottom: "8px" }}>
-            {isCorrect ? "回答正确！" : "回答错误！"}
-          </p>
-          <h4>📘 解析</h4>
-          <div
-            style={{
-              border: "1px solid #ccc",
-              padding: "12px",
-              borderRadius: "6px",
-              backgroundColor: "#f9f9f9",
-            }}
-          >
+        <div style={{ marginTop: "12px" }}>
+          <p>{isCorrect ? "回答正解！" : "回答不正解。"}</p>
+          <h4>📘 解説</h4>
+          <div className="text-base leading-relaxed text-gray-800 whitespace-pre-wrap">
             <GlossaryText text={question.explanation} />
           </div>
         </div>

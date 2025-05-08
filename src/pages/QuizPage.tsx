@@ -1,56 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import questionsData from "../data/questions.json";
-import { AnswerRecord, Question } from "../types/types";
+import { Question, AnswerRecord } from "../types/types";
 import QuestionCard from "../components/QuestionCard";
-import { getRandomQuestions } from '../utils/questions';
+import { getRandomQuestions } from "../utils/questions";
 
-
-// 问题数量 -1 表示全部
-// 答案记录
 interface Props {
   questionCount: number; // -1 表示全部
   onFinish: (records: AnswerRecord[]) => void;
-  showAnswerImmediately: boolean; // ✅ 新增
+  showAnswerImmediately: boolean;
 }
 
-// QuizPage 组件
-const QuizPage: React.FC<Props> = ({
-  questionCount,
-  onFinish,
-  showAnswerImmediately // 接收
-}) => {
-  // 这里的 questionsData 是一个 JSON 文件，包含了所有的问题数据
-  const questions = getRandomQuestions(
-    questionsData as Question[],
-    questionCount
-  );
+const QuizPage: React.FC<Props> = ({ questionCount, onFinish, showAnswerImmediately }) => {
+  const [questions, setQuestions] = useState<Question[]>([]);
   const [idx, setIdx] = useState(0);
   const [records, setRecords] = useState<AnswerRecord[]>([]);
 
-  // 处理答案提交
-  const handleAnswer = (selected: string[]) => {
-    const q = questions[idx];
-    const correct =
-      selected.length === q.answer.length &&
-      selected.every((s) => q.answer.includes(s));
-    setRecords([...records, { questionId: q.id, selected, correct }]);
+  useEffect(() => {
+    const q = getRandomQuestions(questionsData as Question[], questionCount);
+    setQuestions(q);
+  }, [questionCount]);
 
-    if (idx + 1 === questions.length) {
-      onFinish(records.concat({ questionId: q.id, selected, correct }));
+  const handleSubmit = (selected: string[]) => {
+    const current = questions[idx];
+    const correct = selected.length === current.answer.length && selected.every(id => current.answer.includes(id));
+    const newRecord = { questionId: current.id, selected, correct };
+    const updatedRecords = [...records, newRecord];
+    setRecords(updatedRecords);
+
+    if (idx + 1 >= questions.length) {
+      onFinish(updatedRecords);
     } else {
       setIdx(idx + 1);
     }
   };
 
+  if (questions.length === 0) return <p>読み込み中...</p>;
+
   return (
     <div>
-      <h4>
-        第 {idx + 1} / {questions.length} 题
-      </h4>
+      <h4>第 {idx + 1} / {questions.length} 問</h4>
       <QuestionCard
+        key={questions[idx].id}
         question={questions[idx]}
-        onAnswer={handleAnswer}
-        showAnswerImmediately={showAnswerImmediately} // ✅ 传递给组件
+        onSubmit={handleSubmit}
+        showAnswerImmediately={showAnswerImmediately}
       />
     </div>
   );

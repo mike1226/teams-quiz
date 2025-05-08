@@ -52,6 +52,7 @@ npm run preview
 npm run test
 
 ## 项目结构
+```
 
 src/
 ├── components/         # 页面组件（题卡、分析图等）
