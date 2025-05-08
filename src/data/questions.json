@@ -1,7 +1,7 @@
 [
   {
     "id": "A1",
-    "question": "Cloud MLエンジンを使って、アップロードされた画像から有名な絵画を認識するアプリケーションを開発しました。\nこのアプリケーションをテストするために、24時間後に特定の人が画像をアップロードできるようにしたい。すべてのユーザーがGoogleアカウントを持っているわけではありません。\nどのようにしてユーザーに画像をアップロードさせるべきでしょうか？",
+    "question": "Vertex AIを使って、アップロードされた画像から有名な絵画を認識するアプリケーションを開発しました。\nこのアプリケーションをテストするために、24時間後に特定の人が画像をアップロードできるようにしたい。すべてのユーザーがGoogleアカウントを持っているわけではありません。\nどのようにしてユーザーに画像をアップロードさせるべきでしょうか？",
     "type": "single",
     "options": [
       {
@@ -156,7 +156,7 @@
     "options": [
       {
         "id": "A",
-        "text": "単一のコンピュートインスタンスにStackdriver Cloud Loggingエージェントをインストールし、環境のすべての監査ログとアクセスログを収集させる。"
+        "text": "単一のコンピュートインスタンスにOps Agentをインストールし、環境のすべての監査ログとアクセスログを収集させる。"
       },
       {
         "id": "B",
@@ -164,15 +164,15 @@
       },
       {
         "id": "C",
-        "text": "Stackdriver は、ほとんどのサービスの管理者アクティビティログを自動的に収集する。システムログを収集するには、各インスタンスにStackdriver Logging agentをインストールする必要があります。"
+        "text": "Cloud Loggingは、ほとんどのサービスの管理者アクティビティログを自動的に収集する。システムログを収集するには、各インスタンスにOps Agentをインストールする必要があります。"
       },
       {
         "id": "D",
-        "text": "すべての管理者およびVMシステムのログはStackdriverによって自動的に収集されます。"
+        "text": "すべての管理者およびVMシステムのログはCloud Loggingによって自動的に収集されます。"
       }
     ],
     "answer": ["C"],
-    "explanation": "### 全体的な説明\nGoogle Cloudがネイティブにサポートするログ収集方法を選択する必要があります。\n\n今回の要件であるログ種のうち、管理者ログとイベントログはデフォルトで設定されています。\n\n一方で、VM システムログは、Loggingエージェントを設定する必要があります。\n\nLogging エージェントは、デフォルトの構成では、一般的なサードパーティ アプリケーションやシステム ソフトウェアからのログを、Logging にストリーミングします。\n\n加えて、VMのシステムログを収集することも可能です。\n\nしたがって正解は以下の通りです。\n\n> \\\"Stackdriver は、ほとんどのサービスの管理者アクティビティログを自動的に収集する。システムログを収集するには、各インスタンスにStackdriver Logging agentをインストールする必要があります。\\\"\n\n📚 参考リンク:\n- https://cloud.google.com/logging/docs/agent/logging/installation#before_you_begin"
+    "explanation": "### 全体的な説明\nGoogle Cloudがネイティブにサポートするログ収集方法を選択する必要があります。\n\n今回の要件であるログ種のうち、管理者ログとイベントログはデフォルトで設定されています。\n\n一方で、VM システムログは、Ops Agentを設定する必要があります。\n\nOps Agentは、デフォルトの構成では、一般的なサードパーティ アプリケーションやシステム ソフトウェアからのログを、Logging にストリーミングします。\n\n加えて、VMのシステムログを収集することも可能です。\n\nしたがって正解は以下の通りです。\n\n> \\\"Cloud logging は、ほとんどのサービスの管理者アクティビティログを自動的に収集する。システムログを収集するには、各インスタンスにOps Agentをインストールする必要があります。\\\"\n\n📚 参考リンク:\n- https://cloud.google.com/logging/docs/agent/logging/installation#before_you_begin"
   },
   {
     "id": "A8",
@@ -456,7 +456,7 @@
     "options": [
       {
         "id": "A",
-        "text": "Stackdriver アラートコンソールで「Create VM」エントリを検索する。"
+        "text": "Cloud Monitoring アラートコンソールで「Create VM」エントリを検索する。"
       },
       {
         "id": "B",
@@ -515,7 +515,7 @@
       },
       {
         "id": "C",
-        "text": "Cloud Machine Learning EngineのパフォーマンスメトリクスをStackdriverからBigQueryにエクスポートし、モデルの効率性を分析するために使用する。"
+        "text": "Cloud Machine Learning EngineのパフォーマンスメトリクスをCloud MonitoringからBigQueryにエクスポートし、モデルの効率性を分析するために使用する。"
       },
       {
         "id": "D",
@@ -644,11 +644,11 @@
       },
       {
         "id": "D",
-        "text": "GCP コンソールで、［Stackdriver Logging］に移動する。（GKE）とCloud SQLのログを参照する。"
+        "text": "GCP コンソールで、［Cloud Logging］に移動する。（GKE）とCloud SQLのログを参照する。"
       }
     ],
     "answer": ["D"],
-    "explanation": "事後検証には、ログとメトリクスによる原因特定が必要です。\nGKE と Cloud SQL はデフォルトで Stackdriver Logging（現 Cloud Logging）と統合されています。\n\n📚 参考:\n- https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine#providing_the_service_account_to_the_proxy"
+    "explanation": "事後検証には、ログとメトリクスによる原因特定が必要です。\nGKE と Cloud SQL はデフォルトで Cloud Logging（現 Cloud Logging）と統合されています。\n\n📚 参考:\n- https://cloud.google.com/sql/docs/mysql/connect-kubernetes-engine#providing_the_service_account_to_the_proxy"
   },
   {
     "id": "A27",
@@ -719,7 +719,7 @@
       },
       {
         "id": "D",
-        "text": "Google Stackdriver のカスタムアラートを作成し、監査人に送信する"
+        "text": "Google Cloud Monitoringのカスタムアラートを作成し、監査人に送信する"
       }
     ],
     "answer": ["A"],
@@ -1036,11 +1036,11 @@
       },
       {
         "id": "B",
-        "text": "gcloud スクリプトを使用してサービスプロビジョニングを自動化する。Stackdriver を使用して、テストの監視とデバッグを行う。"
+        "text": "gcloud スクリプトを使用してサービスプロビジョニングを自動化する。Cloud Operationsを使用して、テストの監視とデバッグを行う。"
       },
       {
         "id": "C",
-        "text": "Deployment Manager を使用してサービス プロビジョニングを自動化する。Stackdriverを使用して、テストの監視とデバッグを行う。"
+        "text": "Deployment Manager を使用してサービス プロビジョニングを自動化する。Cloud Operations使用して、テストの監視とデバッグを行う。"
       },
       {
         "id": "D",
@@ -1048,7 +1048,7 @@
       }
     ],
     "answer": ["C"],
-    "explanation": "Google が推奨する DR（災害復旧）戦略のひとつに、Deployment Manager を利用した構成管理と、Stackdriver（現在の Cloud Operations）によるモニタリング・ロギングの活用があります。これにより、テストの自動化と復旧プロセスの可視化が可能となり、ミッションクリティカルなアプリケーションの信頼性が向上します。\n\n📚 参考：https://cloud.google.com/solutions/dr-scenarios-planning-guide"
+    "explanation": "Google が推奨する DR（災害復旧）戦略のひとつに、Deployment Manager を利用した構成管理と、Cloud Operationsによるモニタリング・ロギングの活用があります。これにより、テストの自動化と復旧プロセスの可視化が可能となり、ミッションクリティカルなアプリケーションの信頼性が向上します。\n\n📚 参考：https://cloud.google.com/solutions/dr-scenarios-planning-guide"
   },
   {
     "id": "A43",
@@ -1057,11 +1057,11 @@
     "options": [
       {
         "id": "A",
-        "text": "すべてのプロジェクトにStackdriver Monitoringを設定し、Google Cloud Storageにエクスポートする"
+        "text": "すべてのプロジェクトにCloud Monitoringを設定し、Google Cloud Storageにエクスポートする"
       },
       {
         "id": "B",
-        "text": "すべてのプロジェクトにStackdriver Monitoringを設定し、BigQueryにエクスポートする。"
+        "text": "すべてのプロジェクトにCloud Monitoringを設定し、BigQueryにエクスポートする。"
       },
       {
         "id": "C",
@@ -1069,11 +1069,11 @@
       },
       {
         "id": "D",
-        "text": "すべてのプロジェクトにStackdriver Monitoringを設定し、デフォルトの保持ポリシーを適用する。"
+        "text": "すべてのプロジェクトにCloud Monitoringを設定し、デフォルトの保持ポリシーを適用する。"
       }
     ],
     "answer": ["A"],
-    "explanation": "Stackdriver Monitoring（現在はCloud Monitoring）で収集したメトリクスを長期間保持する場合、Cloud Storageへのエクスポートが最適です。特に5年間の保持が求められるような場合、Coldline ストレージやアーカイブクラスを使用することでコストを抑えることができます。\n\n📚 参考：https://cloud.google.com/stackdriver/"
+    "explanation": "Cloud Monitoring（現在はCloud Monitoring）で収集したメトリクスを長期間保持する場合、Cloud Storageへのエクスポートが最適です。特に5年間の保持が求められるような場合、Coldline ストレージやアーカイブクラスを使用することでコストを抑えることができます。\n\n📚 参考：\nhttps://cloud.google.com/monitoring/monitoring-logs-export"
   },
   {
     "id": "A44",
@@ -1086,7 +1086,7 @@
       },
       {
         "id": "B",
-        "text": "すべてのインスタンスにCloud Loggingエージェントをインストールする。\nリージョンのCloud Storageのバケットにログをエクスポートするシンクを作成する。\n1ヶ月後にファイルをColdline Cloud Storageバケットに移動するObject Lifecycleルールを作成する。\nバケットロックを使って、バケットレベルのリテンションポリシーを設定する。"
+        "text": "すべてのインスタンスにOps Agentをインストールする。\nリージョンのCloud Storageのバケットにログをエクスポートするシンクを作成する。\n1ヶ月後にファイルをColdline Cloud Storageバケットに移動するObject Lifecycleルールを作成する。\nバケットロックを使って、バケットレベルのリテンションポリシーを設定する。"
       },
       {
         "id": "C",
@@ -1094,7 +1094,7 @@
       },
       {
         "id": "D",
-        "text": "すべてのインスタンスにクラウドCloud Loggingエージェントをインストールする。\nログをパーティション化されたBigQueryテーブルにエクスポートするシンクを作成する。\ntime_partitioning_expirationを30日に設定する。"
+        "text": "すべてのインスタンスにクラウドOps Agentをインストールする。\nログをパーティション化されたBigQueryテーブルにエクスポートするシンクを作成する。\ntime_partitioning_expirationを30日に設定する。"
       }
     ],
     "answer": ["B"],
@@ -1473,15 +1473,15 @@
     "options": [
       {
         "id": "A",
-        "text": "Stackdriver Monitoring を使用して、API のレイテンシーが高いことを示すインサイトを探す"
+        "text": "Cloud Monitoring を使用して、API のレイテンシーが高いことを示すインサイトを探す"
       },
       {
         "id": "B",
-        "text": "Stackdriver Trace を使ってアプリケーションを計測し、各マイクロサービスのリクエストの待ち時間を把握する"
+        "text": "Cloud Trace を使ってアプリケーションを計測し、各マイクロサービスのリクエストの待ち時間を把握する"
       },
       {
         "id": "C",
-        "text": "各リクエストのカスタムメトリクスをStackdriver Monitoringに送信する"
+        "text": "各リクエストのカスタムメトリクスをCloud Monitoringに送信する"
       },
       {
         "id": "D",
@@ -1489,7 +1489,7 @@
       }
     ],
     "answer": ["B"],
-    "explanation": "Stackdriver Trace（Cloud Trace）は、マイクロサービス間の呼び出しにかかる遅延時間を視覚的に把握し、ボトルネックを特定するのに適しています。APIがどのサービスで時間を消費しているか詳細にトレース可能です。\n\n📚 参考: https://cloud.google.com/trace/docs"
+    "explanation": "Cloud Traceは、マイクロサービス間の呼び出しにかかる遅延時間を視覚的に把握し、ボトルネックを特定するのに適しています。APIがどのサービスで時間を消費しているか詳細にトレース可能です。\n\n📚 参考: https://cloud.google.com/trace/docs"
   },
   {
     "id": "B11",
@@ -1581,11 +1581,11 @@
       },
       {
         "id": "B",
-        "text": "アプリケーションの応答しない部分を提供している特定のGKEコンテナのStackdriverログを確認する。"
+        "text": "アプリケーションの応答しない部分を提供している特定のGKEコンテナのCloud Loggingログを確認する。"
       },
       {
         "id": "C",
-        "text": "クラスターのノードとして機能している各Compute EngineインスタンスのStackdriverログを確認する。"
+        "text": "クラスターのノードとして機能している各Compute EngineインスタンスのCloud Loggingログを確認する。"
       },
       {
         "id": "D",
@@ -1593,7 +1593,7 @@
       }
     ],
     "answer": ["B"],
-    "explanation": "GKEではStackdriver Logging（現在はCloud Logging）がデフォルトで有効化されており、ポッドの標準出力に書かれたログは自動でCloud Loggingに転送されます。問題のコンテナに関するログを確認することで、アプリケーションの挙動を特定できます。\n\n📚 参考: https://cloud.google.com/monitoring/kubernetes-engine/legacy-stackdriver/logging"
+    "explanation": "GKEではCloud Loggingがデフォルトで有効化されており、ポッドの標準出力に書かれたログは自動でCloud Loggingに転送されます。問題のコンテナに関するログを確認することで、アプリケーションの挙動を特定できます。\n\n📚 参考: https://cloud.google.com/kubernetes-engine/docs/how-to/logging"
   },
   {
     "id": "B15",
@@ -1770,7 +1770,7 @@
       },
       {
         "id": "B",
-        "text": "Google App Engineとログ用のGoogle StackDriver"
+        "text": "Google App Engineとログ用のGoogle Cloud Logging"
       },
       {
         "id": "C",
@@ -1878,7 +1878,7 @@
       },
       {
         "id": "D",
-        "text": "Google Stackdriver のタイムラインを障害発生時に合わせて調整し、バッチサーバのメトリクスを観察する"
+        "text": "Google Cloud Monitoring のタイムラインを障害発生時に合わせて調整し、バッチサーバのメトリクスを観察する"
       },
       {
         "id": "E",
@@ -1886,11 +1886,11 @@
       },
       {
         "id": "F",
-        "text": "Stackdriver Loggingを使用して、モジュールのログエントリを検索する"
+        "text": "Cloud Loggingを使用して、モジュールのログエントリを検索する"
       }
     ],
     "answer": ["B", "D", "F"],
-    "explanation": "Linux カーネルモジュールの影響調査には、Stackdriver Logging によるログ確認、Cloud Monitoring の時系列メトリクス分析、シリアルコンソールによる詳細確認が有効です。特に、障害のあった時間帯に焦点をあててログを調査することが問題の切り分けに繋がります。\n\n📚 参考:\n- https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-using-serial-console\n- https://cloud.google.com/monitoring\n- https://cloud.google.com/logging"
+    "explanation": "Linux カーネルモジュールの影響調査には、Cloud Logging によるログ確認、Cloud Monitoring の時系列メトリクス分析、シリアルコンソールによる詳細確認が有効です。特に、障害のあった時間帯に焦点をあててログを調査することが問題の切り分けに繋がります。\n\n📚 参考:\n- https://cloud.google.com/compute/docs/troubleshooting/troubleshooting-using-serial-console\n- https://cloud.google.com/monitoring\n- https://cloud.google.com/logging"
   },
   {
     "id": "B27",
@@ -1978,7 +1978,7 @@
       },
       {
         "id": "B",
-        "text": "Google StackDriverのCloud Loggingエージェントをダウンロードしてインストールするように指示する"
+        "text": "Google Cloud OperatinerのOps Agentをダウンロードしてインストールするように指示する"
       },
       {
         "id": "C",
@@ -1990,7 +1990,7 @@
       }
     ],
     "answer": ["B"],
-    "explanation": "Cloud Logging（旧Stackdriver Logging）エージェントは、アプリケーションやシステムのログを Cloud Logging に転送するための公式ツールで、GCP やハイブリッド環境に対応しています。リアルタイムエラー監視やログ解析のニーズに対応でき、Google が推奨する導入方法です。\n\n📚 参考: https://cloud.google.com/logging/docs/agent"
+    "explanation": "Ops Agentは、アプリケーションやシステムのログを Cloud Logging に転送するための公式ツールで、GCP やハイブリッド環境に対応しています。リアルタイムエラー監視やログ解析のニーズに対応でき、Google が推奨する導入方法です。\n\n📚 参考: https://cloud.google.com/logging/docs/agent"
   },
   {
     "id": "B31",
@@ -2540,7 +2540,7 @@
     "options": [
       {
         "id": "A",
-        "text": "安定稼働していたリリースにロールバックしてから、静かな時期に再度リリースをプッシュして調査する。その後、Stackdriver Trace and Logging を使用して問題を診断する"
+        "text": "安定稼働していたリリースにロールバックしてから、静かな時期に再度リリースをプッシュして調査する。その後、Cloud Trace and Logging を使用して問題を診断する"
       },
       {
         "id": "B",
@@ -2552,11 +2552,11 @@
       },
       {
         "id": "D",
-        "text": "安定稼働していたリリースにロールバックし、Stackdriver Trace and Logging を使用して開発/テスト/ステージング環境で問題を診断する"
+        "text": "安定稼働していたリリースにロールバックし、Cloud Trace and Logging を使用して開発/テスト/ステージング環境で問題を診断する"
       }
     ],
     "answer": ["D"],
-    "explanation": "App Engineアプリケーションのパフォーマンス劣化がアップデート後に発生したため、まずは安定していたバージョンへロールバックするのが合理的です。さらに、Cloud Operations（旧Stackdriver）ツールを使って原因を特定すべく、開発やテスト環境で再現性を確認しながら診断します。\n\n📚 参考: https://cloud.google.com/logging"
+    "explanation": "App Engineアプリケーションのパフォーマンス劣化がアップデート後に発生したため、まずは安定していたバージョンへロールバックするのが合理的です。さらに、Cloud Operationsツールを使って原因を特定すべく、開発やテスト環境で再現性を確認しながら診断します。\n\n📚 参考: https://cloud.google.com/logging"
   },
   {
     "id": "C03",
@@ -2898,11 +2898,11 @@
       },
       {
         "id": "F",
-        "text": "Stackdriver Debuggerなどの監視ツールでアプリケーションを導入する"
+        "text": "Cloud Debuggerなどの監視ツールでアプリケーションを導入する"
       }
     ],
     "answer": ["A", "E", "F"],
-    "explanation": "クラウド移行時のアプリケーションの最適化には、CI/CD導入（A）、App Engineへの移植（E）、Stackdriverによる監視強化（F）が推奨されます。\n\n📚 参考: https://cloud.google.com/appengine/docs/standard/java"
+    "explanation": "クラウド移行時のアプリケーションの最適化には、CI/CD導入（A）、App Engineへの移植（E）、Cloud Operationsによる監視強化（F）が推奨されます。\n\n📚 参考: https://cloud.google.com/appengine/docs/standard/java"
   },
   {
     "id": "C17",
@@ -3206,7 +3206,7 @@
     "options": [
       { "id": "A", "text": "Google Cloud SQLにログを読み込む" },
       { "id": "B", "text": "Google Cloud Bigtableにログを挿入する" },
-      { "id": "C", "text": "Google Stackdriverにログを読み込む" },
+      { "id": "C", "text": "Google Cloud Loggingにログを読み込む" },
       { "id": "D", "text": "Google BigQueryにログを読み込む" },
       {
         "id": "E",
@@ -3524,7 +3524,7 @@
       },
       {
         "id": "D",
-        "text": "オンプレミスと同様の構成でCompute Engineを作成し、Cloud Monitoringエージェントを使ってトラフィック負荷テスト後に最適サイズの推奨を参照する"
+        "text": "オンプレミスと同様の構成でCompute Engineを作成し、Ops Agentを使ってトラフィック負荷テスト後に最適サイズの推奨を参照する"
       }
     ],
     "answer": "D",
@@ -3840,15 +3840,15 @@
       { "id": "B", "text": "memcachedを導入してCPU使用率を軽減する" },
       {
         "id": "C",
-        "text": "CPU使用率が75%を超えたらStackdriverアラートを作成し、より大きなマシンタイプに変更する"
+        "text": "CPU使用率が75%を超えたらCloud Monitoringアラートを作成し、より大きなマシンタイプに変更する"
       },
       {
         "id": "D",
-        "text": "レプリケーションの遅延に対してStackdriverアラートを作成し、データベースをシャード化して対応する"
+        "text": "レプリケーションの遅延に対してCloud Monitoringアラートを作成し、データベースをシャード化して対応する"
       }
     ],
     "answer": ["A", "C", "D"],
-    "explanation": "Cloud SQLの自動ストレージ増加、Stackdriverアラートによる監視、インスタンスタイプのスケーリング、データベースのシャーディングは、可用性とスケーラビリティを確保するためのベストプラクティスです。memcachedの導入はこの文脈では最適解ではありません。"
+    "explanation": "Cloud SQLの自動ストレージ増加、Cloud Monitoringアラートによる監視、インスタンスタイプのスケーリング、データベースのシャーディングは、可用性とスケーラビリティを確保するためのベストプラクティスです。memcachedの導入はこの文脈では最適解ではありません。"
   },
   {
     "id": "D7",
