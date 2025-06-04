@@ -10,7 +10,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "@fluentui/react-tooltip": "^9.6.6",
@@ -35,6 +36,7 @@
     "tailwindcss": "^4.1.5",
     "typescript": "~5.7.2",
     "typescript-eslint": "^8.26.1",
-    "vite": "^6.3.4"
+    "vite": "^6.3.4",
+    "vitest": "^1.5.0"
   }
 }
