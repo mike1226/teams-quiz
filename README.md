@@ -52,7 +52,7 @@ npm run preview
 npm run test
 
 ## 项目结构
-```
+
 
 src/
 ├── components/         # 页面组件（题卡、分析图等）
@@ -62,6 +62,7 @@ src/
 ├── types/              # TypeScript 类型定义
 ├── App.tsx             # 主入口
 └── main.tsx            # 渲染入口
+```
 
 ## 数据结构
 
