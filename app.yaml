@@ -14,4 +14,4 @@ handlers:
 automatic_scaling:
   max_instances: 5
 
-service_account: ci-deployer@teamsqiuz.iam.gserviceaccount.com
+service_account: ci-deployer@teamsquiz.iam.gserviceaccount.com
